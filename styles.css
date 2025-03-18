@@ -1,3 +1,7 @@
+:root {
+    --pixel-size: 2;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -15,20 +19,22 @@
 
 body {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%; 
     min-height: 100%;
-    background-image: url("/stock-img/backgroundMoving.jpg");
+    background-image: url("/stock-img/backgroundMoving.png");
     background-repeat: repeat-x;
     background-size: auto 100vh;
     background-attachment: fixed;
     animation: scroll-background 10000s linear infinite;
+    padding: 0;
+    margin: 0;
 
 }
 
 main {
     display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
 }
 
 
@@ -42,6 +48,10 @@ main {
     background-color: rgb(36, 36, 36);
     border : double 2px rgb(124, 37, 37);
     border-radius: 5px;
+    max-width: 400px;
+    position : fixed;
+    top : 20%;
+    box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.76);
 }
 
 .pokemonStorage {
@@ -49,32 +59,47 @@ main {
     flex-wrap: nowrap;
 }
 
-
+/* TRAINER CONTAINER AND ANIMATION */
 
 .walkingTrainer {
-    position: relative;
-    width: 120px; 
-    height: 120px;
+    width: calc(64px * var(--pixel-size));
+    height: calc(64px * var(--pixel-size));
+    overflow: hidden;
+    position: fixed;
+    top: 70%;
+    right : 45%
 }
 
-.walkingTrainer img {
+.walkingSprite {
+    animation: moveSpritesheet 1s steps(4) infinite;
+    width: calc(256px * var(--pixel-size));
     position: absolute;
-    margin-inline: auto;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    animation: walk-cycle 2s infinite;
+    top : calc(-128px * var(--pixel-size));
 }
 
-.walkingTrainer img:nth-child(1) { animation-delay: 0s; }
-.walkingTrainer img:nth-child(2) { animation-delay: 0.5s; }
-.walkingTrainer img:nth-child(3) { animation-delay: 1s; }
-.walkingTrainer img:nth-child(4) { animation-delay: 1.5s; }
+.pixelArt {
+    image-rendering: pixelated;
+}
 
-@keyframes walk-cycle {
-    0% { opacity: 1; } 
-    24.9% { opacity: 1; } 
-    25% { opacity: 0; } 
-    100% { opacity: 0; }
+
+@keyframes moveSpritesheet {
+    from {
+        transform: translate3d(0px,0,0)
+    }
+    to {
+        transform: translate3d(-100%,0,0)
+    }
+}
+
+.stepSign {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    max-width : 300px;
+    max-height: 100px;
+    text-align: center;
+    position: fixed;
+    top : 50%; 
+    right : 10%;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.76);
 }
