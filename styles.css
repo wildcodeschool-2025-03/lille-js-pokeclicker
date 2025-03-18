@@ -1,17 +1,80 @@
+* {
+    box-sizing: border-box;
+}
+
+
 @keyframes scroll-background {
     from {
-        background-position: 10000% 0;
+        background-position: 100000px 0;
     }
 
     to {
-        background-position: -10000% 0;
+        background-position: -100000px 0;
     }
 }
 
 body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    min-height: 100%;
     background-image: url("/stock-img/backgroundMoving.jpg");
     background-repeat: repeat-x;
-    background-size: contain;
+    background-size: auto 100vh;
     background-attachment: fixed;
-    animation: scroll-background 5000s linear infinite;
+    animation: scroll-background 10000s linear infinite;
+
+}
+
+main {
+    display: flex;
+}
+
+
+.pokedexTitle {
+    color : white;
+}
+
+.pokedexContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(36, 36, 36);
+    border : double 2px rgb(124, 37, 37);
+    border-radius: 5px;
+}
+
+.pokemonStorage {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+
+
+.walkingTrainer {
+    position: relative;
+    width: 120px; 
+    height: 120px;
+}
+
+.walkingTrainer img {
+    position: absolute;
+    margin-inline: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: walk-cycle 2s infinite;
+}
+
+.walkingTrainer img:nth-child(1) { animation-delay: 0s; }
+.walkingTrainer img:nth-child(2) { animation-delay: 0.5s; }
+.walkingTrainer img:nth-child(3) { animation-delay: 1s; }
+.walkingTrainer img:nth-child(4) { animation-delay: 1.5s; }
+
+@keyframes walk-cycle {
+    0% { opacity: 1; } 
+    24.9% { opacity: 1; } 
+    25% { opacity: 0; } 
+    100% { opacity: 0; }
 }
