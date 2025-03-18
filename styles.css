@@ -67,7 +67,8 @@ main {
     overflow: hidden;
     position: fixed;
     top: 70%;
-    right : 45%
+    right : 50%;
+    translate : 50%
 }
 
 .walkingSprite {
