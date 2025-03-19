@@ -41,6 +41,7 @@ const pokedexList = document.querySelector(".pokedexList")
 
 function addToPokedex(pokemon) {
     const addPokemon = document.createElement("li")
+    addPokemon.classList.add("pokedexItem")
     pokedexList.appendChild(addPokemon)
 
     const pokemonIMG = document.createElement("img")
@@ -48,6 +49,11 @@ function addToPokedex(pokemon) {
     pokemonIMG.alt = `${pokemon.alt}`
     pokemonIMG.classList.add("pokemonIMG")
     addPokemon.appendChild(pokemonIMG)
+
+    const pokemonTitle = document.createElement("p")
+    pokemonTitle.innerHTML = `${pokemon.name}`
+    pokemonTitle.classList.add("pokemonTitle")
+    addPokemon.appendChild(pokemonTitle)
 }
 
 
