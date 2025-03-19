@@ -1,4 +1,4 @@
-const Dex = [
+const availablePokemons = [
     {
         name: "Salamèche",
         alt: "Charmander"
@@ -25,11 +25,44 @@ const Dex = [
     }
 ]
 
+let lastCaughtPokemonName = ""
 
-function CatchRandom(array) {
-    let i = Math.floor(Math.random() * array.length);
+function catchRandom() {
+    let i = Math.floor(Math.random() * availablePokemons.length);
 
-    let r = array[i];
-    console.log(r.name);
-    i = 0;
+    lastCaughtPokemonName = availablePokemons[i].name;
+    console.log(lastCaughtPokemonName);
 }
+
+
+
+
+const pokedexList = document.querySelector(".pokedexList")
+
+
+function addToPokedex() {
+    const addPokemon = document.createElement("li")
+    pokedexList.appendChild(addPokemon)
+
+    const pokemonIMG = document.createElement("img")
+    pokemonIMG.src = "stock-img/pokemons/ratata.png"
+    pokemonIMG.alt = "ratata"
+    pokemonIMG.classList.add("pokemonIMG")
+    addPokemon.appendChild(pokemonIMG)
+
+}
+
+
+const clickTrainer = document.querySelector(".walkingTrainer");
+let totalClick = 0
+
+clickTrainer.addEventListener("click", () => {
+    totalClick += 1
+    if (totalClick % 10 === 0) {
+        catchRandom(availablePokemons)
+        addToPokedex()
+    }
+});
+
+
+
