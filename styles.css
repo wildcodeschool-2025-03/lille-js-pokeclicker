@@ -1,5 +1,5 @@
 :root {
-    --pixel-size: 2;
+    --pixel-size: 3;
 }
 
 * {
@@ -68,7 +68,7 @@ main {
     position: fixed;
     top: 70%;
     right : 50%;
-    translate : 50%
+    translate : 50%;
 }
 
 .walkingSprite {
