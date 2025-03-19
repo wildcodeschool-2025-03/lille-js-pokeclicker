@@ -39,6 +39,7 @@ main {
     padding: 0 30px;
 }
 
+/* ALL POKEDEX */
 
 .pokedexTitle {
     color: white;
@@ -175,7 +176,7 @@ main {
 }
 
 
-
+/* ALL STEP SIGN */
 
 .stepSign {
     background-color: rgb(255, 255, 255);
