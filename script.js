@@ -42,7 +42,7 @@ const pokedexList = document.querySelector(".pokedexList")
 function addToPokedex(pokemon) {
     const addPokemon = document.createElement("li")
     addPokemon.classList.add("pokedexItem")
-    pokedexList.appendChild(addPokemon)
+    pokedexList.prepend(addPokemon)
 
     const pokemonIMG = document.createElement("img")
     pokemonIMG.src = `stock-img/pokemons/${pokemon.name}.png`
