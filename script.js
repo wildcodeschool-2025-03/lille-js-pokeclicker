@@ -33,3 +33,5 @@ function CatchRandom(array) {
     console.log(r.name);
     i = 0;
 }
+
+CatchRandom(Dex)
