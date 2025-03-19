@@ -64,4 +64,3 @@ clickTrainer.addEventListener("click", () => {
 });
 
 
-
