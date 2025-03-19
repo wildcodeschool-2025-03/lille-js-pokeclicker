@@ -149,6 +149,7 @@ main {
     top: 64%;
     right: 60%;
     translate : 50%;
+    display : none;
 }
 
 .pikachuSprite {
