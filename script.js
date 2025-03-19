@@ -29,9 +29,8 @@ function catchRandom() {
     let i = Math.floor(Math.random() * availablePokemons.length);
 
     let lastCaughtPokemon = availablePokemons[i];
-    console.log(lastCaughtPokemonName);
+    console.log(lastCaughtPokemon);
     addToPokedex(lastCaughtPokemon)
-
 }
 
 
@@ -45,11 +44,10 @@ function addToPokedex(pokemon) {
     pokedexList.appendChild(addPokemon)
 
     const pokemonIMG = document.createElement("img")
-    pokemonIMG.src = "stock-img/pokemons/ratata.png"
-    pokemonIMG.alt = "ratata"
+    pokemonIMG.src = `stock-img/pokemons/${pokemon.name}.png`
+    pokemonIMG.alt = `${pokemon.alt}`
     pokemonIMG.classList.add("pokemonIMG")
     addPokemon.appendChild(pokemonIMG)
-    lastCaughtPokemonName
 }
 
 

@@ -4,6 +4,7 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
 }
 
 
@@ -52,11 +53,28 @@ main {
     position: fixed;
     top: 20%;
     box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.76);
+    padding: .5rem;
 }
 
 .pokemonStorage {
     display: flex;
     flex-wrap: nowrap;
+}
+
+.pokedexList {
+    max-height: 20rem;
+    max-width: 400px;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    padding: 0;
+}
+
+.pokedexList img {
+    width: 5rem;
+    height: 5rem;
 }
 
 /* TRAINER CONTAINER AND ANIMATION */
