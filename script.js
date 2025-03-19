@@ -30,7 +30,8 @@ function catchRandom() {
 
     let lastCaughtPokemon = availablePokemons[i];
     console.log(lastCaughtPokemon);
-    addToPokedex(lastCaughtPokemon)
+    addToPokedex(lastCaughtPokemon);
+
 }
 
 
@@ -68,3 +69,6 @@ clickTrainer.addEventListener("click", () => {
 });
 
 
+setInterval(() => {
+    catchRandom()
+}, 10000)

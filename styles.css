@@ -111,7 +111,8 @@ main {
     position: fixed;
     top: 65%;
     right: 50%;
-    transition: 0.05s
+    translate : 50%;
+    transition: 0.05s;
 }
 
 .walkingTrainer:hover {
@@ -130,12 +131,6 @@ main {
     cursor: pointer;
 }
 
-
-.pixelArt {
-    image-rendering: pixelated;
-}
-
-
 @keyframes moveSpritesheet {
     from {
         transform: translate3d(0px, 0, 0)
@@ -145,6 +140,42 @@ main {
         transform: translate3d(-100%, 0, 0)
     }
 }
+
+.walkingPikachu {
+    width: calc(64px * var(--pixel-size));
+    height: calc(64px * var(--pixel-size));
+    overflow: hidden;
+    position: fixed;
+    top: 64%;
+    right: 60%;
+    translate : 50%;
+}
+
+.pikachuSprite {
+    animation: moveSpritesheetPikachu 1s steps(4) infinite;
+    width: calc(256px * var(--pixel-size));
+    position: absolute;
+    top: calc(-128px * var(--pixel-size));
+    cursor: pointer;
+}
+
+@keyframes moveSpritesheetPikachu {
+    from {
+        transform: translate3d(0px, 0, 0)
+    }
+
+    to {
+        transform: translate3d(-100%, 0, 0)
+    }
+}
+
+
+.pixelArt {
+    image-rendering: pixelated;
+}
+
+
+
 
 .stepSign {
     background-color: rgb(255, 255, 255);
