@@ -23,18 +23,27 @@ const availablePokemons = [
         name: "Piafabec",
         alt: "Piafabec"
     }
+    , {
+        name: "Pikachu",
+        alt: "Pikachu"
+    }
 ]
+
+let isPikachuCaught = false
+const pikachuSprite = document.querySelector(".walkingPikachu")
 
 function catchRandom() {
     let i = Math.floor(Math.random() * availablePokemons.length);
-
+    
     let lastCaughtPokemon = availablePokemons[i];
-    console.log(lastCaughtPokemon);
     addToPokedex(lastCaughtPokemon);
 
+    if (lastCaughtPokemon.name === "Pikachu" && isPikachuCaught === false) {
+        pikachuSprite.style.display = "block"
+        isPikachuCaught = true
+    }
+
 }
-
-
 
 
 const pokedexList = document.querySelector(".pokedexList")
