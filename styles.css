@@ -77,6 +77,16 @@ main {
     height: 5rem;
 }
 
+.pokemonTitle{
+    color:whitesmoke;
+}
+
+.pokedexItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* TRAINER CONTAINER AND ANIMATION */
 
 .walkingTrainer {
