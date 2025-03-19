@@ -13,7 +13,7 @@ const availablePokemons = [
     }
     , {
         name: "Roucool",
-        alt: "Pidgeot"
+        alt: "Pidgey"
     }
     , {
         name: "Rattata",
@@ -21,7 +21,7 @@ const availablePokemons = [
     }
     , {
         name: "Piafabec",
-        alt: "Piafabec"
+        alt: "Spearow"
     }
     , {
         name: "Pikachu",
@@ -55,7 +55,7 @@ function addToPokedex(pokemon) {
     pokedexList.prepend(addPokemon)
 
     const pokemonIMG = document.createElement("img")
-    pokemonIMG.src = `stock-img/pokemons/${pokemon.name}.png`
+    pokemonIMG.src = `https://img.pokemondb.net/sprites/black-white/normal/${pokemon.alt.toLowerCase()}.png`;
     pokemonIMG.alt = `${pokemon.alt}`
     pokemonIMG.classList.add("pokemonIMG")
     addPokemon.appendChild(pokemonIMG)
