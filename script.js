@@ -56,6 +56,9 @@ function addToPokedex(pokemon) {
 
     const pokemonIMG = document.createElement("img")
     pokemonIMG.src = `https://img.pokemondb.net/sprites/black-white/normal/${pokemon.alt.toLowerCase()}.png`;
+// Gen 5 https://img.pokemondb.net/sprites/black-white/normal/${pokemon.alt.toLowerCase()}.png             //
+// Gen 8 https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png   //
+// Gif   https://img.pokemondb.net/sprites/black-white/anim/normal/${pokemon.alt.toLowerCase()}.gif        //
     pokemonIMG.alt = `${pokemon.alt}`
     pokemonIMG.classList.add("pokemonIMG")
     addPokemon.appendChild(pokemonIMG)
