@@ -25,13 +25,13 @@ const availablePokemons = [
     }
 ]
 
-let lastCaughtPokemonName = ""
-
 function catchRandom() {
     let i = Math.floor(Math.random() * availablePokemons.length);
 
-    lastCaughtPokemonName = availablePokemons[i].name;
+    let lastCaughtPokemon = availablePokemons[i];
     console.log(lastCaughtPokemonName);
+    addToPokedex(lastCaughtPokemon)
+
 }
 
 
@@ -40,7 +40,7 @@ function catchRandom() {
 const pokedexList = document.querySelector(".pokedexList")
 
 
-function addToPokedex() {
+function addToPokedex(pokemon) {
     const addPokemon = document.createElement("li")
     pokedexList.appendChild(addPokemon)
 
@@ -49,7 +49,7 @@ function addToPokedex() {
     pokemonIMG.alt = "ratata"
     pokemonIMG.classList.add("pokemonIMG")
     addPokemon.appendChild(pokemonIMG)
-
+    lastCaughtPokemonName
 }
 
 
@@ -59,8 +59,7 @@ let totalClick = 0
 clickTrainer.addEventListener("click", () => {
     totalClick += 1
     if (totalClick % 10 === 0) {
-        catchRandom(availablePokemons)
-        addToPokedex()
+        catchRandom()
     }
 });
 
