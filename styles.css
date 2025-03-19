@@ -21,7 +21,7 @@ body {
     position: absolute;
     width: 100%; 
     min-height: 100%;
-    background-image: url("/stock-img/backgroundMoving.png");
+    background-image: url("stock-img/backgroundMoving.png");
     background-repeat: repeat-x;
     background-size: auto 100vh;
     background-attachment: fixed;

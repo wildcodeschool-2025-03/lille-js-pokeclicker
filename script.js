@@ -34,4 +34,3 @@ function CatchRandom(array) {
     i = 0;
 }
 
-CatchRandom(Dex)
