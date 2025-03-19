@@ -30,7 +30,8 @@ function catchRandom() {
 
     let lastCaughtPokemon = availablePokemons[i];
     console.log(lastCaughtPokemon);
-    addToPokedex(lastCaughtPokemon)
+    addToPokedex(lastCaughtPokemon);
+
 }
 
 
@@ -42,7 +43,7 @@ const pokedexList = document.querySelector(".pokedexList")
 function addToPokedex(pokemon) {
     const addPokemon = document.createElement("li")
     addPokemon.classList.add("pokedexItem")
-    pokedexList.appendChild(addPokemon)
+    pokedexList.prepend(addPokemon)
 
     const pokemonIMG = document.createElement("img")
     pokemonIMG.src = `stock-img/pokemons/${pokemon.name}.png`
@@ -68,3 +69,6 @@ clickTrainer.addEventListener("click", () => {
 });
 
 
+setInterval(() => {
+    catchRandom()
+}, 10000)
