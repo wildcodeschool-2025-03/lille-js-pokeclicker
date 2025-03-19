@@ -1,17 +1,105 @@
+:root {
+    --pixel-size: 2;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
 @keyframes scroll-background {
     from {
-        background-position: 0 0;
+        background-position: 100000px 0;
     }
 
     to {
-        background-position: -1000% 0;
+        background-position: -100000px 0;
     }
 }
 
 body {
-    background-image: url("stock-img/backgroundMoving.jpg");
+    position: absolute;
+    width: 100%; 
+    min-height: 100%;
+    background-image: url("/stock-img/backgroundMoving.png");
     background-repeat: repeat-x;
-    background-size: contain;
+    background-size: auto 100vh;
     background-attachment: fixed;
-    animation: scroll-background 3s linear infinite;
+    animation: scroll-background 10000s linear infinite;
+    padding: 0;
+    margin: 0;
+
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+
+.pokedexTitle {
+    color : white;
+}
+
+.pokedexContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(36, 36, 36);
+    border : double 2px rgb(124, 37, 37);
+    border-radius: 5px;
+    max-width: 400px;
+    position : fixed;
+    top : 20%;
+    box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.76);
+}
+
+.pokemonStorage {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+/* TRAINER CONTAINER AND ANIMATION */
+
+.walkingTrainer {
+    width: calc(64px * var(--pixel-size));
+    height: calc(64px * var(--pixel-size));
+    overflow: hidden;
+    position: fixed;
+    top: 70%;
+    right : 45%
+}
+
+.walkingSprite {
+    animation: moveSpritesheet 1s steps(4) infinite;
+    width: calc(256px * var(--pixel-size));
+    position: absolute;
+    top : calc(-128px * var(--pixel-size));
+}
+
+.pixelArt {
+    image-rendering: pixelated;
+}
+
+
+@keyframes moveSpritesheet {
+    from {
+        transform: translate3d(0px,0,0)
+    }
+    to {
+        transform: translate3d(-100%,0,0)
+    }
+}
+
+.stepSign {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    max-width : 300px;
+    max-height: 100px;
+    text-align: center;
+    position: fixed;
+    top : 50%; 
+    right : 10%;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.76);
 }
