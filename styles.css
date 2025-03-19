@@ -157,7 +157,6 @@ main {
     width: calc(256px * var(--pixel-size));
     position: absolute;
     top: calc(-128px * var(--pixel-size));
-    cursor: pointer;
 }
 
 @keyframes moveSpritesheetPikachu {
