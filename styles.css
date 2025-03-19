@@ -1,17 +1,17 @@
 @keyframes scroll-background {
     from {
-        background-position: 100% 0;
+        background-position: 0 0;
     }
 
     to {
-        background-position: -100% 0;
+        background-position: -1000% 0;
     }
 }
 
 body {
-    background-image: url("/stock-img/backgroundMoving.jpg");
+    background-image: url("stock-img/backgroundMoving.jpg");
     background-repeat: repeat-x;
-    background-size: 100% auto;
+    background-size: contain;
     background-attachment: fixed;
-    animation: scroll-background 10s linear infinite;
+    animation: scroll-background 3s linear infinite;
 }
