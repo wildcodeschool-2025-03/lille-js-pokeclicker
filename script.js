@@ -1,4 +1,4 @@
-const Dex = [
+const availablePokemons = [
     {
         name: "Salamèche",
         alt: "Charmander"
@@ -25,11 +25,46 @@ const Dex = [
     }
 ]
 
+function catchRandom() {
+    let i = Math.floor(Math.random() * availablePokemons.length);
 
-function CatchRandom(array) {
-    let i = Math.floor(Math.random() * array.length);
-
-    let r = array[i];
-    console.log(r.name);
-    i = 0;
+    let lastCaughtPokemon = availablePokemons[i];
+    console.log(lastCaughtPokemon);
+    addToPokedex(lastCaughtPokemon)
 }
+
+
+
+
+const pokedexList = document.querySelector(".pokedexList")
+
+
+function addToPokedex(pokemon) {
+    const addPokemon = document.createElement("li")
+    addPokemon.classList.add("pokedexItem")
+    pokedexList.appendChild(addPokemon)
+
+    const pokemonIMG = document.createElement("img")
+    pokemonIMG.src = `stock-img/pokemons/${pokemon.name}.png`
+    pokemonIMG.alt = `${pokemon.alt}`
+    pokemonIMG.classList.add("pokemonIMG")
+    addPokemon.appendChild(pokemonIMG)
+
+    const pokemonTitle = document.createElement("p")
+    pokemonTitle.innerHTML = `${pokemon.name}`
+    pokemonTitle.classList.add("pokemonTitle")
+    addPokemon.appendChild(pokemonTitle)
+}
+
+
+const clickTrainer = document.querySelector(".walkingTrainer");
+let totalClick = 0
+
+clickTrainer.addEventListener("click", () => {
+    totalClick += 1
+    if (totalClick % 10 === 0) {
+        catchRandom()
+    }
+});
+
+
