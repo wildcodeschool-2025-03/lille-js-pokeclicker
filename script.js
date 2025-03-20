@@ -596,7 +596,7 @@ setInterval(() => {
 
 setInterval(() => {
     stepsBeforeRoadChange = stepsBeforeRoadChange - 1
-    stepIndicator.innerHTML = stepsBeforeRoadChange
+    stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
     if (stepsBeforeRoadChange === 0) {
         stepsBeforeRoadChange = 1000
     }
@@ -606,7 +606,7 @@ setInterval(() => {
 clickTrainer.addEventListener("click", () => {
     totalClick += 1
     stepsBeforeRoadChange = stepsBeforeRoadChange - 1
-    stepIndicator.innerHTML = stepsBeforeRoadChange
+    stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
     if (stepsBeforeRoadChange === 0) {
         stepsBeforeRoadChange = 1000
     }
@@ -618,7 +618,7 @@ clickTrainer.addEventListener("click", () => {
     }
 });
 
-stepIndicator.innerHTML = stepsBeforeRoadChange
+stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
 
 let isPokemonCaught = document.querySelector(".caughtPokemon");
 
