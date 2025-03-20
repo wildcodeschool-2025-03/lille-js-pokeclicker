@@ -5,6 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Jersey+10&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+    </style>
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -20,7 +24,7 @@
                 <div class="green-diode"></div> 
             </div>  
             <div>                      
-                <img src="imagesProjetTeam/pixel-art-1671574718.png" alt="Logo-Pikachu" class="logo" />          
+                <img src="stock-img/pixel-art-1671574718.png" alt="Logo-Pikachu" class="logo" />          
                 <h1>Poké-Clicker</h1>  
             </div>  
     </header>
@@ -28,18 +32,37 @@
     <main>
         <!-- SECTION POKEDEX -->
         <section>
+            <div class="pokedexContainer">
+                <h2 class="pokedexTitle">POKEDEX</h2>
+                <div class="pokemonStorage"></div>
+                <ul class="pokedexList"></ul>
+            </div>
+
 
         </section>
         <!-- SECTION TRAINER -->
         <section>
+            <div class="walkingPikachu">
+                <img class="pikachuSprite pixelArt" src="stock-img/trainer/pikachufollowing.png" alt="pikachu" />
+            </div>
+            <div class="walkingTrainer">
+                <img class="walkingSprite pixelArt" src="stock-img/trainer/trainerallsprite.png" alt="character" />
+            </div>
+            
 
         </section>
 
         <!-- SECTION SIGN (FOOTSTEP) -->
         <section>
+            <div class="stepSign">
+                <h3>Nom de la route actuelle</h3>
+                <p>random text waiting for JS <br>
+                    (number of steps before next route)</p>
 
+            </div>
         </section>
     </main>
+    </div>
     <!-- FOOTER -->
     <footer>
         <div class="diode-footer">
@@ -48,10 +71,10 @@
             <div class="blue-diode2"></div>
         </div>        
         <p>Copyright &copy; 2025 ProjetTeam.com Tous droits réservés</p>
-    <img src = "imagesProjetTeam/touchesdirectionnelles0.png" alt="touchesdirectionnelles" class="touch"/>
+    <img src = "stock-img/touchesdirectionnelles0.png" alt="touchesdirectionnelles" class="touch"/>
     </footer>
     <!-- END -->
-     <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
