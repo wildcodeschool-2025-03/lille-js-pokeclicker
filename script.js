@@ -155,6 +155,8 @@ const availablePokemons = [
 let isPikachuCaught = false
 const pikachuSprite = document.querySelector(".walkingPikachu")
 
+let caughtPokemon = []
+
 function catchRandom() {
     let i = Math.floor(Math.random() * availablePokemons.length);
 
@@ -166,6 +168,11 @@ function catchRandom() {
         isPikachuCaught = true
     }
 
+    if (!caughtPokemon.includes(lastCaughtPokemon.name)) {
+        const thumb = document.querySelector(`.isPokemonCaught img[alt=${lastCaughtPokemon.alt}]`)
+        thumb.classList.add("caught");
+        caughtPokemon.push(lastCaughtPokemon.name);
+    }
 }
 
 
@@ -207,3 +214,20 @@ clickTrainer.addEventListener("click", () => {
 setInterval(() => {
     catchRandom()
 }, 10000)
+
+let isPokemonCaught = document.querySelector(".caughtPokemon");
+
+for (let i = 0; i < availablePokemons.length; i++) {
+    function addToCaughtPokemon(pokemon) {
+        const addPokemon = document.createElement("li");
+        addPokemon.classList.add("isPokemonCaught");
+        isPokemonCaught.appendChild(addPokemon);
+
+        const pokemonIMG = document.createElement("img");
+        pokemonIMG.src = `https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png`;
+        pokemonIMG.alt = `${pokemon.alt}`;
+        pokemonIMG.classList.add("pokemonLittleIMG");
+        addPokemon.appendChild(pokemonIMG);
+    }
+    addToCaughtPokemon(availablePokemons[i]);
+}
