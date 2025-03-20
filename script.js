@@ -155,38 +155,38 @@ const availablePokemons = [
 
 
 const pokemonOnRoad1 = [
-    availablePokemons[0], 
-    availablePokemons[3], 
-    availablePokemons[6], 
-    availablePokemons[18], 
-    availablePokemons[18], 
-    availablePokemons[18], 
-    availablePokemons[15], 
-    availablePokemons[15], 
+    availablePokemons[0],
+    availablePokemons[3],
+    availablePokemons[6],
+    availablePokemons[18],
+    availablePokemons[18],
+    availablePokemons[18],
     availablePokemons[15],
-    availablePokemons[18], 
-    availablePokemons[18], 
-    availablePokemons[18], 
-    availablePokemons[15], 
-    availablePokemons[15], 
     availablePokemons[15],
-    availablePokemons[18], 
-    availablePokemons[18], 
-    availablePokemons[18], 
-    availablePokemons[15], 
-    availablePokemons[15], 
     availablePokemons[15],
-    availablePokemons[18], 
-    availablePokemons[18], 
-    availablePokemons[18], 
-    availablePokemons[15], 
-    availablePokemons[15], 
+    availablePokemons[18],
+    availablePokemons[18],
+    availablePokemons[18],
     availablePokemons[15],
-    availablePokemons[18], 
-    availablePokemons[18], 
-    availablePokemons[18], 
-    availablePokemons[15], 
-    availablePokemons[15], 
+    availablePokemons[15],
+    availablePokemons[15],
+    availablePokemons[18],
+    availablePokemons[18],
+    availablePokemons[18],
+    availablePokemons[15],
+    availablePokemons[15],
+    availablePokemons[15],
+    availablePokemons[18],
+    availablePokemons[18],
+    availablePokemons[18],
+    availablePokemons[15],
+    availablePokemons[15],
+    availablePokemons[15],
+    availablePokemons[18],
+    availablePokemons[18],
+    availablePokemons[18],
+    availablePokemons[15],
+    availablePokemons[15],
     availablePokemons[15],
 ]
 
@@ -482,12 +482,11 @@ let currentRoad = pokemonOnRoad1
 let isPikachuCaught = false
 const pikachuSprite = document.querySelector(".walkingPikachu")
 
-
-
+let caughtPokemon = []
 
 function catchRandom() {
     let i = Math.floor(Math.random() * currentRoad.length);
-console.log(i);
+    console.log(i);
 
     let lastCaughtPokemon = currentRoad[i];
     addToPokedex(lastCaughtPokemon);
@@ -497,6 +496,11 @@ console.log(i);
         isPikachuCaught = true
     }
 
+    if (!caughtPokemon.includes(lastCaughtPokemon.name)) {
+        const thumb = document.querySelector(`.isPokemonCaught img[alt=${lastCaughtPokemon.alt}]`)
+        thumb.classList.add("caught");
+        caughtPokemon.push(lastCaughtPokemon.name);
+    }
 }
 
 
@@ -560,13 +564,13 @@ let stepsBeforeRoadChange = 1000
 
 setInterval(() => {
     catchRandom()
-    totalClick +=1
+    totalClick += 1
 }, 10000)
 
 setInterval(() => {
     stepsBeforeRoadChange = stepsBeforeRoadChange - 1
     stepIndicator.innerHTML = stepsBeforeRoadChange
-    if (stepsBeforeRoadChange === 0){
+    if (stepsBeforeRoadChange === 0) {
         stepsBeforeRoadChange = 1000
     }
 }, 1000)
@@ -586,3 +590,40 @@ clickTrainer.addEventListener("click", () => {
 
 stepIndicator.innerHTML = stepsBeforeRoadChange
 
+
+setInterval(() => {
+    catchRandom()
+}, 10000)
+
+let isPokemonCaught = document.querySelector(".caughtPokemon");
+
+for (let i = 0; i < availablePokemons.length; i++) {
+    function addToCaughtPokemon(pokemon) {
+        const addPokemon = document.createElement("li");
+        addPokemon.classList.add("isPokemonCaught");
+        isPokemonCaught.appendChild(addPokemon);
+
+        const pokemonIMG = document.createElement("img");
+        pokemonIMG.src = `https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png`;
+        pokemonIMG.alt = `${pokemon.alt}`;
+        pokemonIMG.classList.add("pokemonLittleIMG");
+        addPokemon.appendChild(pokemonIMG);
+    }
+    addToCaughtPokemon(availablePokemons[i]);
+}
+
+
+
+const pokedexOnOff = document.querySelector(".pokedexIcon")
+const pokemonContainer = document.querySelector(".caughtPokemonContainer")
+
+pokedexOnOff.addEventListener("click", () => {
+    pokemonContainer.classList.toggle("show")
+});
+
+const pokeballOnOff = document.querySelector(".pokeballIcon")
+const lastPokemonContainer = document.querySelector(".pokedexContainer")
+
+pokeballOnOff.addEventListener("click", () => {
+    lastPokemonContainer.classList.toggle("show")
+});
