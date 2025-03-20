@@ -597,6 +597,8 @@ setInterval(() => {
 
 let isPokemonCaught = document.querySelector(".caughtPokemon");
 
+/*  FUNCTION TO CREATE THE TRACKER OF POKEMON NOT/ALREADY CAUGHT */
+
 for (let i = 0; i < availablePokemons.length; i++) {
     function addToCaughtPokemon(pokemon) {
         const addPokemon = document.createElement("li");
@@ -612,7 +614,7 @@ for (let i = 0; i < availablePokemons.length; i++) {
     addToCaughtPokemon(availablePokemons[i]);
 }
 
-
+/* CLICK TO SHOW THE GADDEM MENUUUUUUU */
 
 const pokedexOnOff = document.querySelector(".pokedexIcon")
 const pokemonContainer = document.querySelector(".caughtPokemonContainer")
