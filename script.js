@@ -233,6 +233,250 @@ const pokemonOnRoad3 = [
     availablePokemons[46],
     availablePokemons[24]
 ]
+
+
+const pokemonOnRoad4 = [
+    availablePokemons[15],
+    availablePokemons[18],
+    availablePokemons[38],
+    availablePokemons[26],
+    availablePokemons[22],
+    availablePokemons[128],
+    availablePokemons[55],
+    availablePokemons[40],
+    availablePokemons[73],
+    availablePokemons[45],
+    availablePokemons[34]
+]
+
+
+const pokemonOnRoad5 = [
+    availablePokemons[12],
+    availablePokemons[9],
+    availablePokemons[42],
+    availablePokemons[15],
+    availablePokemons[68],
+    availablePokemons[13],
+    availablePokemons[10],
+    availablePokemons[62],
+    availablePokemons[128],
+    availablePokemons[59],
+    availablePokemons[117],
+    availablePokemons[53],
+    availablePokemons[97],
+    availablePokemons[149],
+    availablePokemons[12],
+    availablePokemons[9],
+    availablePokemons[42],
+    availablePokemons[15],
+    availablePokemons[68],
+    availablePokemons[13],
+    availablePokemons[10],
+    availablePokemons[62],
+    availablePokemons[128],
+    availablePokemons[59],
+    availablePokemons[117],
+    availablePokemons[53],
+    availablePokemons[97],
+    availablePokemons[12],
+    availablePokemons[9],
+    availablePokemons[42],
+    availablePokemons[15],
+    availablePokemons[68],
+    availablePokemons[13],
+    availablePokemons[10],
+    availablePokemons[62],
+    availablePokemons[128],
+    availablePokemons[59],
+    availablePokemons[117],
+    availablePokemons[53],
+    availablePokemons[97],
+    availablePokemons[12],
+    availablePokemons[9],
+    availablePokemons[42],
+    availablePokemons[15],
+    availablePokemons[68],
+    availablePokemons[13],
+    availablePokemons[10],
+    availablePokemons[62],
+    availablePokemons[128],
+    availablePokemons[59],
+    availablePokemons[117],
+    availablePokemons[53],
+    availablePokemons[97],
+    availablePokemons[40],   // Nosferapti
+    availablePokemons[41],   // Nosferalto
+    availablePokemons[112],  // Leveinard
+    availablePokemons[39],   // Grodoudou
+    availablePokemons[73],   // Racaillou
+    availablePokemons[74],   // Gravalanch
+    availablePokemons[94],   // Onix
+    availablePokemons[110],  // Rhinocorne
+    availablePokemons[111],  // Rhinoferos
+    availablePokemons[113],  // Saquedeneu
+    availablePokemons[115],  // Hypotrempe
+    availablePokemons[116],  // Hypocéan
+    availablePokemons[128],  // Magicarpe
+    availablePokemons[129],  // Léviator
+    availablePokemons[130],  // Lokhlass
+    availablePokemons[131]  // Métamorph
+]
+
+const pokemonOnRoad6 = [
+    availablePokemons[15],   // Roucool
+    availablePokemons[16],   // Roucoups
+    availablePokemons[18],   // Rattata
+    availablePokemons[19],   // Rattatac
+    availablePokemons[62],   // Abra
+    availablePokemons[51],   // Miaouss
+    availablePokemons[52],   // Persian
+    availablePokemons[57],   // Caninos
+    availablePokemons[58],   // Arcanin
+    availablePokemons[34],   // Mélofée
+    availablePokemons[40],   // Nosferapti
+    availablePokemons[42],   // Mystherbe
+    availablePokemons[43],   // Ortide
+    availablePokemons[68],   // Chétiflor
+    availablePokemons[69],   // Boustiflor
+    availablePokemons[36],   // Goupix
+    availablePokemons[37],   // Feunard
+    availablePokemons[95],   // Soporifik
+    availablePokemons[96],   // Hypnomade
+    availablePokemons[73],   // Racaillou
+    availablePokemons[74],   // Gravalanch
+    availablePokemons[65],   // Machoc
+    availablePokemons[66],   // Machopeur
+    availablePokemons[80],   // Magnéti
+    availablePokemons[81],   // Magnéton
+    availablePokemons[99],   // Voltorbe
+    availablePokemons[100],  // Électrode
+    availablePokemons[97],   // Krabby
+    availablePokemons[144],
+    availablePokemons[80],   // Magnéti
+    availablePokemons[81],   // Magnéton
+    availablePokemons[99],   // Voltorbe
+    availablePokemons[100],  // Électrode
+    availablePokemons[24],   // Pikachu
+    availablePokemons[87],   // Tadmorv
+    availablePokemons[88]   // Grotadmorv
+]
+
+const pokemonOnRoad7 = [
+    availablePokemons[18],   // Rattata
+    availablePokemons[19],   // Rattatac
+    availablePokemons[95],   // Soporifik
+    availablePokemons[96],   // Hypnomade
+    availablePokemons[62],   // Abra
+    availablePokemons[24],   // Pikachu
+    availablePokemons[80],   // Magnéti
+    availablePokemons[99],   // Voltorbe
+    availablePokemons[71],   // Tentacool
+    availablePokemons[97],   // Krabby
+    availablePokemons[117],  // Poissirène
+    availablePokemons[115],  // Hypotrempe
+    availablePokemons[128],  // Magicarpe
+    availablePokemons[40],   // Nosferapti
+    availablePokemons[42],   // Mystherbe
+    availablePokemons[43],   // Ortide
+    availablePokemons[68],   // Chétiflor
+    availablePokemons[69],   // Boustiflor
+    availablePokemons[15],   // Roucool
+    availablePokemons[16],   // Roucoups
+    availablePokemons[57],   // Caninos
+    availablePokemons[51],   // Miaouss
+    availablePokemons[2]
+]
+
+const pokemonOnRoad8 = [
+    availablePokemons[71],   // Tentacool
+    availablePokemons[72],   // Tentacruel
+    availablePokemons[115],  // Hypotrempe
+    availablePokemons[116],  // Hypocéan
+    availablePokemons[117],  // Poissirène
+    availablePokemons[118],  // Poissoroy
+    availablePokemons[97],   // Krabby
+    availablePokemons[98],   // Krabboss
+    availablePokemons[119],  // Stari
+    availablePokemons[120],  // Staross
+    availablePokemons[128],  // Magicarpe
+    availablePokemons[129],  // Léviator
+    availablePokemons[85],   // Otaria
+    availablePokemons[86],   // Lamantine
+    availablePokemons[130],  // Lokhlass
+    availablePokemons[40],   // Nosferapti
+    availablePokemons[41],   // Nosferalto
+    availablePokemons[79],   // Flagadoss
+    availablePokemons[73],   // Racaillou
+    availablePokemons[74],   // Gravalanch
+    availablePokemons[94],   // Onix
+    availablePokemons[143],  // Artikodin
+    availablePokemons[8]
+]
+
+const pokemonOnRoad9 = [
+    availablePokemons[40],   // Nosferapti
+    availablePokemons[41],   // Nosferalto
+    availablePokemons[95],   // Soporifik
+    availablePokemons[96],   // Hypnomade
+    availablePokemons[65],   // Machoc
+    availablePokemons[66],   // Machopeur
+    availablePokemons[73],   // Racaillou
+    availablePokemons[74],   // Gravalanch
+    availablePokemons[94],   // Onix
+    availablePokemons[110],  // Rhinocorne
+    availablePokemons[111],  // Rhinoferos
+    availablePokemons[129],  // Léviator
+    availablePokemons[71],   // Tentacool
+    availablePokemons[72],   // Tentacruel
+    availablePokemons[128],  // Magicarpe
+    availablePokemons[123],  // Lippoutou
+    availablePokemons[91],   // Fantominus
+    availablePokemons[92],   // Spectrum
+    availablePokemons[103],  // Osselait
+    availablePokemons[49],   // Taupiqueur
+    availablePokemons[50],   // Triopikeur
+    availablePokemons[145],
+    availablePokemons[5],
+    availablePokemons[11],    // Papilusion
+    availablePokemons[14],    // Dardargnan
+    availablePokemons[19],    // Rattatac
+    availablePokemons[23],    // Arbok
+    availablePokemons[25],    // Raichu
+    availablePokemons[27],    // Sablaireau
+    availablePokemons[29],    // Nidorina
+    availablePokemons[30],    // Nidoqueen
+    availablePokemons[32],    // Nidorino
+    availablePokemons[33],    // Nidoking
+    availablePokemons[36],    // Goupix
+    availablePokemons[37],    // Feunard
+    availablePokemons[38],    // Rondoudou
+    availablePokemons[39],    // Grodoudou
+    availablePokemons[41],    // Nosferalto
+    availablePokemons[46],    // Parasect
+    availablePokemons[70],    // Empiflor
+    availablePokemons[72],    // Tentacruel
+    availablePokemons[74],    // Gravalanch
+    availablePokemons[75],    // Grolem
+    availablePokemons[64],    // Alakazam
+    availablePokemons[67],    // Machamp
+    availablePokemons[93],    // Ectoplasma
+    availablePokemons[77],    // Galopa
+    availablePokemons[79],    // Flagadoss
+    availablePokemons[81],    // Magneton
+    availablePokemons[84],    // Dodrio
+    availablePokemons[86],    // Lamantine
+    availablePokemons[88],    // Grotadmorv
+    availablePokemons[104],   // Ossatueur
+    availablePokemons[114],   // Kangourex
+    availablePokemons[116],   // Hypocéan
+    availablePokemons[118],   // Poissoroy
+    availablePokemons[120],   // Staross
+    availablePokemons[100],   // Électrode
+    availablePokemons[112],   // Leveinard
+    availablePokemons[130],   // Lokhlass
+    availablePokemons[136],   // Porygon
+    availablePokemons[142],   // Ronflex
+]
 let currentRoad = pokemonOnRoad1
 
 let isPikachuCaught = false
@@ -341,9 +585,3 @@ clickTrainer.addEventListener("click", () => {
 
 stepIndicator.innerHTML = stepsBeforeRoadChange
 
-
-// setInterval(() => {
-//     catchRandom()
-//     totalClick +=1
-//     stepsBeforeRoadChange = stepsBeforeRoadChange - 1
-// }, 10000)
