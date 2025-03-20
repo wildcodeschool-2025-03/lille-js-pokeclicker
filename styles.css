@@ -195,3 +195,123 @@ main {
 .stepSign h3{
     font-weight: 500;
 }
+
+.diode-container {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    background-color: red;
+    padding: 0;  
+    gap: 2rem;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: red;
+    height: 10%;
+    padding: 0; 
+    position: fixed;
+    width: 100%;
+}
+header>* {
+    height:100%;
+    width:48.5%;
+}
+
+header div {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height:100%;
+    position: relative;
+}
+
+h1 {
+    color: white;
+    font-family: "Pixelify Sans", sans-serif;
+    height: 3rem;
+}
+
+.blue-diode {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color : blue;
+    border: 0.3rem solid white;
+}
+
+.red-diode, .yellow-diode, .green-diode {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+.red-diode {
+    background-color: #9e0e40;
+}
+
+.yellow-diode {
+    background: yellow;
+}
+
+.green-diode {
+    background-color: green;
+}
+
+
+
+.diode-footer {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    background-color: red;
+    padding: 0; 
+    gap: 1rem;
+    max-width: 27rem;
+}
+
+.black-diode {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.red-diode2 {
+    width: 8rem;
+    height: 2rem;
+    border-radius: 2rem;
+    background-color: #9e0e40;
+}
+
+.blue-diode2 {
+    width: 8rem;
+    height: 2rem;
+    border-radius: 2rem;
+    background-color: blue;
+}
+
+footer>* {
+    height:100%;
+    width:47.5%;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    position: absolute;
+    bottom: 0 ;
+    left: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+.touch {
+    width: 5rem;
+}
