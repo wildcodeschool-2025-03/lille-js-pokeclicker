@@ -614,13 +614,23 @@ for (let i = 0; i < availablePokemons.length; i++) {
 const pokedexOnOff = document.querySelector(".pokedexIcon")
 const pokemonContainer = document.querySelector(".caughtPokemonContainer")
 
-pokedexOnOff.addEventListener("click", () => {
-    pokemonContainer.classList.toggle("show")
-});
-
 const pokeballOnOff = document.querySelector(".pokeballIcon")
 const lastPokemonContainer = document.querySelector(".pokedexContainer")
 
+pokedexOnOff.addEventListener("click", () => {
+
+    if (lastPokemonContainer.classList.contains("show")) {
+        lastPokemonContainer.classList.remove("show");
+    }
+    pokemonContainer.classList.toggle("show")
+    
+});
+
 pokeballOnOff.addEventListener("click", () => {
+
+    if (pokemonContainer.classList.contains("show")) {
+        pokemonContainer.classList.remove("show");
+    }
+
     lastPokemonContainer.classList.toggle("show")
 });
