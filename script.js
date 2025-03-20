@@ -561,20 +561,21 @@ let stepsBeforeRoadChange = 1000
 setInterval(() => {
     catchRandom()
     totalClick +=1
-    stepsBeforeRoadChange = stepsBeforeRoadChange - 1
-    stepIndicator.innerHTML = stepsBeforeRoadChange
 }, 10000)
 
-
+setInterval(() => {
+    stepsBeforeRoadChange = stepsBeforeRoadChange - 1
+    stepIndicator.innerHTML = stepsBeforeRoadChange
+    if (stepsBeforeRoadChange === 0){
+        stepsBeforeRoadChange = 1000
+    }
+}, 1000)
 
 
 clickTrainer.addEventListener("click", () => {
     totalClick += 1
     stepsBeforeRoadChange = stepsBeforeRoadChange - 1
     stepIndicator.innerHTML = stepsBeforeRoadChange
-    if (stepsBeforeRoadChange === 0){
-        stepsBeforeRoadChange = 1000
-    }
     if (totalClick % 10 === 0) {
         catchRandom()
     }
