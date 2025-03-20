@@ -44,8 +44,8 @@ main {
 .pokedexIcon {
     height: 100px;
     position: fixed;
-    top: 7%;
-    left: 20%;
+    top: 32px;
+    left: 70px;
     cursor: pointer;
 }
 
@@ -54,33 +54,28 @@ main {
 }
 
 .caughtPokemonContainer {
-    position: fixed;
-    top: 20%;
     background-color: rgb(36, 36, 36);
     border-radius: 5px;
-    max-width: 400px;
+    width: 410px;
+    max-width: 80%;
     position: fixed;
-    top: 20%;
-    left: 20%;
+    top: 150px;
     box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.76);
-    padding: 2rem;
-    border: solid 3px #d0492e;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-    max-height: 20rem;
-    padding: 0;
+    border: solid 3px rgb(99, 34, 34);
+    height: 60%;
     display: none;
+    padding: 2rem;
 }
 
 .caughtPokemonContainer.show {
     display: block;
 }
 
-.caughtPokemonContainer::-webkit-scrollbar {
+.caughtPokemon::-webkit-scrollbar {
     width: .1rem;
 }
 
-.caughtPokemonContainer::-webkit-scrollbar-thumb {
+.caughtPokemon::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     outline: 1px solid slategrey;
 }
@@ -89,11 +84,15 @@ main {
     display: flex;
     list-style: none;
     flex-wrap: wrap;
-    max-height: 20rem;
+    padding-left: 0px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
 }
 
 .pokemonLittleIMG {
-    height: 50px;
+    height: 65px;
     margin: -5px;
 }
 
@@ -107,9 +106,9 @@ main {
 
 .pokeballIcon {
     height: 50px;
-    position: fixed;
-    top: 11%;
     cursor: pointer;
+    position: fixed;
+    top : 60px;
 }
 
 .pokeballIcon:active {
@@ -119,6 +118,7 @@ main {
 .pokedexTitle {
     color: white;
     font-weight: 400;
+    text-align: center;
 }
 
 .pokedexContainer {
@@ -126,12 +126,14 @@ main {
     flex-direction: column;
     background-color: rgb(36, 36, 36);
     border-radius: 5px;
-    max-width: 400px;
+    max-width: 80%;
+    width: 250px;
     position: fixed;
-    top: 20%;
+    top: 150px;
     box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.76);
     padding: 2rem;
-    border: solid 3px #d0492e;
+    border: solid 3px rgb(99, 34, 34);
+    height: 60%;
 }
 
 .pokedexContainer.show {
@@ -141,10 +143,11 @@ main {
 .pokemonStorage {
     display: flex;
     flex-wrap: nowrap;
+    max-height: 100%;
 }
 
 .pokedexList {
-    max-height: 20rem;
+ 
     max-width: 400px;
     list-style: none;
     justify-content: center;
@@ -228,8 +231,8 @@ main {
     position: fixed;
     top: 64%;
     right: 60%;
-    translate: 50%;
-    display: none;
+    translate: 20%;
+    display: block;
 }
 
 .pikachuSprite {
@@ -258,9 +261,9 @@ main {
 /* ALL STEP SIGN */
 
 .stepSign {
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    color: rgb(0, 0, 0);
+    background-color: rgb(36, 36, 36);
+    border-radius: 5px;
+    color: whitesmoke;
     max-width: 300px;
     max-height: 100px;
     text-align: center;
@@ -268,34 +271,31 @@ main {
     top: 50%;
     right: 10%;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.76);
+    border: solid 3px rgb(99, 34, 34);
 }
 
 .stepSign h3 {
     font-weight: 500;
 }
 
+/* HEADER */
+
 .diode-container {
-    display: flex;
-    align-items: start;
-    justify-content: start;
-    background-color: red;
+    background-color: rgb(99, 34, 34);
     padding: 0;
+    width: 100%;
     gap: 2rem;
+    position: fixed;
+    box-shadow: 0px 2px 8px black;
 }
 
 header {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    background-color: red;
     height: 10%;
     padding: 0;
-    position: fixed;
     width: 100%;
-}
-
-header>* {
-    height: 100%;
-    width: 48.5%;
 }
 
 header div {
@@ -304,51 +304,60 @@ header div {
 }
 
 .logo {
-    height: 100%;
-    position: relative;
+    height: 140px;
+    padding-top: 10px;
+    z-index: 1000;
+    filter : drop-shadow(-4px 2px 4px rgba(0, 0, 0, 0.658));
 }
 
 h1 {
     color: white;
     font-family: "Pixelify Sans", sans-serif;
-    height: 3rem;
+    text-shadow: -4px 4px 4px rgba(0, 0, 0, 0.658);
+    padding-left: 20px;
+    padding-top: 20px;
+    font-size: 70px;
 }
 
 .blue-diode {
-    width: 4rem;
-    height: 4rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
-    background-color: blue;
+    background-color: rgb(63, 63, 189);
     border: 0.3rem solid white;
+    margin: 7px;
+    box-shadow: inset 0px 2px 10px rgb(0, 0, 0.685);
 }
 
 .red-diode,
 .yellow-diode,
 .green-diode {
-    width: 2rem;
-    height: 2rem;
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
 }
 
 .red-diode {
-    background-color: #9e0e40;
+    background-color: rgb(126, 15, 15);
+    box-shadow: inset 0px 2px 6px rgb(0, 0, 0.685);
 }
 
 .yellow-diode {
-    background: yellow;
+    background: rgb(199, 199, 68);
+    box-shadow: inset 0px 2px 6px rgb(0, 0, 0.685);
 }
 
 .green-diode {
-    background-color: green;
+    background-color: rgb(59, 139, 59);
+    box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.685);
 }
 
-
+/* FOOTER */
 
 .diode-footer {
     display: flex;
     align-items: start;
     justify-content: start;
-    background-color: red;
     padding: 0;
     gap: 1rem;
     max-width: 27rem;
@@ -358,7 +367,8 @@ h1 {
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    background-color: black;
+    background-color: rgb(26, 26, 26);
+    box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.685);
 }
 
 .red-diode2 {
@@ -366,33 +376,88 @@ h1 {
     height: 2rem;
     border-radius: 2rem;
     background-color: #9e0e40;
+    box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.685);
 }
 
 .blue-diode2 {
     width: 8rem;
     height: 2rem;
     border-radius: 2rem;
-    background-color: blue;
+    background-color: rgb(66, 66, 153);
+    box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.685);
 }
 
-footer>* {
-    height: 100%;
-    width: 47.5%;
-}
 
 footer {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: red;
+    position: fixed;
+    padding: 10px;
+    width: 100%;
+    bottom: 0%;
+    background-color: rgb(99, 34, 34);
     color: white;
     font-family: "Pixelify Sans", sans-serif;
+    box-shadow:0px -2px 8px black;;
 }
 
 .touch {
-    width: 5rem;
+    width: 2rem;
+}
+
+
+@media screen and (max-width: 950px) {
+
+/* HEADER */
+
+    .logo {
+        position: fixed;
+        top : -6px;
+        right: 10px;
+        height: 50px;
+    }
+
+    h1 {
+        text-shadow: -4px 4px 4px rgba(0, 0, 0, 0.658);
+        font-size: 25px;
+        position: fixed;
+        top : -11px;
+        right : 55px;
+    }
+
+/* FOOTER */
+
+    .diode-footer {
+        display: none;
+        align-items: start;
+        justify-content: start;
+        padding: 0;
+        gap: 1rem;
+        max-width: 27rem;
+    }
+
+    .stepSign {
+        position : fixed;
+        top : 65px;
+        right: 20px;
+    }
+
+    .caughtPokemonContainer {
+        width: 410px;
+        max-width: 80%;
+        position: fixed;
+        top: 120px;
+        height: 45%;
+    }
+ 
+    .pokedexContainer {
+        max-width: 80%;
+        width: 300px;
+        position: fixed;
+        top: 120px;
+        height: 60%;
+        padding-left: 3.5rem;
+    }
+
 }
