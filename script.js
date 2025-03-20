@@ -486,7 +486,6 @@ let caughtPokemon = []
 
 function catchRandom() {
     let i = Math.floor(Math.random() * currentRoad.length);
-    console.log(i);
 
     let lastCaughtPokemon = currentRoad[i];
     addToPokedex(lastCaughtPokemon);
@@ -564,7 +563,7 @@ let stepsBeforeRoadChange = 1000
 
 setInterval(() => {
     catchRandom()
-    totalClick += 1
+    totalClick += 10
 }, 10000)
 
 setInterval(() => {
@@ -580,6 +579,9 @@ clickTrainer.addEventListener("click", () => {
     totalClick += 1
     stepsBeforeRoadChange = stepsBeforeRoadChange - 1
     stepIndicator.innerHTML = stepsBeforeRoadChange
+    if (stepsBeforeRoadChange === 0) {
+        stepsBeforeRoadChange = 1000
+    }
     if (totalClick % 10 === 0) {
         catchRandom()
     }
@@ -589,11 +591,6 @@ clickTrainer.addEventListener("click", () => {
 });
 
 stepIndicator.innerHTML = stepsBeforeRoadChange
-
-
-setInterval(() => {
-    catchRandom()
-}, 10000)
 
 let isPokemonCaught = document.querySelector(".caughtPokemon");
 

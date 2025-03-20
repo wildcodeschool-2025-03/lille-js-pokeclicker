@@ -278,7 +278,7 @@ main {
     display: flex;
     align-items: start;
     justify-content: start;
-    background-color: red;
+    background-color: rgb(255, 0, 0);
     padding: 0;
     gap: 2rem;
 }
@@ -286,7 +286,7 @@ main {
 header {
     display: flex;
     align-items: center;
-    background-color: red;
+    background-color: rgb(255, 0, 0);
     height: 10%;
     padding: 0;
     position: fixed;
@@ -348,7 +348,7 @@ h1 {
     display: flex;
     align-items: start;
     justify-content: start;
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0);
     padding: 0;
     gap: 1rem;
     max-width: 27rem;
@@ -388,7 +388,7 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: red;
+    background-color: rgb(255, 0, 0);
     color: white;
     font-family: "Pixelify Sans", sans-serif;
 }
