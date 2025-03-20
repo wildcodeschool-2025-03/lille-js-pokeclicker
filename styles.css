@@ -268,14 +268,18 @@ main {
     max-height: auto;
     text-align: center;
     position: fixed;
-    top: 50%;
-    right: 10%;
+    top: 100px;
+    right: 70px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.76);
     border: solid 3px rgb(99, 34, 34);
 }
 
 .stepSign h3 {
     font-weight: 500;
+}
+
+.stepIndicator {
+    font-weight: 100;
 }
 
 .mapRoadsIMG{
@@ -467,6 +471,10 @@ footer {
         top: 120px;
         height: 45%;
         padding-left: 3.5rem;
+    }
+
+    .mapRoadsIMG{
+        display: none;
     }
 
 }
