@@ -41,6 +41,18 @@ main {
 
 /* POKEMON CAUGHT */
 
+.pokedexIcon {
+    height: 100px;
+    position: fixed;
+    top: 7%;
+    left: 10%;
+    cursor: pointer;
+}
+
+.pokedexIcon:active {
+    transform: scale(0.9);
+}
+
 .caughtPokemonContainer {
     position: fixed;
     top: 20%;
@@ -57,8 +69,12 @@ main {
     scroll-behavior: smooth;
     max-height: 20rem;
     padding: 0;
+    display: none;
 }
 
+.caughtPokemonContainer.show {
+    display: block;
+}
 
 .caughtPokemonContainer::-webkit-scrollbar {
     width: .1rem;
@@ -89,13 +105,24 @@ main {
 
 /* ALL POKEDEX */
 
+.pokeballIcon {
+    height: 50px;
+    position: fixed;
+    top: 11%;
+    cursor: pointer;
+}
+
+.pokeballIcon:active {
+    transform: scale(0.9);
+}
+
 .pokedexTitle {
     color: white;
     font-weight: 400;
 }
 
 .pokedexContainer {
-    display: flex;
+    display: none;
     flex-direction: column;
     background-color: rgb(36, 36, 36);
     border-radius: 5px;
@@ -105,6 +132,10 @@ main {
     box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.76);
     padding: 2rem;
     border: solid 3px #d0492e;
+}
+
+.pokedexContainer.show {
+    display: block;
 }
 
 .pokemonStorage {

@@ -231,3 +231,19 @@ for (let i = 0; i < availablePokemons.length; i++) {
     }
     addToCaughtPokemon(availablePokemons[i]);
 }
+
+
+
+const pokedexOnOff = document.querySelector(".pokedexIcon")
+const pokemonContainer = document.querySelector(".caughtPokemonContainer")
+
+pokedexOnOff.addEventListener("click", () => {
+    pokemonContainer.classList.toggle("show")
+});
+
+const pokeballOnOff = document.querySelector(".pokeballIcon")
+const lastPokemonContainer = document.querySelector(".pokedexContainer")
+
+pokeballOnOff.addEventListener("click", () => {
+    lastPokemonContainer.classList.toggle("show")
+});
