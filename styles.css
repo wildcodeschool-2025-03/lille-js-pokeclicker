@@ -283,6 +283,10 @@ main {
     width: 10rem;
 }
 
+.stepIndicator{
+    font-weight: 400;
+}
+
 /* HEADER */
 
 .diode-container {
