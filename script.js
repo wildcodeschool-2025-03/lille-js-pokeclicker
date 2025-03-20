@@ -152,13 +152,100 @@ const availablePokemons = [
     { number: 151, name: "Mew", alt: "Mew" }
 ];
 
+
+
+const pokemonOnRoad1 = [
+    availablePokemons[0], 
+    availablePokemons[3], 
+    availablePokemons[6], 
+    availablePokemons[18], 
+    availablePokemons[18], 
+    availablePokemons[18], 
+    availablePokemons[15], 
+    availablePokemons[15], 
+    availablePokemons[15],
+    availablePokemons[18], 
+    availablePokemons[18], 
+    availablePokemons[18], 
+    availablePokemons[15], 
+    availablePokemons[15], 
+    availablePokemons[15],
+    availablePokemons[18], 
+    availablePokemons[18], 
+    availablePokemons[18], 
+    availablePokemons[15], 
+    availablePokemons[15], 
+    availablePokemons[15],
+    availablePokemons[18], 
+    availablePokemons[18], 
+    availablePokemons[18], 
+    availablePokemons[15], 
+    availablePokemons[15], 
+    availablePokemons[15],
+    availablePokemons[18], 
+    availablePokemons[18], 
+    availablePokemons[18], 
+    availablePokemons[15], 
+    availablePokemons[15], 
+    availablePokemons[15],
+]
+
+
+const pokemonOnRoad2 = [
+    availablePokemons[9],
+    availablePokemons[12],
+    availablePokemons[20],
+    availablePokemons[28],
+    availablePokemons[31],
+    availablePokemons[55],
+    availablePokemons[15],
+    availablePokemons[18]
+]
+
+
+const pokemonOnRoad3 = [
+    availablePokemons[9],
+    availablePokemons[10],
+    availablePokemons[11],
+    availablePokemons[12],
+    availablePokemons[13],
+    availablePokemons[14],
+    availablePokemons[45],
+    availablePokemons[42],
+    availablePokemons[9],
+    availablePokemons[10],
+    availablePokemons[11],
+    availablePokemons[12],
+    availablePokemons[13],
+    availablePokemons[14],
+    availablePokemons[45],
+    availablePokemons[42],
+    availablePokemons[9],
+    availablePokemons[10],
+    availablePokemons[11],
+    availablePokemons[12],
+    availablePokemons[13],
+    availablePokemons[14],
+    availablePokemons[45],
+    availablePokemons[42],
+    availablePokemons[43],
+    availablePokemons[44],
+    availablePokemons[46],
+    availablePokemons[24]
+]
+let currentRoad = pokemonOnRoad1
+
 let isPikachuCaught = false
 const pikachuSprite = document.querySelector(".walkingPikachu")
 
-function catchRandom() {
-    let i = Math.floor(Math.random() * availablePokemons.length);
 
-    let lastCaughtPokemon = availablePokemons[i];
+
+
+function catchRandom() {
+    let i = Math.floor(Math.random() * currentRoad.length);
+console.log(i);
+
+    let lastCaughtPokemon = currentRoad[i];
     addToPokedex(lastCaughtPokemon);
 
     if (lastCaughtPokemon.name === "Pikachu" && isPikachuCaught === false) {
@@ -166,6 +253,31 @@ function catchRandom() {
         isPikachuCaught = true
     }
 
+}
+
+
+function changeRoad() {
+    if (currentRoad == pokemonOnRoad1) {
+        currentRoad = pokemonOnRoad2
+    } else if (currentRoad == pokemonOnRoad2) {
+        currentRoad = pokemonOnRoad3
+    } else if (currentRoad == pokemonOnRoad3) {
+        currentRoad = pokemonOnRoad4
+    } else if (currentRoad == pokemonOnRoad4) {
+        currentRoad = pokemonOnRoad5
+    } else if (currentRoad == pokemonOnRoad5) {
+        currentRoad = pokemonOnRoad6
+    } else if (currentRoad == pokemonOnRoad6) {
+        currentRoad = pokemonOnRoad7
+    } else if (currentRoad == pokemonOnRoad7) {
+        currentRoad = pokemonOnRoad8
+    } else if (currentRoad == pokemonOnRoad8) {
+        currentRoad = pokemonOnRoad9
+    } else if (currentRoad == pokemonOnRoad9) {
+        currentRoad = pokemonOnRoad1
+    } else {
+        currentRoad = pokemonOnRoad1
+    }
 }
 
 
@@ -193,17 +305,45 @@ function addToPokedex(pokemon) {
 }
 
 
-const clickTrainer = document.querySelector(".walkingTrainer");
-let totalClick = 0
 
-clickTrainer.addEventListener("click", () => {
-    totalClick += 1
-    if (totalClick % 10 === 0) {
-        catchRandom()
-    }
-});
+
+
+const clickTrainer = document.querySelector(".walkingTrainer");
+let stepIndicator = document.querySelector(".stepIndicator");
+let totalClick = 0
+let stepsBeforeRoadChange = 1000
 
 
 setInterval(() => {
     catchRandom()
+    totalClick +=1
+    stepsBeforeRoadChange = stepsBeforeRoadChange - 1
+    stepIndicator.innerHTML = stepsBeforeRoadChange
 }, 10000)
+
+
+
+
+clickTrainer.addEventListener("click", () => {
+    totalClick += 1
+    stepsBeforeRoadChange = stepsBeforeRoadChange - 1
+    stepIndicator.innerHTML = stepsBeforeRoadChange
+    if (stepsBeforeRoadChange === 0){
+        stepsBeforeRoadChange = 1000
+    }
+    if (totalClick % 10 === 0) {
+        catchRandom()
+    }
+    if (totalClick % 1000 === 0) {
+        changeRoad()
+    }
+});
+
+stepIndicator.innerHTML = stepsBeforeRoadChange
+
+
+// setInterval(() => {
+//     catchRandom()
+//     totalClick +=1
+//     stepsBeforeRoadChange = stepsBeforeRoadChange - 1
+// }, 10000)
