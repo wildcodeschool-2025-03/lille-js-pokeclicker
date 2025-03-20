@@ -29,7 +29,6 @@ function catchRandom() {
     let i = Math.floor(Math.random() * availablePokemons.length);
 
     let lastCaughtPokemon = availablePokemons[i];
-    console.log(lastCaughtPokemon);
     addToPokedex(lastCaughtPokemon)
 }
 
