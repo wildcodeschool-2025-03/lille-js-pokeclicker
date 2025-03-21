@@ -195,6 +195,8 @@ main {
     font-weight: 500;
 }
 
+/* Header */
+
 .diode-container {
     display: flex;
     align-items: start;
@@ -259,8 +261,6 @@ h1 {
 .green-diode {
     background-color: green;
 }
-
-
 
 .diode-footer {
     display: flex;
