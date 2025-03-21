@@ -146,6 +146,8 @@ stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
 
 let isPokemonCaught = document.querySelector(".caughtPokemon");
 
+/*  FUNCTION TO CREATE THE TRACKER OF POKEMON NOT/ALREADY CAUGHT */
+
 for (let i = 0; i < availablePokemons.length; i++) {
     function addToCaughtPokemon(pokemon) {
         const addPokemon = document.createElement("li");
@@ -161,7 +163,7 @@ for (let i = 0; i < availablePokemons.length; i++) {
     addToCaughtPokemon(availablePokemons[i]);
 }
 
-
+/* CLICK TO SHOW THE GADDEM MENUUUUUUU */
 
 const pokedexOnOff = document.querySelector(".pokedexIcon")
 const pokemonContainer = document.querySelector(".caughtPokemonContainer")
@@ -234,6 +236,42 @@ const touchElement = document.querySelector(".touch");
 touchElement.addEventListener("click", function () {
     alert("Désolé, ça ne fait rien ! Et en plus votre perso fait du monoplace , c'est ridicule !");
 });
+
+/* KONAMI CODE MEW */
+
+const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
+const mewFollow = document.querySelector(".walkingMew")
+let lastPushedKey = 0
+
+let pushedKey = function (event) {
+
+
+    if (konamiCode.indexOf(event.key) < 0 || event.key !== konamiCode[lastPushedKey]) {
+        lastPushedKey = 0;
+        return;
+    }
+
+    lastPushedKey += 1
+
+    if (konamiCode.length === lastPushedKey) {
+        lastPushedKey = 0;
+        mewFollow.style.display = "block"
+
+        const thumb = document.querySelector(".isPokemonCaught img[alt=Mew]")
+        thumb.classList.add("caught");
+        caughtPokemon.push("Mew")
+
+        window.alert('Oh ! A wild pokemon appears...')
+    }
+}
+
+document.addEventListener('keydown', pushedKey, false);
+
+
+
+
+
+
 
 
 
