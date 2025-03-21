@@ -486,7 +486,6 @@ let caughtPokemon = []
 
 function catchRandom() {
     let i = Math.floor(Math.random() * currentRoad.length);
-    console.log(i);
 
     let lastCaughtPokemon = currentRoad[i];
     addToPokedex(lastCaughtPokemon);
@@ -503,32 +502,60 @@ function catchRandom() {
     }
 }
 
+const sign = document.querySelector(".stepSign")
+const mapRoads = document.createElement("img")
+mapRoads.classList.add("mapRoadsIMG")
+mapRoads.src = "stock-img/maps/mapRoad1.png"
+sign.prepend(mapRoads)
 
 function changeRoad() {
     if (currentRoad == pokemonOnRoad1) {
         currentRoad = pokemonOnRoad2
+        roadName.innerHTML = "Road 2"
+        mapRoads.src = "stock-img/maps/mapRoad2.png"
     } else if (currentRoad == pokemonOnRoad2) {
         currentRoad = pokemonOnRoad3
+        roadName.innerHTML = "Road 3"
+        mapRoads.src = "stock-img/maps/mapRoad3.png"
     } else if (currentRoad == pokemonOnRoad3) {
         currentRoad = pokemonOnRoad4
+        roadName.innerHTML = "Road 4"
+        mapRoads.src = "stock-img/maps/mapRoad4.png"
     } else if (currentRoad == pokemonOnRoad4) {
         currentRoad = pokemonOnRoad5
+        roadName.innerHTML = "Road 5"
+        mapRoads.src = "stock-img/maps/mapRoad5.png"
     } else if (currentRoad == pokemonOnRoad5) {
         currentRoad = pokemonOnRoad6
+        roadName.innerHTML = "Road 6"
+        mapRoads.src = "stock-img/maps/mapRoad6.png"
     } else if (currentRoad == pokemonOnRoad6) {
         currentRoad = pokemonOnRoad7
+        roadName.innerHTML = "Road 7"
+        mapRoads.src = "stock-img/maps/mapRoad7.png"
     } else if (currentRoad == pokemonOnRoad7) {
         currentRoad = pokemonOnRoad8
+        roadName.innerHTML = "Road 8"
+        mapRoads.src = "stock-img/maps/mapRoad8.png"
     } else if (currentRoad == pokemonOnRoad8) {
         currentRoad = pokemonOnRoad9
+        roadName.innerHTML = "Road 9"
+        mapRoads.src = "stock-img/maps/mapRoad9.png"
     } else if (currentRoad == pokemonOnRoad9) {
         currentRoad = pokemonOnRoad1
+        roadName.innerHTML = "Road 1"
+        mapRoads.src = "stock-img/maps/mapRoad1.png"
     } else {
         currentRoad = pokemonOnRoad1
+        roadName.innerHTML = "Road 1"
+        mapRoads.src = "stock-img/maps/mapRoad1.png"
     }
+    sign.prepend(mapRoads)
 }
 
 
+const roadName = document.querySelector(".roadName")
+roadName.innerHTML = "Road 1"
 const pokedexList = document.querySelector(".pokedexList")
 
 
@@ -564,12 +591,12 @@ let stepsBeforeRoadChange = 1000
 
 setInterval(() => {
     catchRandom()
-    totalClick += 1
+    totalClick += 10
 }, 10000)
 
 setInterval(() => {
     stepsBeforeRoadChange = stepsBeforeRoadChange - 1
-    stepIndicator.innerHTML = stepsBeforeRoadChange
+    stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
     if (stepsBeforeRoadChange === 0) {
         stepsBeforeRoadChange = 1000
     }
@@ -579,7 +606,10 @@ setInterval(() => {
 clickTrainer.addEventListener("click", () => {
     totalClick += 1
     stepsBeforeRoadChange = stepsBeforeRoadChange - 1
-    stepIndicator.innerHTML = stepsBeforeRoadChange
+    stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
+    if (stepsBeforeRoadChange === 0) {
+        stepsBeforeRoadChange = 1000
+    }
     if (totalClick % 10 === 0) {
         catchRandom()
     }
@@ -588,12 +618,7 @@ clickTrainer.addEventListener("click", () => {
     }
 });
 
-stepIndicator.innerHTML = stepsBeforeRoadChange
-
-
-setInterval(() => {
-    catchRandom()
-}, 10000)
+stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
 
 let isPokemonCaught = document.querySelector(".caughtPokemon");
 
@@ -628,7 +653,7 @@ pokedexOnOff.addEventListener("click", () => {
         lastPokemonContainer.classList.remove("show");
     }
     pokemonContainer.classList.toggle("show")
-    
+
 });
 
 pokeballOnOff.addEventListener("click", () => {
@@ -639,3 +664,4 @@ pokeballOnOff.addEventListener("click", () => {
 
     lastPokemonContainer.classList.toggle("show")
 });
+
