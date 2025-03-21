@@ -768,9 +768,6 @@ const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft',
 const mewFollow = document.querySelector(".walkingMew")
 let lastPushedKey = 0
 
-
-
-
 let pushedKey = function (event) {
 
 
