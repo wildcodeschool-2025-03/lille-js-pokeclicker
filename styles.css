@@ -365,6 +365,50 @@ h1 {
     box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.685);
 }
 
+.pokeball {
+    width: 2rem;
+    margin: 15rem;
+}
+
+/* Fait des effets de clignotement sur les diodes */
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+
+.blue-diode {
+    animation: blink 2s infinite;
+}
+
+.red-diode {
+    animation: blink 1.8s infinite;
+}
+
+.yellow-diode {
+    animation: blink 1.6s infinite;
+}
+
+.green-diode {
+    animation: blink 1.4s infinite;
+}
+
+.black-diode {
+    animation: blink 2s infinite;
+}
+
+.red-diode2 {
+    animation: blink 1.8s infinite;
+}
+
+.blue-diode2 {
+    animation: blink 1.6s infinite;
+}
+
 /* FOOTER */
 
 .diode-footer {
@@ -477,4 +521,10 @@ footer {
         display: none;
     }
 
+    .pokeball{
+    bottom: 150px; /* Ajuste selon tes préférences */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999; /* Pour s'assurer qu'elle reste au-dessus */
+}
 }

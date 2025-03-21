@@ -712,3 +712,52 @@ pokeballOnOff.addEventListener("click", () => {
     lastPokemonContainer.classList.toggle("show")
 });
 
+const imgPokeball = document.querySelector('.pokeball');
+const walkingTrainer = document.querySelector('.walkingTrainer');
+
+let totalClick1 = 0; // Compteur de clics
+let pokeballVisible = false; // Vérifie si la pokeball est déjà affichée
+
+walkingTrainer.addEventListener('click', () => {
+    totalClick1++;
+
+    if (totalClick1 >= 10 && !pokeballVisible) {
+        showPokeball();
+        totalClick1 = 0; // Réinitialise le compteur après l'affichage
+    }
+});
+
+function showPokeball() {
+    imgPokeball.style.display = "block"; // Affiche la pokéball
+    imgPokeball.style.opacity = "1";
+    imgPokeball.style.transform = "translateY(0)";
+    imgPokeball.style.transition = "opacity 0.5s, transform 0.5s";
+
+    pokeballVisible = true; // Indique que la pokeball est affichée
+
+    // Délai de 1 seconde avant de déclencher l'animation de disparition
+    setTimeout(() => {
+        imgPokeball.style.transition = "transform 0.5s ease-out, opacity 0.5s ease-out";
+        imgPokeball.style.transform = "translateY(-150px)";
+        imgPokeball.style.opacity = "0";
+    }, 1000); // Temps avant que l'animation commence
+
+    // Supprime l'élément après l'animation
+    setTimeout(() => {
+        imgPokeball.style.display = "none";
+        pokeballVisible = false; // Permet une nouvelle apparition après 10 clics
+    }, 2000); // Temps total de visibilité de la Pokéball (1s d'affichage + 1s d'animation)
+}
+
+// Assure que la pokéball est initialement cachée
+imgPokeball.style.display = "none";
+
+// Affiche un message d'alerte en cliquant sur les touches directionnelles
+
+const touchElement = document.querySelector(".touch");
+
+touchElement.addEventListener("click", function () {
+    alert("Désolé, ça ne fait rien ! Et en plus votre perso fait du monoplace , c'est ridicule !");
+});
+
+
