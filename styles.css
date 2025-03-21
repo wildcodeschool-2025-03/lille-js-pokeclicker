@@ -366,7 +366,7 @@ h1 {
 }
 
 .pokeball {
-    width: 5rem;
+    width: 2rem;
     margin: 15rem;
 }
 
@@ -521,4 +521,10 @@ footer {
         display: none;
     }
 
+    .pokeball{
+    bottom: 150px; /* Ajuste selon tes préférences */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999; /* Pour s'assurer qu'elle reste au-dessus */
+}
 }

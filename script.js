@@ -158,6 +158,7 @@ const pokemonOnRoad1 = [
     availablePokemons[0],
     availablePokemons[3],
     availablePokemons[6],
+    availablePokemons[132],
     availablePokemons[18],
     availablePokemons[18],
     availablePokemons[18],
@@ -231,7 +232,13 @@ const pokemonOnRoad3 = [
     availablePokemons[43],
     availablePokemons[44],
     availablePokemons[46],
-    availablePokemons[24]
+    availablePokemons[24],
+    availablePokemons[47],
+    availablePokemons[48],
+    availablePokemons[82],
+    availablePokemons[113],
+    availablePokemons[122],
+    availablePokemons[126],
 ]
 
 
@@ -246,7 +253,12 @@ const pokemonOnRoad4 = [
     availablePokemons[40],
     availablePokemons[73],
     availablePokemons[45],
-    availablePokemons[34]
+    availablePokemons[34],
+    availablePokemons[76],
+    availablePokemons[105],
+    availablePokemons[106],
+    availablePokemons[108],
+    availablePokemons[127],
 ]
 
 
@@ -319,7 +331,10 @@ const pokemonOnRoad5 = [
     availablePokemons[128],  // Magicarpe
     availablePokemons[129],  // Léviator
     availablePokemons[130],  // Lokhlass
-    availablePokemons[131]  // Métamorph
+    availablePokemons[131],  // Métamorph
+    availablePokemons[7],
+    availablePokemons[83],
+    availablePokemons[107],
 ]
 
 const pokemonOnRoad6 = [
@@ -358,7 +373,12 @@ const pokemonOnRoad6 = [
     availablePokemons[100],  // Électrode
     availablePokemons[24],   // Pikachu
     availablePokemons[87],   // Tadmorv
-    availablePokemons[88]   // Grotadmorv
+    availablePokemons[88],   // Grotadmorv
+    availablePokemons[4],
+    availablePokemons[60],
+    availablePokemons[61],
+    availablePokemons[124],
+    availablePokemons[134]
 ]
 
 const pokemonOnRoad7 = [
@@ -384,7 +404,13 @@ const pokemonOnRoad7 = [
     availablePokemons[16],   // Roucoups
     availablePokemons[57],   // Caninos
     availablePokemons[51],   // Miaouss
-    availablePokemons[2]
+    availablePokemons[2],
+    availablePokemons[1],
+    availablePokemons[21],
+    availablePokemons[56],
+    availablePokemons[63],
+    availablePokemons[101],
+    availablePokemons[109],
 ]
 
 const pokemonOnRoad8 = [
@@ -410,7 +436,18 @@ const pokemonOnRoad8 = [
     availablePokemons[74],   // Gravalanch
     availablePokemons[94],   // Onix
     availablePokemons[143],  // Artikodin
-    availablePokemons[8]
+    availablePokemons[8],
+    availablePokemons[54],
+    availablePokemons[61],
+    availablePokemons[89],
+    availablePokemons[90],
+    availablePokemons[121],
+    availablePokemons[125],
+    availablePokemons[133],
+    availablePokemons[137],
+    availablePokemons[138],
+    availablePokemons[139],
+    availablePokemons[140],
 ]
 
 const pokemonOnRoad9 = [
@@ -476,6 +513,15 @@ const pokemonOnRoad9 = [
     availablePokemons[130],   // Lokhlass
     availablePokemons[136],   // Porygon
     availablePokemons[142],   // Ronflex
+    availablePokemons[17],
+    availablePokemons[35],
+    availablePokemons[102],
+    availablePokemons[135],
+    availablePokemons[141],
+    availablePokemons[146],
+    availablePokemons[147],
+    availablePokemons[148],
+    availablePokemons[150]
 ]
 let currentRoad = pokemonOnRoad1
 
