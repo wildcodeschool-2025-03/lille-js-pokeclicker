@@ -762,7 +762,7 @@ touchElement.addEventListener("click", function () {
     alert("Désolé, ça ne fait rien ! Et en plus votre perso fait du monoplace , c'est ridicule !");
 });
 
-
+/* KONAMI CODE MEW */
 
 const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
 const mewFollow = document.querySelector(".walkingMew")
@@ -781,6 +781,11 @@ let pushedKey = function (event) {
     if (konamiCode.length === lastPushedKey) {
         lastPushedKey = 0;
         mewFollow.style.display = "block"
+
+        const thumb = document.querySelector(".isPokemonCaught img[alt=Mew]")
+        thumb.classList.add("caught");
+        caughtPokemon.push("Mew")
+
         window.alert('Oh ! A wild pokemon appears...')
     }
 }
