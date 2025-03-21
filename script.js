@@ -763,3 +763,37 @@ touchElement.addEventListener("click", function () {
 });
 
 
+
+const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
+const mewFollow = document.querySelector(".walkingMew")
+let lastPushedKey = 0
+
+
+
+
+let pushedKey = function (event) {
+
+
+    if (konamiCode.indexOf(event.key) < 0 || event.key !== konamiCode[lastPushedKey]) {
+        lastPushedKey = 0;
+        return;
+    }
+
+    lastPushedKey += 1
+
+    if (konamiCode.length === lastPushedKey) {
+        lastPushedKey = 0;
+        mewFollow.style.display = "block"
+        window.alert('Oh ! A wild pokemon appears...')
+    }
+}
+
+document.addEventListener('keydown', pushedKey, false);
+
+
+
+
+
+
+
+
