@@ -586,19 +586,22 @@ function addToPokedex(pokemon) {
 const clickTrainer = document.querySelector(".walkingTrainer");
 let stepIndicator = document.querySelector(".stepIndicator");
 let totalClick = 0
-let stepsBeforeRoadChange = 1000
+let stepsBeforeRoadChange = 500
 
 
 setInterval(() => {
     catchRandom()
-    totalClick += 10
 }, 10000)
 
 setInterval(() => {
     stepsBeforeRoadChange = stepsBeforeRoadChange - 1
     stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
+    totalClick += 1
     if (stepsBeforeRoadChange === 0) {
-        stepsBeforeRoadChange = 1000
+        stepsBeforeRoadChange = 500
+    }
+    if (totalClick % 500 === 0) {
+        changeRoad()
     }
 }, 1000)
 
@@ -608,12 +611,12 @@ clickTrainer.addEventListener("click", () => {
     stepsBeforeRoadChange = stepsBeforeRoadChange - 1
     stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
     if (stepsBeforeRoadChange === 0) {
-        stepsBeforeRoadChange = 1000
+        stepsBeforeRoadChange = 500
     }
     if (totalClick % 10 === 0) {
         catchRandom()
     }
-    if (totalClick % 1000 === 0) {
+    if (totalClick % 500 === 0) {
         changeRoad()
     }
 });
