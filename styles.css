@@ -186,6 +186,18 @@ main {
 
 /* TRAINER CONTAINER AND ANIMATION */
 
+.trainerSwitch {
+    height : 60px;
+    position: fixed;
+    top : 50px; 
+    left : 160px;
+    cursor: pointer;
+}
+
+.trainerSwitch:active {
+    transform: scale(0.9);
+}
+
 .walkingTrainer {
     width: calc(64px * var(--pixel-size));
     height: calc(64px * var(--pixel-size));

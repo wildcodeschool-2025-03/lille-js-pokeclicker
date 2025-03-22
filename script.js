@@ -525,7 +525,7 @@ const pokemonOnRoad9 = [
 ]
 let currentRoad = pokemonOnRoad1
 
-/*  --------- RANDOM CATCH + ADD TO POKEDEX ---------- */
+/*  --------- RANDOM CATCH + ADD TO POKEDEX  ---------- */
 
 let isPikachuCaught = false
 const pikachuSprite = document.querySelector(".walkingPikachu")
@@ -934,6 +934,25 @@ let pushedKey = function (event) {
 document.addEventListener('keydown', pushedKey, false);
 
 
+/*--------------------- SWITCH BOY/GIRL TRAINER ---------------------*/
+
+const actualTrainer = document.querySelector(".walkingSprite");
+const switchTrainer = document.querySelector(".trainerSwitch");
+let isGirlTrainer = false; 
+
+switchTrainer.addEventListener("click", () => {
+    if (isGirlTrainer === false) {
+        actualTrainer.src = "stock-img/trainer/trainergirl.png";
+        switchTrainer.src = "stock-img/trainer/trainer_01.png";
+        isGirlTrainer = true;
+        
+    } else if (isGirlTrainer === true) {
+        actualTrainer.src = "stock-img/trainer/trainerallsprite.png";
+        switchTrainer.src = "stock-img/trainer/trainergirlface_01.png";
+        isGirlTrainer = false;
+    }
+    
+});
 
 
 
