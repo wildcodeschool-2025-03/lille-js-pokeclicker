@@ -531,6 +531,7 @@ let isPikachuCaught = false
 const pikachuSprite = document.querySelector(".walkingPikachu")
 
 let caughtPokemon = []
+document.title = `P-C (${caughtPokemon.length}/151)`;
 
 function catchRandom() {
     let i = Math.floor(Math.random() * currentRoad.length);
@@ -553,9 +554,12 @@ function catchRandom() {
 
         caughtPokemon.push(lastCaughtPokemon.name);
 
+        document.title = `P-C (${caughtPokemon.length}/151)`;
+
     }
 
 }
+
 
 /*  --------- MAP + CHANGE ROAD FUNCTION ---------- */
 
