@@ -525,7 +525,7 @@ const pokemonOnRoad9 = [
 ]
 let currentRoad = pokemonOnRoad1
 
-/*  --------- RANDOM CATCH + ADD TO POKEDEX ---------- */
+/*  --------- RANDOM CATCH + ADD TO POKEDEX  ---------- */
 
 let isPikachuCaught = false
 const pikachuSprite = document.querySelector(".walkingPikachu")
@@ -741,21 +741,43 @@ let stepsBeforeRoadChange = 500
 /*  --------- TIME TRACKER + BASED ON EVENT ---------- */
 
 
-setInterval(() => {
-    catchRandom()
-}, 10000)
+let lastTime = performance.now();
+let stepInterval = 1000; 
+let catchInterval = 10000; 
+let stepAccumulator = 0;
+let catchAccumulator = 0;
 
-setInterval(() => {
-    stepsBeforeRoadChange = stepsBeforeRoadChange - 1
-    stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
-    totalClick += 1
-    if (stepsBeforeRoadChange === 0) {
-        stepsBeforeRoadChange = 500
+function update(time) {
+    let deltaTime = time - lastTime;
+    lastTime = time;
+
+    stepAccumulator += deltaTime;
+    catchAccumulator += deltaTime;
+
+    while (stepAccumulator >= stepInterval) {
+        stepsBeforeRoadChange -= 1;
+        stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road");
+        totalClick += 1;
+        if (stepsBeforeRoadChange === 0) {
+            stepsBeforeRoadChange = 500;
+        }
+        if (totalClick % 500 === 0) {
+            changeRoad();
+        }
+        stepAccumulator -= stepInterval;
     }
-    if (totalClick % 500 === 0) {
-        changeRoad()
+
+    while (catchAccumulator >= catchInterval) {
+        catchRandom();
+        catchAccumulator -= catchInterval;
     }
-}, 1000)
+
+    document.title = `P-C (${caughtPokemon.length}/151)`
+
+    requestAnimationFrame(update);
+}
+
+requestAnimationFrame(update);
 
 
 /*  --------- CLICK TRACKER + BASED ON EVENT ---------- */
@@ -912,6 +934,25 @@ let pushedKey = function (event) {
 document.addEventListener('keydown', pushedKey, false);
 
 
+/*--------------------- SWITCH BOY/GIRL TRAINER ---------------------*/
+
+const actualTrainer = document.querySelector(".walkingSprite");
+const switchTrainer = document.querySelector(".trainerSwitch");
+let isGirlTrainer = false; 
+
+switchTrainer.addEventListener("click", () => {
+    if (isGirlTrainer === false) {
+        actualTrainer.src = "stock-img/trainer/trainergirl.png";
+        switchTrainer.src = "stock-img/trainer/trainer_01.png";
+        isGirlTrainer = true;
+        
+    } else if (isGirlTrainer === true) {
+        actualTrainer.src = "stock-img/trainer/trainerallsprite.png";
+        switchTrainer.src = "stock-img/trainer/trainergirlface_01.png";
+        isGirlTrainer = false;
+    }
+    
+});
 
 
 
