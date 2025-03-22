@@ -1,9 +1,12 @@
 let currentRoad = pokemonOnRoad1
 
+/*  --------- RANDOM CATCH + ADD TO POKEDEX ---------- */
+
 let isPikachuCaught = false
 const pikachuSprite = document.querySelector(".walkingPikachu")
 
 let caughtPokemon = []
+document.title = `P-C (${caughtPokemon.length}/151)`;
 
 function catchRandom() {
     let i = Math.floor(Math.random() * currentRoad.length);
@@ -17,11 +20,24 @@ function catchRandom() {
     }
 
     if (!caughtPokemon.includes(lastCaughtPokemon.name)) {
+
         const thumb = document.querySelector(`.isPokemonCaught img[alt=${lastCaughtPokemon.alt}]`)
         thumb.classList.add("caught");
+
+        const thumb2 = document.querySelector(`.pokemonRadarLittleIMG[alt=${lastCaughtPokemon.alt}]`)
+        thumb2.classList.add("caught");
+
         caughtPokemon.push(lastCaughtPokemon.name);
+
+        document.title = `P-C (${caughtPokemon.length}/151)`;
+
     }
+
 }
+
+
+/*  --------- MAP + CHANGE ROAD FUNCTION ---------- */
+
 
 const sign = document.querySelector(".stepSign")
 const mapRoads = document.createElement("img")
@@ -29,56 +45,143 @@ mapRoads.classList.add("mapRoadsIMG")
 mapRoads.src = "stock-img/maps/mapRoad1.png"
 sign.prepend(mapRoads)
 
+let pokemonRadar = document.querySelector(".pokemonRadar");
+
+function addToPokemonRadar(pokemon) {
+    const addPokemon = document.createElement("li");
+    addPokemon.classList.add("pokemonLiRadar");
+    pokemonRadar.appendChild(addPokemon);
+
+    const pokemonIMG = document.createElement("img");
+    pokemonIMG.src = `https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png`;
+    pokemonIMG.alt = `${pokemon.alt}`;
+    pokemonIMG.classList.add("pokemonRadarLittleIMG");
+    if (caughtPokemon.includes(pokemon.name)) {
+        pokemonIMG.classList.add("caught"); 
+    }
+    addPokemon.appendChild(pokemonIMG);
+
+    
+}
+
 function changeRoad() {
+    pokemonRadar.innerHTML = ''; 
+
     if (currentRoad == pokemonOnRoad1) {
         currentRoad = pokemonOnRoad2
         roadName.innerHTML = "Road 2"
         mapRoads.src = "stock-img/maps/mapRoad2.png"
+
+        const uniquePokemonRoad2 = pokemonOnRoad2.filter((value, index, self) => self.indexOf(value) === index);
+        for (let i = 0; i < uniquePokemonRoad2.length; i++) {
+            addToPokemonRadar(uniquePokemonRoad2[i]);
+        }
+
     } else if (currentRoad == pokemonOnRoad2) {
         currentRoad = pokemonOnRoad3
         roadName.innerHTML = "Road 3"
         mapRoads.src = "stock-img/maps/mapRoad3.png"
+
+        const uniquePokemonRoad3 = pokemonOnRoad3.filter((value, index, self) => self.indexOf(value) === index);
+        for (let i = 0; i < uniquePokemonRoad3.length; i++) {
+            addToPokemonRadar(uniquePokemonRoad3[i]);
+        }
+
     } else if (currentRoad == pokemonOnRoad3) {
         currentRoad = pokemonOnRoad4
         roadName.innerHTML = "Road 4"
         mapRoads.src = "stock-img/maps/mapRoad4.png"
+
+        const uniquePokemonRoad4 = pokemonOnRoad4.filter((value, index, self) => self.indexOf(value) === index);
+        for (let i = 0; i < uniquePokemonRoad4.length; i++) {
+            addToPokemonRadar(uniquePokemonRoad4[i]);
+        }
+
     } else if (currentRoad == pokemonOnRoad4) {
         currentRoad = pokemonOnRoad5
         roadName.innerHTML = "Road 5"
         mapRoads.src = "stock-img/maps/mapRoad5.png"
+
+        const uniquePokemonRoad5 = pokemonOnRoad5.filter((value, index, self) => self.indexOf(value) === index);
+        for (let i = 0; i < uniquePokemonRoad5.length; i++) {
+            addToPokemonRadar(uniquePokemonRoad5[i]);
+        }
+
     } else if (currentRoad == pokemonOnRoad5) {
         currentRoad = pokemonOnRoad6
         roadName.innerHTML = "Road 6"
         mapRoads.src = "stock-img/maps/mapRoad6.png"
+
+        const uniquePokemonRoad6 = pokemonOnRoad6.filter((value, index, self) => self.indexOf(value) === index);
+        for (let i = 0; i < uniquePokemonRoad6.length; i++) {
+            addToPokemonRadar(uniquePokemonRoad6[i]);
+        }
+
     } else if (currentRoad == pokemonOnRoad6) {
         currentRoad = pokemonOnRoad7
         roadName.innerHTML = "Road 7"
         mapRoads.src = "stock-img/maps/mapRoad7.png"
+
+        const uniquePokemonRoad7 = pokemonOnRoad7.filter((value, index, self) => self.indexOf(value) === index);
+        for (let i = 0; i < uniquePokemonRoad7.length; i++) {
+            addToPokemonRadar(uniquePokemonRoad7[i]);
+        }
+
     } else if (currentRoad == pokemonOnRoad7) {
         currentRoad = pokemonOnRoad8
         roadName.innerHTML = "Road 8"
         mapRoads.src = "stock-img/maps/mapRoad8.png"
+
+        const uniquePokemonRoad8 = pokemonOnRoad8.filter((value, index, self) => self.indexOf(value) === index);
+        for (let i = 0; i < uniquePokemonRoad8.length; i++) {
+            addToPokemonRadar(uniquePokemonRoad8[i]);
+        }
+
     } else if (currentRoad == pokemonOnRoad8) {
         currentRoad = pokemonOnRoad9
         roadName.innerHTML = "Road 9"
         mapRoads.src = "stock-img/maps/mapRoad9.png"
+
+        const uniquePokemonRoad9 = pokemonOnRoad9.filter((value, index, self) => self.indexOf(value) === index);
+        for (let i = 0; i < uniquePokemonRoad9.length; i++) {
+            addToPokemonRadar(uniquePokemonRoad9[i]);
+        }
+
     } else if (currentRoad == pokemonOnRoad9) {
         currentRoad = pokemonOnRoad1
         roadName.innerHTML = "Road 1"
         mapRoads.src = "stock-img/maps/mapRoad1.png"
+
+        const uniquePokemonRoad1 = pokemonOnRoad1.filter((value, index, self) => self.indexOf(value) === index);
+        for (let i = 0; i < uniquePokemonRoad1.length; i++) {
+            addToPokemonRadar(uniquePokemonRoad1[i]);
+        }
+
     } else {
         currentRoad = pokemonOnRoad1
         roadName.innerHTML = "Road 1"
         mapRoads.src = "stock-img/maps/mapRoad1.png"
+
+        const uniquePokemonRoad1 = pokemonOnRoad1.filter((value, index, self) => self.indexOf(value) === index);
+        for (let i = 0; i < uniquePokemonRoad1.length; i++) {
+            addToPokemonRadar(uniquePokemonRoad1[i]);
+        }
     }
     sign.prepend(mapRoads)
 }
 
+const uniquePokemonRoad1 = pokemonOnRoad1.filter((value, index, self) => self.indexOf(value) === index);
+for (let i = 0; i < uniquePokemonRoad1.length; i++) {
+    addToPokemonRadar(uniquePokemonRoad1[i]);
+}
 
 const roadName = document.querySelector(".roadName")
 roadName.innerHTML = "Road 1"
-const pokedexList = document.querySelector(".pokedexList")
 
+
+/*  --------- ADD TO LAST CATCH TRACKER ---------- */
+
+const pokedexList = document.querySelector(".pokedexList")
 
 function addToPokedex(pokemon) {
     const addPokemon = document.createElement("li")
@@ -101,13 +204,16 @@ function addToPokedex(pokemon) {
 }
 
 
-
+/*  --------- VAR NEEDED FOR CLICK AND TIME TRACKER ---------- */
 
 
 const clickTrainer = document.querySelector(".walkingTrainer");
 let stepIndicator = document.querySelector(".stepIndicator");
 let totalClick = 0
 let stepsBeforeRoadChange = 500
+
+
+/*  --------- TIME TRACKER + BASED ON EVENT ---------- */
 
 
 setInterval(() => {
@@ -127,6 +233,8 @@ setInterval(() => {
 }, 1000)
 
 
+/*  --------- CLICK TRACKER + BASED ON EVENT ---------- */
+
 clickTrainer.addEventListener("click", () => {
     totalClick += 1
     stepsBeforeRoadChange = stepsBeforeRoadChange - 1
@@ -144,9 +252,9 @@ clickTrainer.addEventListener("click", () => {
 
 stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
 
-let isPokemonCaught = document.querySelector(".caughtPokemon");
+/* ------ FUNCTION TO CREATE THE TRACKER OF POKEMON NOT CAUGHT------- */
 
-/*  FUNCTION TO CREATE THE TRACKER OF POKEMON NOT/ALREADY CAUGHT */
+let isPokemonCaught = document.querySelector(".caughtPokemon");
 
 for (let i = 0; i < availablePokemons.length; i++) {
     function addToCaughtPokemon(pokemon) {
@@ -163,13 +271,16 @@ for (let i = 0; i < availablePokemons.length; i++) {
     addToCaughtPokemon(availablePokemons[i]);
 }
 
-/* CLICK TO SHOW THE GADDEM MENUUUUUUU */
+/* --------------CLICK TO SHOW/HIDE THE GADDEM MENUUUUUUU--------------- */
 
 const pokedexOnOff = document.querySelector(".pokedexIcon")
 const pokemonContainer = document.querySelector(".caughtPokemonContainer")
 
 const pokeballOnOff = document.querySelector(".pokeballIcon")
 const lastPokemonContainer = document.querySelector(".pokedexContainer")
+
+const radarOnOff = document.querySelector(".compass")
+const radarContainer = document.querySelector(".pokemonRadarContainer")
 
 pokedexOnOff.addEventListener("click", () => {
 
@@ -188,6 +299,14 @@ pokeballOnOff.addEventListener("click", () => {
 
     lastPokemonContainer.classList.toggle("show")
 });
+
+radarOnOff.addEventListener("click", () => {
+
+    radarContainer.classList.toggle("show")
+});
+
+
+/* -------------------POKEBALL POPUP--------------- */
 
 const imgPokeball = document.querySelector('.pokeball');
 const walkingTrainer = document.querySelector('.walkingTrainer');
@@ -237,7 +356,7 @@ touchElement.addEventListener("click", function () {
     alert("Désolé, ça ne fait rien ! Et en plus votre perso fait du monoplace , c'est ridicule !");
 });
 
-/* KONAMI CODE MEW */
+/* ----------------KONAMI CODE MEW----------------------- */
 
 const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
 const mewFollow = document.querySelector(".walkingMew")
