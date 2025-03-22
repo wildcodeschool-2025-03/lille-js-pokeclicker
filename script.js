@@ -544,10 +544,17 @@ function catchRandom() {
     }
 
     if (!caughtPokemon.includes(lastCaughtPokemon.name)) {
+
         const thumb = document.querySelector(`.isPokemonCaught img[alt=${lastCaughtPokemon.alt}]`)
         thumb.classList.add("caught");
+
+        const thumb2 = document.querySelector(`.pokemonRadarLittleIMG[alt=${lastCaughtPokemon.alt}]`)
+        thumb2.classList.add("caught");
+
         caughtPokemon.push(lastCaughtPokemon.name);
+
     }
+
 }
 
 /*  --------- MAP + CHANGE ROAD FUNCTION ---------- */
@@ -570,7 +577,12 @@ function addToPokemonRadar(pokemon) {
     pokemonIMG.src = `https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png`;
     pokemonIMG.alt = `${pokemon.alt}`;
     pokemonIMG.classList.add("pokemonRadarLittleIMG");
+    if (caughtPokemon.includes(pokemon.name)) {
+        pokemonIMG.classList.add("caught"); 
+    }
     addPokemon.appendChild(pokemonIMG);
+
+    
 }
 
 function changeRoad() {
