@@ -574,7 +574,7 @@ function addToPokemonRadar(pokemon) {
 }
 
 function changeRoad() {
-    pokemonRadar.innerHTML = ''; // Vider le contenu du radar avant d'ajouter les nouveaux Pokémon
+    pokemonRadar.innerHTML = ''; 
 
     if (currentRoad == pokemonOnRoad1) {
         currentRoad = pokemonOnRoad2
@@ -679,7 +679,6 @@ function changeRoad() {
     sign.prepend(mapRoads)
 }
 
-// Ajoutez cette ligne pour afficher les Pokémon de la route 1 par défaut
 const uniquePokemonRoad1 = pokemonOnRoad1.filter((value, index, self) => self.indexOf(value) === index);
 for (let i = 0; i < uniquePokemonRoad1.length; i++) {
     addToPokemonRadar(uniquePokemonRoad1[i]);
