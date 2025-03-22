@@ -323,6 +323,77 @@ main {
     font-weight: 400;
 }
 
+
+.pokemonRadarContainer {
+    position: fixed;
+    background-color: rgb(36, 36, 36);
+    border-radius: 5px;
+    width: 165px;
+    max-width: 80%;
+    top: 300px;
+    right: 70px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.76);
+    border: solid 3px rgb(99, 34, 34);
+    max-height: 300px;
+    height: auto;
+    padding: 1rem;
+    overflow-y: auto;
+    display: none;
+}
+
+.pokemonRadarContainer.show {
+    display: block;
+}
+
+.pokemonRadarContainer::-webkit-scrollbar {
+    width: .1rem;
+}
+
+.pokemonRadarContainer::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+.pokemonRadar {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+    padding-left: 5px;
+    scroll-behavior: smooth;
+    width: 90%;
+    height: 90%
+}
+
+.pokemonLiRadar {
+    display: flex;
+    padding-left: 10px;
+}
+
+.pokemonRadarTitle {
+    color: whitesmoke;
+    text-align: center;
+    padding-right: 5px;
+}
+
+.pokemonRadarLittleIMG {
+    height: 50px;
+    margin: -5px;
+
+}
+
+.compass {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top: 100px;
+    right: 20px;
+}
+
+.compass:active {
+    transform: scale(0.9);
+}
+
 /* HEADER */
 
 .diode-container {
@@ -359,7 +430,7 @@ h1 {
     color: white;
     text-shadow: -4px 4px 4px rgba(0, 0, 0, 0.658);
     padding-left: 20px;
-    padding-top: 20px;
+    padding-top: 45px;
     font-weight: 500;
     font-size: 70px;
 }
@@ -515,7 +586,7 @@ footer {
         font-size: 25px;
         font-weight: 400;
         position: fixed;
-        top: -11px;
+        top: -35px;
         right: 55px;
     }
 
@@ -557,5 +628,24 @@ footer {
         display: none;
     }
 
+    .compass {
+        height: 40px;
+        top: 66px;
+        right: 185px;
+    }
 
-}
+    .pokemonRadarContainer {
+        width: 165px;
+        max-width: 80%;
+        top: 120px;
+        right: 20px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.76);
+        border: solid 3px rgb(99, 34, 34);
+        max-height: 300px;
+        height: auto;
+        padding: 1rem;
+        overflow-y: auto;
+        display: none;
+
+
+    }
