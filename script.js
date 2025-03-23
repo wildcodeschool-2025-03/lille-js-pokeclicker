@@ -442,6 +442,8 @@ let isPikachuCaught = false
 const pikachuSprite = document.querySelector(".walkingPikachu")
 
 let caughtPokemon = []
+let caughtPokemonShiny = []
+
 document.title = `P-C (${caughtPokemon.length}/151)`;
 
 function catchRandom() {
@@ -462,27 +464,38 @@ function catchRandom() {
         }
     }
 
+    let isShiny = Math.random() < 0.01; 
+    lastCaughtPokemon.isShiny = isShiny;
+
+
     addToPokedex(lastCaughtPokemon);
+
+    /* -------- AJOUT PIKACHU -------- */
 
     if (lastCaughtPokemon.name === "Pikachu" && isPikachuCaught === false) {
         pikachuSprite.style.display = "block"
         isPikachuCaught = true
     }
 
-    if (!caughtPokemon.includes(lastCaughtPokemon.name)) {
+    /* AJOUT DES POKEMONS DANS LE RADAR ET LE POKEDEX */
 
-        const thumb = document.querySelector(`.isPokemonCaught img[alt=${lastCaughtPokemon.alt}]`)
+    if (!caughtPokemon.includes(lastCaughtPokemon.name)) {
+        const thumb = document.querySelector(`.pokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`);
         thumb.classList.add("caught");
 
-        const thumb2 = document.querySelector(`.pokemonRadarLittleIMG[alt=${lastCaughtPokemon.alt}]`)
+        const thumb2 = document.querySelector(`.pokemonRadarLittleIMG[alt=${lastCaughtPokemon.alt}]`);
         thumb2.classList.add("caught");
 
         caughtPokemon.push(lastCaughtPokemon.name);
-
         document.title = `P-C (${caughtPokemon.length}/151)`;
-
     }
 
+    if (lastCaughtPokemon.isShiny === true && !caughtPokemonShiny.includes(lastCaughtPokemon.name)) {
+        caughtPokemonShiny.push(lastCaughtPokemon.name);
+
+        const thumb3 = document.querySelector(`.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`);
+        thumb3.classList.add("caught");
+    }
 }
 
 
@@ -634,23 +647,26 @@ roadName.innerHTML = "Road 1"
 const pokedexList = document.querySelector(".pokedexList")
 
 function addToPokedex(pokemon) {
-    const addPokemon = document.createElement("li")
-    addPokemon.classList.add("pokedexItem")
-    pokedexList.prepend(addPokemon)
+    const addPokemon = document.createElement("li");
+    addPokemon.classList.add("pokedexItem");
+    pokedexList.prepend(addPokemon);
 
-    const pokemonIMG = document.createElement("img")
+    const pokemonIMG = document.createElement("img");
     pokemonIMG.src = `https://img.pokemondb.net/sprites/black-white/normal/${pokemon.alt.toLowerCase()}.png`;
-    // Gen 5 https://img.pokemondb.net/sprites/black-white/normal/${pokemon.alt.toLowerCase()}.png             //
-    // Gen 8 https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png   //
-    // Gif   https://img.pokemondb.net/sprites/black-white/anim/normal/${pokemon.alt.toLowerCase()}.gif        //
-    pokemonIMG.alt = `${pokemon.alt}`
-    pokemonIMG.classList.add("pokemonIMG")
-    addPokemon.appendChild(pokemonIMG)
+    if (pokemon.isShiny) {
+        pokemonIMG.src = `https://img.pokemondb.net/sprites/black-white/shiny/${pokemon.alt.toLowerCase()}.png`;
+    }
+    pokemonIMG.alt = `${pokemon.alt}`;
+    pokemonIMG.classList.add("pokemonIMG");
+    addPokemon.appendChild(pokemonIMG);
 
-    const pokemonTitle = document.createElement("p")
-    pokemonTitle.innerHTML = `${pokemon.name}`
-    pokemonTitle.classList.add("pokemonTitle")
-    addPokemon.appendChild(pokemonTitle)
+    const pokemonTitle = document.createElement("p");
+    pokemonTitle.innerHTML = `${pokemon.name}`;
+    if (pokemon.isShiny) {
+        pokemonTitle.innerHTML = `${pokemon.name} *`;
+    }
+    pokemonTitle.classList.add("pokemonTitle");
+    addPokemon.appendChild(pokemonTitle);
 }
 
 
@@ -727,18 +743,33 @@ stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
 /* ------ FUNCTION TO CREATE THE TRACKER OF POKEMON NOT CAUGHT------- */
 
 let isPokemonCaught = document.querySelector(".caughtPokemon");
+let isShinyPokemonCaught = document.querySelector(".shinyCaughtPokemon")
 
 for (let i = 0; i < availablePokemons.length; i++) {
     function addToCaughtPokemon(pokemon) {
+
+        /* ----------- NORMAL POKEMON -----------*/
         const addPokemon = document.createElement("li");
         addPokemon.classList.add("isPokemonCaught");
         isPokemonCaught.appendChild(addPokemon);
 
         const pokemonIMG = document.createElement("img");
-        pokemonIMG.src = `https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png`;
+        pokemonIMG.src = `https://img.pokemondb.net/sprites/ruby-sapphire/normal/${pokemon.alt.toLowerCase()}.png`;
         pokemonIMG.alt = `${pokemon.alt}`;
         pokemonIMG.classList.add("pokemonLittleIMG");
         addPokemon.appendChild(pokemonIMG);
+
+
+        /* ----------- SHINY POKEMON -----------*/
+        const addPokemonShiny = document.createElement("li");
+        addPokemonShiny.classList.add("isShinyPokemonCaught");
+        isShinyPokemonCaught.appendChild(addPokemonShiny);
+
+        const pokemonShinyIMG = document.createElement("img");
+        pokemonShinyIMG.src = `https://img.pokemondb.net/sprites/ruby-sapphire/shiny/${pokemon.alt.toLowerCase()}.png`;
+        pokemonShinyIMG.alt = `${pokemon.alt}`;
+        pokemonShinyIMG.classList.add("shinyPokemonLittleIMG");
+        addPokemonShiny.appendChild(pokemonShinyIMG);
     }
     addToCaughtPokemon(availablePokemons[i]);
 }
@@ -776,6 +807,30 @@ radarOnOff.addEventListener("click", () => {
 
     radarContainer.classList.toggle("show")
 });
+
+
+const shinyOnOff = document.querySelector(".shinyIcon")
+const pokedexDisplay = document.querySelector(".caughtPokemon")
+const shinyDisplay = document.querySelector(".shinyCaughtPokemon")
+let normalPokedexDisplaying = true;
+
+shinyOnOff.addEventListener("click", () => {
+
+    if (normalPokedexDisplaying === true) {
+        pokedexDisplay.style.display = "none"
+        shinyDisplay.style.display = "flex"
+        shinyOnOff.classList.add("on")
+        normalPokedexDisplaying = false
+    }
+    else if (normalPokedexDisplaying === false) {
+        pokedexDisplay.style.display = "flex"
+        shinyDisplay.style.display = "none"
+        shinyOnOff.classList.remove("on")
+        normalPokedexDisplaying = true
+    }
+});
+         
+
 
 
 /* -------------------POKEBALL POPUP--------------- */
@@ -876,6 +931,8 @@ switchTrainer.addEventListener("click", () => {
         switchTrainer.src = "stock-img/trainer/trainergirlface_01.png";
         isGirlTrainer = false;
     }
+    
+
     
 });
 
