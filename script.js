@@ -828,7 +828,6 @@ shinyOnOff.addEventListener("click", () => {
         shinyOnOff.classList.remove("on")
         normalPokedexDisplaying = true
     }
-    console.log(normalPokedexDisplaying)
 });
          
 
