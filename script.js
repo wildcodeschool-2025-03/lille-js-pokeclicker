@@ -394,7 +394,8 @@ const pokemonOnRoad9 = [
     availablePokemons[73],   
     availablePokemons[74], 
     availablePokemons[75], 
-    availablePokemons[77],    
+    availablePokemons[77],  
+    availablePokemons[78],   
     availablePokemons[79],    
     availablePokemons[81],    
     availablePokemons[84],    
@@ -437,7 +438,9 @@ let currentRoad = pokemonOnRoad1
 /*  --------- RANDOM CATCH + ADD TO POKEDEX  ---------- */
 
 let isPikachuCaught = false
+let isMewCaught = false
 const pikachuSprite = document.querySelector(".walkingPikachu")
+const mewFollow2 = document.querySelector(".walkingMew")
 
 let caughtPokemon = []
 let caughtPokemonShiny = []
@@ -468,12 +471,18 @@ function catchRandom() {
 
     addToPokedex(lastCaughtPokemon);
 
-    /* -------- AJOUT PIKACHU -------- */
+    /* -------- AJOUT PIKACHU & MEW -------- */
 
     if (lastCaughtPokemon.name === "Pikachu" && isPikachuCaught === false) {
         pikachuSprite.style.display = "block"
         isPikachuCaught = true
     }
+
+    if (lastCaughtPokemon.name === "Mew" && isMewCaught === false) {
+        mewFollow2.style.display = "block"
+        isMewCaught = true
+    }
+
 
     /* AJOUT DES POKEMONS DANS LE RADAR ET LE POKEDEX */
 
