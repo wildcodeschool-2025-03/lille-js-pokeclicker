@@ -158,21 +158,21 @@ const pokemonOnRoad1 = [
     availablePokemons[0],
     availablePokemons[3],
     availablePokemons[6],
-    availablePokemons[132],
-    availablePokemons[18],
     availablePokemons[15],
+    availablePokemons[18],
+    availablePokemons[132],
 ]
 
 
 const pokemonOnRoad2 = [
     availablePokemons[9],
     availablePokemons[12],
+    availablePokemons[15],
+    availablePokemons[18],
     availablePokemons[20],
     availablePokemons[28],
     availablePokemons[31],
     availablePokemons[55],
-    availablePokemons[15],
-    availablePokemons[18]
 ]
 
 
@@ -183,12 +183,12 @@ const pokemonOnRoad3 = [
     availablePokemons[12],
     availablePokemons[13],
     availablePokemons[14],
-    availablePokemons[45],
+    availablePokemons[24],
     availablePokemons[42],
     availablePokemons[43],
     availablePokemons[44],
+    availablePokemons[45],
     availablePokemons[46],
-    availablePokemons[24],
     availablePokemons[47],
     availablePokemons[48],
     availablePokemons[82],
@@ -201,234 +201,232 @@ const pokemonOnRoad3 = [
 const pokemonOnRoad4 = [
     availablePokemons[15],
     availablePokemons[18],
-    availablePokemons[38],
-    availablePokemons[26],
     availablePokemons[22],
-    availablePokemons[128],
-    availablePokemons[55],
-    availablePokemons[40],
-    availablePokemons[73],
-    availablePokemons[45],
+    availablePokemons[26],
     availablePokemons[34],
+    availablePokemons[38],
+    availablePokemons[40],
+    availablePokemons[45],
+    availablePokemons[55],
+    availablePokemons[73],
     availablePokemons[76],
     availablePokemons[105],
     availablePokemons[106],
     availablePokemons[108],
     availablePokemons[127],
+    availablePokemons[128],
 ];
 
 
 const pokemonOnRoad5 = [
-    availablePokemons[12],
+    availablePokemons[7],
     availablePokemons[9],
-    availablePokemons[42],
-    availablePokemons[15],
-    availablePokemons[68],
-    availablePokemons[13],
     availablePokemons[10],
-    availablePokemons[62],
-    availablePokemons[128],
-    availablePokemons[59],
-    availablePokemons[117],
-    availablePokemons[53],
-    availablePokemons[97],
-    availablePokemons[149],
+    availablePokemons[12],
+    availablePokemons[13],
+    availablePokemons[15],
+    availablePokemons[39],
     availablePokemons[40],
     availablePokemons[41],
-    availablePokemons[112],
-    availablePokemons[39],
+    availablePokemons[42],
+    availablePokemons[53],
+    availablePokemons[59],
+    availablePokemons[62],
+    availablePokemons[68],
     availablePokemons[73],
     availablePokemons[74],
+    availablePokemons[83],
     availablePokemons[94],
+    availablePokemons[97],
+    availablePokemons[107],
     availablePokemons[110],
     availablePokemons[111],
+    availablePokemons[112],
     availablePokemons[113],
     availablePokemons[115],
     availablePokemons[116],
+    availablePokemons[117],
+    availablePokemons[128],
     availablePokemons[130],
     availablePokemons[131],
-    availablePokemons[7],
-    availablePokemons[83],
-    availablePokemons[107],
+    availablePokemons[149],
 ];
 
 const pokemonOnRoad6 = [
+    availablePokemons[4],
     availablePokemons[15],
     availablePokemons[16],
     availablePokemons[18],
     availablePokemons[19],
-    availablePokemons[62],
+    availablePokemons[24],
+    availablePokemons[34],
+    availablePokemons[36],
+    availablePokemons[37],
+    availablePokemons[40],
+    availablePokemons[42],
+    availablePokemons[43],
     availablePokemons[51],
     availablePokemons[52],
     availablePokemons[57],
     availablePokemons[58],
-    availablePokemons[34],
-    availablePokemons[40],
-    availablePokemons[42],
-    availablePokemons[43],
-    availablePokemons[68],
-    availablePokemons[69],
-    availablePokemons[36],
-    availablePokemons[37],
-    availablePokemons[95],
-    availablePokemons[96],
-    availablePokemons[73],
-    availablePokemons[74],
-    availablePokemons[65],
-    availablePokemons[66],
-    availablePokemons[80],
-    availablePokemons[81],
-    availablePokemons[99],
-    availablePokemons[100],
-    availablePokemons[97],
-    availablePokemons[144],
-    availablePokemons[24],
-    availablePokemons[87],
-    availablePokemons[88],
-    availablePokemons[4],
     availablePokemons[60],
     availablePokemons[61],
+    availablePokemons[62],
+    availablePokemons[65],
+    availablePokemons[66],
+    availablePokemons[68],
+    availablePokemons[69],
+    availablePokemons[73],
+    availablePokemons[74],
+    availablePokemons[80],
+    availablePokemons[81],
+    availablePokemons[87],
+    availablePokemons[88],
+    availablePokemons[95],
+    availablePokemons[96],
+    availablePokemons[97],
+    availablePokemons[99],
+    availablePokemons[100],
     availablePokemons[124],
     availablePokemons[134],
+    availablePokemons[144],
 ];
 
 const pokemonOnRoad7 = [
-    availablePokemons[18],   // Rattata
-    availablePokemons[19],   // Rattatac
-    availablePokemons[95],   // Soporifik
-    availablePokemons[96],   // Hypnomade
-    availablePokemons[62],   // Abra
-    availablePokemons[24],   // Pikachu
-    availablePokemons[80],   // Magnéti
-    availablePokemons[99],   // Voltorbe
-    availablePokemons[71],   // Tentacool
-    availablePokemons[97],   // Krabby
-    availablePokemons[117],  // Poissirène
-    availablePokemons[115],  // Hypotrempe
-    availablePokemons[128],  // Magicarpe
-    availablePokemons[40],   // Nosferapti
-    availablePokemons[42],   // Mystherbe
-    availablePokemons[43],   // Ortide
-    availablePokemons[68],   // Chétiflor
-    availablePokemons[69],   // Boustiflor
-    availablePokemons[15],   // Roucool
-    availablePokemons[16],   // Roucoups
-    availablePokemons[57],   // Caninos
-    availablePokemons[51],   // Miaouss
-    availablePokemons[2],
     availablePokemons[1],
+    availablePokemons[2],
+    availablePokemons[15],  
+    availablePokemons[16], 
+    availablePokemons[18],  
+    availablePokemons[19],
     availablePokemons[21],
-    availablePokemons[56],
+    availablePokemons[24],
+    availablePokemons[40],   
+    availablePokemons[42],  
+    availablePokemons[43], 
+    availablePokemons[51],  
+    availablePokemons[56], 
+    availablePokemons[57],  
+    availablePokemons[62],
     availablePokemons[63],
+    availablePokemons[68],  
+    availablePokemons[69],  
+    availablePokemons[71],   
+    availablePokemons[80],   
+    availablePokemons[95],   
+    availablePokemons[96],   
+    availablePokemons[97],  
+    availablePokemons[99],  
     availablePokemons[101],
     availablePokemons[109],
+    availablePokemons[115], 
+    availablePokemons[117], 
+    availablePokemons[128], 
 ]
 
 const pokemonOnRoad8 = [
-    availablePokemons[71],   // Tentacool
-    availablePokemons[72],   // Tentacruel
-    availablePokemons[115],  // Hypotrempe
-    availablePokemons[116],  // Hypocéan
-    availablePokemons[117],  // Poissirène
-    availablePokemons[118],  // Poissoroy
-    availablePokemons[97],   // Krabby
-    availablePokemons[98],   // Krabboss
-    availablePokemons[119],  // Stari
-    availablePokemons[120],  // Staross
-    availablePokemons[128],  // Magicarpe
-    availablePokemons[129],  // Léviator
-    availablePokemons[85],   // Otaria
-    availablePokemons[86],   // Lamantine
-    availablePokemons[130],  // Lokhlass
-    availablePokemons[40],   // Nosferapti
-    availablePokemons[41],   // Nosferalto
-    availablePokemons[79],   // Flagadoss
-    availablePokemons[73],   // Racaillou
-    availablePokemons[74],   // Gravalanch
-    availablePokemons[94],   // Onix
-    availablePokemons[143],  // Artikodin
     availablePokemons[8],
-    availablePokemons[54],
+    availablePokemons[40],   
+    availablePokemons[41], 
+    availablePokemons[54], 
     availablePokemons[61],
+    availablePokemons[71],   
+    availablePokemons[72], 
+    availablePokemons[73],   
+    availablePokemons[74], 
+    availablePokemons[79], 
+    availablePokemons[85],   
+    availablePokemons[86], 
     availablePokemons[89],
     availablePokemons[90],
+    availablePokemons[94],  
+    availablePokemons[97],   
+    availablePokemons[98], 
+
+    availablePokemons[115],  
+    availablePokemons[116],  
+    availablePokemons[117], 
+    availablePokemons[118],  
+    availablePokemons[119],  
+    availablePokemons[120], 
     availablePokemons[121],
-    availablePokemons[125],
+    availablePokemons[125], 
+    availablePokemons[128],  
+    availablePokemons[129], 
+    availablePokemons[130], 
     availablePokemons[133],
     availablePokemons[137],
     availablePokemons[138],
     availablePokemons[139],
     availablePokemons[140],
+    availablePokemons[143], 
 ]
 
 const pokemonOnRoad9 = [
-    availablePokemons[40],   // Nosferapti
-    availablePokemons[41],   // Nosferalto
-    availablePokemons[95],   // Soporifik
-    availablePokemons[96],   // Hypnomade
-    availablePokemons[65],   // Machoc
-    availablePokemons[66],   // Machopeur
-    availablePokemons[73],   // Racaillou
-    availablePokemons[74],   // Gravalanch
-    availablePokemons[94],   // Onix
-    availablePokemons[110],  // Rhinocorne
-    availablePokemons[111],  // Rhinoferos
-    availablePokemons[129],  // Léviator
-    availablePokemons[71],   // Tentacool
-    availablePokemons[72],   // Tentacruel
-    availablePokemons[128],  // Magicarpe
-    availablePokemons[123],  // Lippoutou
-    availablePokemons[91],   // Fantominus
-    availablePokemons[92],   // Spectrum
-    availablePokemons[103],  // Osselait
-    availablePokemons[49],   // Taupiqueur
-    availablePokemons[50],   // Triopikeur
-    availablePokemons[145],
     availablePokemons[5],
-    availablePokemons[11],    // Papilusion
-    availablePokemons[14],    // Dardargnan
-    availablePokemons[19],    // Rattatac
-    availablePokemons[23],    // Arbok
-    availablePokemons[25],    // Raichu
-    availablePokemons[27],    // Sablaireau
-    availablePokemons[29],    // Nidorina
-    availablePokemons[30],    // Nidoqueen
-    availablePokemons[32],    // Nidorino
-    availablePokemons[33],    // Nidoking
-    availablePokemons[36],    // Goupix
-    availablePokemons[37],    // Feunard
-    availablePokemons[38],    // Rondoudou
-    availablePokemons[39],    // Grodoudou
-    availablePokemons[41],    // Nosferalto
-    availablePokemons[46],    // Parasect
-    availablePokemons[70],    // Empiflor
-    availablePokemons[72],    // Tentacruel
-    availablePokemons[74],    // Gravalanch
-    availablePokemons[75],    // Grolem
-    availablePokemons[64],    // Alakazam
-    availablePokemons[67],    // Machamp
-    availablePokemons[93],    // Ectoplasma
-    availablePokemons[77],    // Galopa
-    availablePokemons[79],    // Flagadoss
-    availablePokemons[81],    // Magneton
-    availablePokemons[84],    // Dodrio
-    availablePokemons[86],    // Lamantine
-    availablePokemons[88],    // Grotadmorv
-    availablePokemons[104],   // Ossatueur
-    availablePokemons[114],   // Kangourex
-    availablePokemons[116],   // Hypocéan
-    availablePokemons[118],   // Poissoroy
-    availablePokemons[120],   // Staross
-    availablePokemons[100],   // Électrode
-    availablePokemons[112],   // Leveinard
-    availablePokemons[130],   // Lokhlass
-    availablePokemons[136],   // Porygon
-    availablePokemons[142],   // Ronflex
-    availablePokemons[17],
-    availablePokemons[35],
+    availablePokemons[11],    
+    availablePokemons[14],  
+    availablePokemons[17],  
+    availablePokemons[19],   
+    availablePokemons[23],   
+    availablePokemons[25],    
+    availablePokemons[27],    
+    availablePokemons[29],    
+    availablePokemons[30],   
+    availablePokemons[32],   
+    availablePokemons[33],
+    availablePokemons[35],    
+    availablePokemons[36],    
+    availablePokemons[37],    
+    availablePokemons[38],    
+    availablePokemons[39], 
+    availablePokemons[40],   
+    availablePokemons[41],
+    availablePokemons[46],  
+    availablePokemons[49],   
+    availablePokemons[50],  
+    availablePokemons[64],    
+    availablePokemons[67],   
+    availablePokemons[66], 
+    availablePokemons[70],   
+    availablePokemons[71],  
+    availablePokemons[72],    
+    availablePokemons[73],   
+    availablePokemons[74], 
+    availablePokemons[75], 
+    availablePokemons[77],    
+    availablePokemons[79],    
+    availablePokemons[81],    
+    availablePokemons[84],    
+    availablePokemons[86],    
+    availablePokemons[88],      
+    availablePokemons[94],  
+    availablePokemons[95],   
+    availablePokemons[96],  
+    availablePokemons[65],   
+    availablePokemons[91],   
+    availablePokemons[92],  
+    availablePokemons[93], 
+    availablePokemons[100],  
     availablePokemons[102],
-    availablePokemons[135],
-    availablePokemons[141],
+    availablePokemons[103],  
+    availablePokemons[104], 
+    availablePokemons[110], 
+    availablePokemons[111],  
+    availablePokemons[112],   
+    availablePokemons[114],   
+    availablePokemons[116],   
+    availablePokemons[118],   
+    availablePokemons[120], 
+    availablePokemons[128], 
+    availablePokemons[123], 
+    availablePokemons[129], 
+    availablePokemons[130],  
+    availablePokemons[135], 
+    availablePokemons[136], 
+    availablePokemons[141], 
+    availablePokemons[142], 
+    availablePokemons[145],
     availablePokemons[146],
     availablePokemons[147],
     availablePokemons[148],
