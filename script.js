@@ -49,32 +49,31 @@ function catchRandom() {
 
 	/* AJOUT DES POKEMONS DANS LE RADAR ET LE POKEDEX */
 
-	if (!caughtPokemon.includes(lastCaughtPokemon)) {
-		const thumb = document.querySelector(
-			`.pokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
-		);
-		thumb.classList.add("caught");
+	if (!caughtPokemon.some(pokemon => pokemon.name === lastCaughtPokemon.name)) {
+        const thumb = document.querySelector(
+            `.pokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
+        );
+        thumb.classList.add("caught");
 
-		const thumb2 = document.querySelector(
-			`.pokemonRadarLittleIMG[alt=${lastCaughtPokemon.alt}]`,
-		);
-		thumb2.classList.add("caught");
+        const thumb2 = document.querySelector(
+            `.pokemonRadarLittleIMG[alt=${lastCaughtPokemon.alt}]`,
+        );
+        thumb2.classList.add("caught");
 
-		caughtPokemon.push(lastCaughtPokemon);
-		document.title = `P-C (${caughtPokemon.length}/151)`;
-	}
+        caughtPokemon.push(lastCaughtPokemon);
+    }
 
-	if (
-		lastCaughtPokemon.isShiny === true &&
-		!caughtPokemonShiny.includes(lastCaughtPokemon.name)
-	) {
-		caughtPokemonShiny.push(lastCaughtPokemon);
+    if (
+        lastCaughtPokemon.isShiny === true &&
+        !caughtPokemonShiny.some(pokemon => pokemon.name === lastCaughtPokemon.name)
+    ) {
+        caughtPokemonShiny.push(lastCaughtPokemon);
 
-		const thumb3 = document.querySelector(
-			`.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
-		);
-		thumb3.classList.add("caught");
-	}
+        const thumb3 = document.querySelector(
+            `.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
+        );
+        thumb3.classList.add("caught");
+    }
 }
 
 /*  --------- MAP + CHANGE ROAD FUNCTION ---------- */
