@@ -50,6 +50,19 @@ main {
     cursor: pointer;
 }
 
+.shinyIcon {
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    left: 190px;
+    cursor: pointer;
+    
+}
+
+.shinyIcon:not(.on) {
+    filter: grayscale(1);
+}
+
 .pokedexIcon:active {
     transform: scale(0.9);
 }
@@ -81,6 +94,15 @@ main {
     outline: 1px solid slategrey;
 }
 
+.shinyCaughtPokemon::-webkit-scrollbar {
+    width: .1rem;
+}
+
+.shinyCaughtPokemon::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
 .caughtPokemon {
     display: flex;
     list-style: none;
@@ -92,12 +114,31 @@ main {
     width: 100%;
 }
 
+.shinyCaughtPokemon {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    padding-left: 0px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+    display : none;
+}
+
 .pokemonLittleIMG {
     height: 65px;
-    margin: -5px;
+}
+
+.shinyPokemonLittleIMG {
+    height: 65px;
 }
 
 .pokemonLittleIMG:not(.caught) {
+    filter: grayscale(1);
+}
+
+.shinyPokemonLittleIMG:not(.caught) {
     filter: grayscale(1);
 }
 
@@ -186,6 +227,18 @@ main {
 }
 
 /* TRAINER CONTAINER AND ANIMATION */
+
+.trainerSwitch {
+    height : 60px;
+    position: fixed;
+    top : 50px; 
+    left : 160px;
+    cursor: pointer;
+}
+
+.trainerSwitch:active {
+    transform: scale(0.9);
+}
 
 .walkingTrainer {
     width: calc(64px * var(--pixel-size));

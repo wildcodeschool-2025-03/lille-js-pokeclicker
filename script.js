@@ -4,36 +4,71 @@ let currentRoad = pokemonOnRoad1
 /*  --------- RANDOM CATCH + ADD TO POKEDEX ---------- */
 
 let isPikachuCaught = false
+let isMewCaught = false
 const pikachuSprite = document.querySelector(".walkingPikachu")
+const mewFollow2 = document.querySelector(".walkingMew")
 
 let caughtPokemon = []
+let caughtPokemonShiny = []
+
 document.title = `P-C (${caughtPokemon.length}/151)`;
 
 function catchRandom() {
-    let i = Math.floor(Math.random() * currentRoad.length);
+    
+    let totalRarity = currentRoad.reduce((sum, pokemon) => sum + pokemon.rarity, 0);
 
-    let lastCaughtPokemon = currentRoad[i];
+    
+    let random = Math.random() * totalRarity;
+
+
+    let cumulativeRarity = 0;
+    let lastCaughtPokemon;
+    for (let i = 0; i < currentRoad.length; i++) {
+        cumulativeRarity += currentRoad[i].rarity;
+        if (random < cumulativeRarity) {
+            lastCaughtPokemon = currentRoad[i];
+            break;
+        }
+    }
+
+    let isShiny = Math.random() < 0.01; 
+    lastCaughtPokemon.isShiny = isShiny;
+
+
     addToPokedex(lastCaughtPokemon);
+
+    /* -------- AJOUT PIKACHU & MEW -------- */
 
     if (lastCaughtPokemon.name === "Pikachu" && isPikachuCaught === false) {
         pikachuSprite.style.display = "block"
         isPikachuCaught = true
     }
 
-    if (!caughtPokemon.includes(lastCaughtPokemon.name)) {
+    if (lastCaughtPokemon.name === "Mew" && isMewCaught === false) {
+        mewFollow2.style.display = "block"
+        isMewCaught = true
+    }
 
-        const thumb = document.querySelector(`.isPokemonCaught img[alt=${lastCaughtPokemon.alt}]`)
+
+    /* AJOUT DES POKEMONS DANS LE RADAR ET LE POKEDEX */
+
+    if (!caughtPokemon.includes(lastCaughtPokemon.name)) {
+        const thumb = document.querySelector(`.pokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`);
         thumb.classList.add("caught");
 
-        const thumb2 = document.querySelector(`.pokemonRadarLittleIMG[alt=${lastCaughtPokemon.alt}]`)
+        const thumb2 = document.querySelector(`.pokemonRadarLittleIMG[alt=${lastCaughtPokemon.alt}]`);
         thumb2.classList.add("caught");
 
         caughtPokemon.push(lastCaughtPokemon.name);
-
         document.title = `P-C (${caughtPokemon.length}/151)`;
-
     }
 
+    if (lastCaughtPokemon.isShiny === true && !caughtPokemonShiny.includes(lastCaughtPokemon.name)) {
+        caughtPokemonShiny.push(lastCaughtPokemon.name);
+
+        const thumb3 = document.querySelector(`.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`);
+        thumb3.classList.add("caught");
+    }
 }
 
 
@@ -185,23 +220,26 @@ roadName.innerHTML = "Road 1"
 const pokedexList = document.querySelector(".pokedexList")
 
 function addToPokedex(pokemon) {
-    const addPokemon = document.createElement("li")
-    addPokemon.classList.add("pokedexItem")
-    pokedexList.prepend(addPokemon)
+    const addPokemon = document.createElement("li");
+    addPokemon.classList.add("pokedexItem");
+    pokedexList.prepend(addPokemon);
 
-    const pokemonIMG = document.createElement("img")    
+    const pokemonIMG = document.createElement("img");
     pokemonIMG.src = `https://img.pokemondb.net/sprites/black-white/normal/${pokemon.alt.toLowerCase()}.png`;
-    // Gen 5 https://img.pokemondb.net/sprites/black-white/normal/${pokemon.alt.toLowerCase()}.png             //
-    // Gen 8 https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png   //
-    // Gif   https://img.pokemondb.net/sprites/black-white/anim/normal/${pokemon.alt.toLowerCase()}.gif        //
-    pokemonIMG.alt = `${pokemon.alt}`
-    pokemonIMG.classList.add("pokemonIMG")
-    addPokemon.appendChild(pokemonIMG)
+    if (pokemon.isShiny) {
+        pokemonIMG.src = `https://img.pokemondb.net/sprites/black-white/shiny/${pokemon.alt.toLowerCase()}.png`;
+    }
+    pokemonIMG.alt = `${pokemon.alt}`;
+    pokemonIMG.classList.add("pokemonIMG");
+    addPokemon.appendChild(pokemonIMG);
 
-    const pokemonTitle = document.createElement("p")
-    pokemonTitle.innerHTML = `${pokemon.name}`
-    pokemonTitle.classList.add("pokemonTitle")
-    addPokemon.appendChild(pokemonTitle)
+    const pokemonTitle = document.createElement("p");
+    pokemonTitle.innerHTML = `${pokemon.name}`;
+    if (pokemon.isShiny) {
+        pokemonTitle.innerHTML = `${pokemon.name} *`;
+    }
+    pokemonTitle.classList.add("pokemonTitle");
+    addPokemon.appendChild(pokemonTitle);
 }
 
 
@@ -217,21 +255,43 @@ let stepsBeforeRoadChange = 500
 /*  --------- TIME TRACKER + BASED ON EVENT ---------- */
 
 
-setInterval(() => {
-    catchRandom()
-}, 10000)
+let lastTime = performance.now();
+let stepInterval = 1000; 
+let catchInterval = 10000; 
+let stepAccumulator = 0;
+let catchAccumulator = 0;
 
-setInterval(() => {
-    stepsBeforeRoadChange = stepsBeforeRoadChange - 1
-    stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
-    totalClick += 1
-    if (stepsBeforeRoadChange === 0) {
-        stepsBeforeRoadChange = 500
+function update(time) {
+    let deltaTime = time - lastTime;
+    lastTime = time;
+
+    stepAccumulator += deltaTime;
+    catchAccumulator += deltaTime;
+
+    while (stepAccumulator >= stepInterval) {
+        stepsBeforeRoadChange -= 1;
+        stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road");
+        totalClick += 1;
+        if (stepsBeforeRoadChange === 0) {
+            stepsBeforeRoadChange = 500;
+        }
+        if (totalClick % 500 === 0) {
+            changeRoad();
+        }
+        stepAccumulator -= stepInterval;
     }
-    if (totalClick % 500 === 0) {
-        changeRoad()
+
+    while (catchAccumulator >= catchInterval) {
+        catchRandom();
+        catchAccumulator -= catchInterval;
     }
-}, 1000)
+
+    document.title = `P-C (${caughtPokemon.length}/151)`
+
+    requestAnimationFrame(update);
+}
+
+requestAnimationFrame(update);
 
 
 /*  --------- CLICK TRACKER + BASED ON EVENT ---------- */
@@ -256,18 +316,33 @@ stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
 /* ------ FUNCTION TO CREATE THE TRACKER OF POKEMON NOT CAUGHT------- */
 
 let isPokemonCaught = document.querySelector(".caughtPokemon");
+let isShinyPokemonCaught = document.querySelector(".shinyCaughtPokemon")
 
 for (let i = 0; i < availablePokemons.length; i++) {
     function addToCaughtPokemon(pokemon) {
+
+        /* ----------- NORMAL POKEMON -----------*/
         const addPokemon = document.createElement("li");
         addPokemon.classList.add("isPokemonCaught");
         isPokemonCaught.appendChild(addPokemon);
 
         const pokemonIMG = document.createElement("img");
-        pokemonIMG.src = `https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png`;
+        pokemonIMG.src = `https://img.pokemondb.net/sprites/ruby-sapphire/normal/${pokemon.alt.toLowerCase()}.png`;
         pokemonIMG.alt = `${pokemon.alt}`;
         pokemonIMG.classList.add("pokemonLittleIMG");
         addPokemon.appendChild(pokemonIMG);
+
+
+        /* ----------- SHINY POKEMON -----------*/
+        const addPokemonShiny = document.createElement("li");
+        addPokemonShiny.classList.add("isShinyPokemonCaught");
+        isShinyPokemonCaught.appendChild(addPokemonShiny);
+
+        const pokemonShinyIMG = document.createElement("img");
+        pokemonShinyIMG.src = `https://img.pokemondb.net/sprites/ruby-sapphire/shiny/${pokemon.alt.toLowerCase()}.png`;
+        pokemonShinyIMG.alt = `${pokemon.alt}`;
+        pokemonShinyIMG.classList.add("shinyPokemonLittleIMG");
+        addPokemonShiny.appendChild(pokemonShinyIMG);
     }
     addToCaughtPokemon(availablePokemons[i]);
 }
@@ -305,6 +380,30 @@ radarOnOff.addEventListener("click", () => {
 
     radarContainer.classList.toggle("show")
 });
+
+
+const shinyOnOff = document.querySelector(".shinyIcon")
+const pokedexDisplay = document.querySelector(".caughtPokemon")
+const shinyDisplay = document.querySelector(".shinyCaughtPokemon")
+let normalPokedexDisplaying = true;
+
+shinyOnOff.addEventListener("click", () => {
+
+    if (normalPokedexDisplaying === true) {
+        pokedexDisplay.style.display = "none"
+        shinyDisplay.style.display = "flex"
+        shinyOnOff.classList.add("on")
+        normalPokedexDisplaying = false
+    }
+    else if (normalPokedexDisplaying === false) {
+        pokedexDisplay.style.display = "flex"
+        shinyDisplay.style.display = "none"
+        shinyOnOff.classList.remove("on")
+        normalPokedexDisplaying = true
+    }
+});
+         
+
 
 
 /* -------------------POKEBALL POPUP--------------- */
@@ -388,6 +487,27 @@ let pushedKey = function (event) {
 document.addEventListener('keydown', pushedKey, false);
 
 
+/*--------------------- SWITCH BOY/GIRL TRAINER ---------------------*/
+
+const actualTrainer = document.querySelector(".walkingSprite");
+const switchTrainer = document.querySelector(".trainerSwitch");
+let isGirlTrainer = false; 
+
+switchTrainer.addEventListener("click", () => {
+    if (isGirlTrainer === false) {
+        actualTrainer.src = "stock-img/trainer/trainergirl.png";
+        switchTrainer.src = "stock-img/trainer/trainer_01.png";
+        isGirlTrainer = true;
+        
+    } else if (isGirlTrainer === true) {
+        actualTrainer.src = "stock-img/trainer/trainerallsprite.png";
+        switchTrainer.src = "stock-img/trainer/trainergirlface_01.png";
+        isGirlTrainer = false;
+    }
+    
+
+    
+});
 
 
 
