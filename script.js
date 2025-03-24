@@ -1,5 +1,6 @@
 let currentRoad = pokemonOnRoad1
 
+
 /*  --------- RANDOM CATCH + ADD TO POKEDEX ---------- */
 
 let isPikachuCaught = false
@@ -395,18 +396,37 @@ document.addEventListener('keydown', pushedKey, false);
 
 
 // ne pas toucher en dessous        
+let caughtPokemonSaved = []
+function addToPokedexfromSave(pokemon) {
+    const addPokemon = document.createElement("li")
+    addPokemon.classList.add("pokedexItem")
+    pokedexList.prepend(addPokemon)
 
+    const pokemonIMG = document.createElement("img")    
+    pokemonIMG.src = `https://img.pokemondb.net/sprites/black-white/normal/${pokemon.toLowerCase()}.png`;
+    // Gen 5 https://img.pokemondb.net/sprites/black-white/normal/${pokemon.alt.toLowerCase()}.png             //
+    // Gen 8 https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png   //
+    // Gif   https://img.pokemondb.net/sprites/black-white/anim/normal/${pokemon.alt.toLowerCase()}.gif        //
+    pokemonIMG.alt = `${pokemon.alt}`
+    pokemonIMG.classList.add("pokemonIMG")
+    addPokemon.appendChild(pokemonIMG)
 
+    const pokemonTitle = document.createElement("p")
+    pokemonTitle.innerHTML = `${pokemon}`
+    pokemonTitle.classList.add("pokemonTitle")
+    addPokemon.appendChild(pokemonTitle)
+}
 
 function saveStorage() {
     localStorage.setItem("pokedexStored", JSON.stringify(caughtPokemon));
 }
 function loadFromStorage() {
     caughtPokemon = JSON.parse(localStorage.getItem("pokedexStored"));
+    console.log(caughtPokemon)
     caughtPokemon.forEach(element => {
-        const wholePokemon = availablePokemons.find((elt) => elt.name === element.name);
+        const wholePokemon = availablePokemons.find(elt => elt.name === element);
     if (wholePokemon) {
-        addToPokedex(wholePokemon.alt);
+        addToPokedexfromSave(wholePokemon.alt);
     } else {
         console.warn(`Pokemon not found: ${element.name}`);
     }
