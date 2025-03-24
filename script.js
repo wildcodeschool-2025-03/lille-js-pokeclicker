@@ -1,6 +1,7 @@
 let currentRoad = pokemonOnRoad1
 
 
+
 /*  --------- RANDOM CATCH + ADD TO POKEDEX ---------- */
 
 let isPikachuCaught = false
@@ -59,12 +60,12 @@ function catchRandom() {
         const thumb2 = document.querySelector(`.pokemonRadarLittleIMG[alt=${lastCaughtPokemon.alt}]`);
         thumb2.classList.add("caught");
 
-        caughtPokemon.push(lastCaughtPokemon.name);
+        caughtPokemon.push(lastCaughtPokemon);
         document.title = `P-C (${caughtPokemon.length}/151)`;
     }
 
     if (lastCaughtPokemon.isShiny === true && !caughtPokemonShiny.includes(lastCaughtPokemon.name)) {
-        caughtPokemonShiny.push(lastCaughtPokemon.name);
+        caughtPokemonShiny.push(lastCaughtPokemon);
 
         const thumb3 = document.querySelector(`.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`);
         thumb3.classList.add("caught");
@@ -299,6 +300,7 @@ requestAnimationFrame(update);
 clickTrainer.addEventListener("click", () => {
     totalClick += 1
     stepsBeforeRoadChange = stepsBeforeRoadChange - 1
+    // biome-ignore lint/style/useTemplate: <explanation>
     stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
     if (stepsBeforeRoadChange === 0) {
         stepsBeforeRoadChange = 500
@@ -311,12 +313,13 @@ clickTrainer.addEventListener("click", () => {
     }
 });
 
+// biome-ignore lint/style/useTemplate: <explanation>
 stepIndicator.innerHTML = (stepsBeforeRoadChange + " step before next road")
 
 /* ------ FUNCTION TO CREATE THE TRACKER OF POKEMON NOT CAUGHT------- */
 
-let isPokemonCaught = document.querySelector(".caughtPokemon");
-let isShinyPokemonCaught = document.querySelector(".shinyCaughtPokemon")
+const isPokemonCaught = document.querySelector(".caughtPokemon");
+const isShinyPokemonCaught = document.querySelector(".shinyCaughtPokemon")
 
 for (let i = 0; i < availablePokemons.length; i++) {
     function addToCaughtPokemon(pokemon) {
@@ -452,7 +455,7 @@ imgPokeball.style.display = "none";
 
 const touchElement = document.querySelector(".touch");
 
-touchElement.addEventListener("click", function () {
+touchElement.addEventListener("click", () => {
     alert("Désolé, ça ne fait rien ! Et en plus votre perso fait du monoplace , c'est ridicule !");
 });
 
@@ -462,7 +465,7 @@ const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft',
 const mewFollow = document.querySelector(".walkingMew")
 let lastPushedKey = 0
 
-let pushedKey = function (event) {
+const pushedKey = (event) => {
 
 
     if (konamiCode.indexOf(event.key) < 0 || event.key !== konamiCode[lastPushedKey]) {
@@ -515,54 +518,54 @@ switchTrainer.addEventListener("click", () => {
 
 
 
-// ne pas toucher en dessous        
+// ne pas toucher en dessous       
+
 let caughtPokemonSaved = []
-function addToPokedexfromSave(pokemon) {
-    const addPokemon = document.createElement("li")
-    addPokemon.classList.add("pokedexItem")
-    pokedexList.prepend(addPokemon)
-
-    const pokemonIMG = document.createElement("img")    
-    pokemonIMG.src = `https://img.pokemondb.net/sprites/black-white/normal/${pokemon.toLowerCase()}.png`;
-    // Gen 5 https://img.pokemondb.net/sprites/black-white/normal/${pokemon.alt.toLowerCase()}.png             //
-    // Gen 8 https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png   //
-    // Gif   https://img.pokemondb.net/sprites/black-white/anim/normal/${pokemon.alt.toLowerCase()}.gif        //
-    pokemonIMG.alt = `${pokemon.alt}`
-    pokemonIMG.classList.add("pokemonIMG")
-    addPokemon.appendChild(pokemonIMG)
-
-    const pokemonTitle = document.createElement("p")
-    pokemonTitle.innerHTML = `${pokemon}`
-    pokemonTitle.classList.add("pokemonTitle")
-    addPokemon.appendChild(pokemonTitle)
-}
+let caughtPokemonShinySaved = []
 
 function saveStorage() {
     localStorage.setItem("pokedexStored", JSON.stringify(caughtPokemon));
+    localStorage.setItem("pokedexShinyStored", JSON.stringify(caughtPokemonShiny));
 }
 function loadFromStorage() {
-    caughtPokemon = JSON.parse(localStorage.getItem("pokedexStored"));
-    console.log(caughtPokemon)
-    caughtPokemon.forEach(element => {
-        const wholePokemon = availablePokemons.find(elt => elt.name === element);
-    if (wholePokemon) {
-        addToPokedexfromSave(wholePokemon.alt);
-    } else {
-        console.warn(`Pokemon not found: ${element.name}`);
+    const caughtPokemonSaved = JSON.parse(localStorage.getItem("pokedexStored"));
+    const caughtPokemonShinySaved = JSON.parse(localStorage.getItem("pokedexShinyStored"));
+    console.log(caughtPokemonSaved);
+
+    for (let i = 0; i < caughtPokemonSaved.length; i++) {
+        caughtPokemon.push(caughtPokemonSaved[i]);
     }
-    });
+
+    for (let i = 0; i < caughtPokemon.length; i++) {
+        const thumb4 = document.querySelector(`.pokemonLittleIMG[alt=${caughtPokemon[i].alt}]`);
+        if (thumb4) {
+            thumb4.classList.add("caught");
+        }
+    }
+
+    for (let i = 0; i < caughtPokemonShinySaved.length; i++) {
+        caughtPokemonShiny.push(caughtPokemonShinySaved[i]);
+    }
+
+    for (let i = 0; i < caughtPokemonShiny.length; i++) {
+        const thumbShiny = document.querySelector(`.shinyPokemonLittleIMG[alt=${caughtPokemonShiny[i].alt}]`);
+        if (thumbShiny) {
+            thumbShiny.classList.add("caught");
+        }
+    }
 }
 
 
-// window.addEventListener('onclose', saveStorage())
 
-// window.addEventListener('onload', loadFromStorage())
+window.addEventListener('beforeunload', saveStorage);
+
+window.addEventListener('load', loadFromStorage);
 
 const saveButton = document.querySelector(".saveButton")
 const loadButton = document.querySelector(".loadButton")
-saveButton.addEventListener("click", function(){
+saveButton.addEventListener("click", ()=> {
     saveStorage()
 });
-loadButton.addEventListener("click", function(){
+loadButton.addEventListener("click", ()=> {
     loadFromStorage()
 });
