@@ -70,6 +70,8 @@ function catchRandom() {
         const thumb3 = document.querySelector(`.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`);
         thumb3.classList.add("caught");
     }
+
+    
 }
 
 
