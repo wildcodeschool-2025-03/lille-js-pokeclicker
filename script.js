@@ -53,7 +53,7 @@ function catchRandom() {
 
     /* AJOUT DES POKEMONS DANS LE RADAR ET LE POKEDEX */
 
-    if (!caughtPokemon.includes(lastCaughtPokemon.name)) {
+    if (!caughtPokemon.includes(lastCaughtPokemon)) {
         const thumb = document.querySelector(`.pokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`);
         thumb.classList.add("caught");
 
@@ -571,3 +571,30 @@ saveButton.addEventListener("click", ()=> {
 loadButton.addEventListener("click", ()=> {
     loadFromStorage()
 });
+
+
+
+
+
+const resetButton = document.querySelector(".resetButton");
+resetButton.addEventListener("click", () => {
+    resetStorage();
+});
+
+function resetStorage() {
+   dialog = confirm('Voulez vous supprimer votre sauvegarde ? ')
+  if(dialog) {
+    localStorage.removeItem("pokedexStored");
+    localStorage.removeItem("pokedexShinyStored");
+    caughtPokemon = [];
+    caughtPokemonShiny = [];
+
+    const caughtElements = document.querySelectorAll(".caught");
+    caughtElements.forEach(element => {
+        element.classList.remove("caught");
+    });
+
+    console.log("Storage reset and caughtPokemon lists cleared.");
+  
+}
+}
