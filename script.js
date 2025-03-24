@@ -95,7 +95,7 @@ function addToPokemonRadar(pokemon) {
 	pokemonIMG.src = `https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png`;
 	pokemonIMG.alt = `${pokemon.alt}`;
 	pokemonIMG.classList.add("pokemonRadarLittleIMG");
-	if (caughtPokemon.includes(pokemon)) {
+	if (caughtPokemon.some(caught => caught.name === pokemon.name)) {
 		pokemonIMG.classList.add("caught");
 	}
 	addPokemon.appendChild(pokemonIMG);
@@ -546,7 +546,7 @@ function loadFromStorage() {
 		);
 
 		const thumb5 = document.querySelector(`.pokemonRadarLittleIMG[alt=${caughtPokemon[i].alt}]`);
-		
+
 		if (thumb4) {
 			thumb4.classList.add("caught");
 		}
