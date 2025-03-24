@@ -96,7 +96,7 @@ function addToPokemonRadar(pokemon) {
 	pokemonIMG.src = `https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png`;
 	pokemonIMG.alt = `${pokemon.alt}`;
 	pokemonIMG.classList.add("pokemonRadarLittleIMG");
-	if (caughtPokemon.includes(pokemon.name)) {
+	if (caughtPokemon.includes(pokemon)) {
 		pokemonIMG.classList.add("caught");
 	}
 	addPokemon.appendChild(pokemonIMG);
