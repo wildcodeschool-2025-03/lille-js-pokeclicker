@@ -544,8 +544,14 @@ function loadFromStorage() {
 		const thumb4 = document.querySelector(
 			`.pokemonLittleIMG[alt=${caughtPokemon[i].alt}]`,
 		);
+
+		const thumb5 = document.querySelector(`.pokemonRadarLittleIMG[alt=${caughtPokemon[i].alt}]`);
+		
 		if (thumb4) {
 			thumb4.classList.add("caught");
+		}
+		if (thumb5) {
+			thumb5.classList.add("caught")
 		}
 	}
     
