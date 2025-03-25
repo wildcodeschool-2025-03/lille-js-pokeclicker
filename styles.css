@@ -714,10 +714,6 @@ footer {
         .copyright {
             display : none;
         }
-
-        .walkingTrainer {
-            top: 58%;
-        }
         
         .walkingTrainer:hover {
             transform: none;
@@ -727,10 +723,6 @@ footer {
             transform: scale(0.9);
         }
 
-
-        .walkingPikachu {
-            top: 56%;
-        }
 
         footer {
             justify-content:space-between;
@@ -755,6 +747,15 @@ footer {
             margin-top: 20rem;
         }
 
+    }
 
+    @media screen and (max-height: 700px) {
 
+        .walkingPikachu {
+            top: 56%;
+        }
+
+        .walkingTrainer {
+            top: 58%;
+        }
     }
