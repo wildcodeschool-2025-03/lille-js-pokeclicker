@@ -1,5 +1,7 @@
 let currentRoad = pokemonOnRoad1;
 
+let shinySound = new Audio("sounds/shinySoundEffect.mp3")
+
 /*  --------- RANDOM CATCH + ADD TO POKEDEX ---------- */
 let isShinyCharmOn = false
 let isPikachuCaught = false;
@@ -74,12 +76,13 @@ function catchRandom() {
         !caughtPokemonShiny.some(pokemon => pokemon.name === lastCaughtPokemon.name)
     ) {
         caughtPokemonShiny.push(lastCaughtPokemon);
+		shinySound.play()
 
         const thumb3 = document.querySelector(
             `.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
         );
         thumb3.classList.add("caught");
-    }
+	    }
 }
 
 /*  --------- MAP + CHANGE ROAD FUNCTION ---------- */
