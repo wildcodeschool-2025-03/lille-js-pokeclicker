@@ -24,6 +24,7 @@ body {
     width: 100%;
     min-height: 100%;
     background-image: url("stock-img/backgroundMoving.png");
+    /* background-image: url("https://images6.alphacoders.com/641/thumb-1920-641430.jpg"); */
     background-repeat: repeat-x;
     background-size: auto 100vh;
     background-attachment: fixed;
@@ -528,7 +529,7 @@ h1 {
 
 .pokeball {
     width: 5rem;
-    margin: 15rem;
+    margin-top: 20rem;
 }
 
 /* Fait des effets de clignotement sur les diodes */
