@@ -355,7 +355,7 @@ main {
     text-align: center;
     position: fixed;
     top: 100px;
-    right: 70px;
+    right: 40px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.76);
     border: solid 3px rgb(99, 34, 34);
 }
@@ -385,7 +385,7 @@ main {
     width: 165px;
     max-width: 80%;
     top: 300px;
-    right: 70px;
+    right: 40px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.76);
     border: solid 3px rgb(99, 34, 34);
     max-height: 300px;
@@ -445,10 +445,23 @@ main {
     cursor: pointer;
     position: fixed;
     top: 100px;
-    right: 20px;
+    right: 220px;
 }
 
 .compass:active {
+    transform: scale(0.9);
+}
+
+.shinyCharm {
+    height: 60px;
+    cursor: pointer;
+    position: fixed;
+    top : 150px;
+    right : 212px;
+    display : none;
+}
+
+.shinyCharm:active {
     transform: scale(0.9);
 }
 

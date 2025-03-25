@@ -1,7 +1,7 @@
 let currentRoad = pokemonOnRoad1;
 
 /*  --------- RANDOM CATCH + ADD TO POKEDEX ---------- */
-
+let isShinyCharmOn = false
 let isPikachuCaught = false;
 let isMewCaught = false;
 const pikachuSprite = document.querySelector(".walkingPikachu");
@@ -30,7 +30,13 @@ function catchRandom() {
 		}
 	}
 
-	let isShiny = Math.random() < 0.01;
+    if (isShinyCharmOn === true){
+        isShiny = Math.random() < 0.15;}
+    
+
+    else {
+         isShiny = Math.random() < 0.01;}
+
 	lastCaughtPokemon.isShiny = isShiny;
 
 	addToPokedex(lastCaughtPokemon);
@@ -287,6 +293,10 @@ function update(time) {
 		if (totalClick % 500 === 0) {
 			changeRoad();
 		}
+        if (totalClick % 10000 === 0) {
+            shinyCharm.style.display = "block"
+        }
+    
 		stepAccumulator -= stepInterval;
 	}
 
@@ -318,6 +328,9 @@ clickTrainer.addEventListener("click", () => {
 	if (totalClick % 500 === 0) {
 		changeRoad();
 	}
+    if (totalClick % 10000 === 0) {
+        shinyCharm.style.display = "block"
+    }
 });
 
 // biome-ignore lint/style/useTemplate: <explanation>
@@ -517,7 +530,7 @@ switchTrainer.addEventListener("click", () => {
 	}
 });
 
-// ne pas toucher en dessous
+// ------------SAVE AND LOAD--------------- //
 
 let caughtPokemonSaved = [];
 let caughtPokemonShinySaved = [];
@@ -580,6 +593,8 @@ function loadFromStorage() {
     }
 }
 
+// ------------SAVE LOAD AND RESET BUTTONS--------------- //
+
 window.addEventListener("beforeunload", saveStorage);
 
 window.addEventListener("load", loadFromStorage);
@@ -614,3 +629,15 @@ function resetStorage() {
 		console.log("Storage reset and caughtPokemon lists cleared.");
 	}
 }
+
+const shinyCharm = document.querySelector(".shinyCharm")
+
+
+shinyCharm.addEventListener("click",() => {
+    isShinyCharmOn = true
+    setTimeout(() => {
+        isShinyCharmOn = false
+    },60000);
+    shinyCharm.style.display = "none"
+})
+
