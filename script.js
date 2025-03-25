@@ -789,8 +789,6 @@ bike.addEventListener("click", () => {
     bike.style.display = "none";
 });
 
-
-
 mewFinder.addEventListener("click", () => {
 
         isMewFinderOn = true;
@@ -809,6 +807,8 @@ mewFinder.addEventListener("click", () => {
 
         mewFinder.style.display = "none";
     });
+
+	// -------------MUSIC BUTTON--------------- //
 
 const musicButton = document.querySelector(".musicButton")
 const backgroundMusic = document.querySelector("audio")
