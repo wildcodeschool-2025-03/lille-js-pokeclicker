@@ -527,8 +527,8 @@ h1 {
 }
 
 .pokeball {
-    width: 5rem;
-    margin: 15rem;
+    width: 3rem;
+    margin-top: 5rem;    
 }
 
 /* Fait des effets de clignotement sur les diodes */
@@ -705,5 +705,56 @@ footer {
         overflow-y: auto;
         display: none;
      }
+
+    }
+
+
+    @media screen and (max-width: 450px) {
+
+        .copyright {
+            display : none;
+        }
+
+        .walkingTrainer {
+            top: 58%;
+        }
+        
+        .walkingTrainer:hover {
+            transform: none;
+        }
+        
+        .walkingTrainer:active {
+            transform: scale(0.9);
+        }
+
+
+        .walkingPikachu {
+            top: 56%;
+        }
+
+        footer {
+            justify-content:space-between;
+        }
+
+        .stepSign {
+            position: fixed;
+            top: auto;
+            
+            bottom: 7px;
+            right: 50%;
+            translate: 50%;
+            z-index: 1000;
+        }
+
+        .compass {
+            right: 30px;
+        }
+
+        .pokeball {
+            width: 2rem;
+            margin-top: 20rem;
+        }
+
+
 
     }
