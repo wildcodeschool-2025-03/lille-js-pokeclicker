@@ -1,7 +1,7 @@
 let currentRoad = pokemonOnRoad1;
 
 /*  --------- RANDOM CATCH + ADD TO POKEDEX ---------- */
-let isShinyCharmOn = false
+
 let isPikachuCaught = false;
 let isMewCaught = false;
 const pikachuSprite = document.querySelector(".walkingPikachu");
@@ -13,33 +13,54 @@ let caughtPokemonShiny = [];
 document.title = `P-C (${caughtPokemon.length}/151)`;
 
 function catchRandom() {
-	let totalRarity = currentRoad.reduce(
+
+    if (isLentilScopOn === true) {
+        totalRarity = currentRoad.reduce(
+            (sum, pokemon) => sum + pokemon.rarity2,
+            0,
+    );}
+
+    else if (isSprayDuckOn === true) {
+        totalRarity = currentRoad.reduce(
+            (sum, pokemon) => sum + pokemon.rarity3,
+            0,
+    );}
+
+    else if (isMewFinderOn === true) {
+        totalRarity = currentRoad.reduce(
+            (sum, pokemon) => sum + pokemon.rarity4,
+            0,
+    );}
+
+    else {
+	totalRarity = currentRoad.reduce(
 		(sum, pokemon) => sum + pokemon.rarity,
 		0,
-	);
+	);}
+
 
 	let random = Math.random() * totalRarity;
 
-	let cumulativeRarity = 0;
-	let lastCaughtPokemon;
-	for (let i = 0; i < currentRoad.length; i++) {
-		cumulativeRarity += currentRoad[i].rarity;
-		if (random < cumulativeRarity) {
-			lastCaughtPokemon = currentRoad[i];
-			break;
-		}
-	}
+let cumulativeRarity = 0;
+let lastCaughtPokemon;
+for (let i = 0; i < currentRoad.length; i++) {
+    cumulativeRarity += currentRoad[i].rarity;
+    if (random < cumulativeRarity) {
+        lastCaughtPokemon = currentRoad[i];
+        break;
+    }
+}
 
-    if (isShinyCharmOn === true){
-        isShiny = Math.random() < 0.15;}
-    
+if (lastCaughtPokemon) { // Added check to ensure lastCaughtPokemon is defined
+    if (isShinyCharmOn === true) {
+        isShiny = Math.random() < 0.15;
+    } else {
+        isShiny = Math.random() < 0.01;
+    }}
 
-    else {
-         isShiny = Math.random() < 0.01;}
+    lastCaughtPokemon.isShiny = isShiny;
 
-	lastCaughtPokemon.isShiny = isShiny;
-
-	addToPokedex(lastCaughtPokemon);
+    addToPokedex(lastCaughtPokemon);
 
 	/* -------- AJOUT PIKACHU & MEW -------- */
 
@@ -270,6 +291,15 @@ let stepsBeforeRoadChange = 500;
 
 /*  --------- TIME TRACKER + BASED ON EVENT ---------- */
 
+
+const itemList = [
+    {name : "Shiny Charm", rarity : 25},
+    {name : "Lentil Scop", rarity : 25},
+    {name : "Spray Duck", rarity : 25},
+    {name : "Bike", rarity : 25},
+    {name : "Mew Finder", rarity : 1},
+]
+
 let lastTime = performance.now();
 let stepInterval = 1000;
 let catchInterval = 10000;
@@ -293,15 +323,49 @@ function update(time) {
 		if (totalClick % 500 === 0) {
 			changeRoad();
 		}
-        if (totalClick % 10000 === 0) {
-            shinyCharm.style.display = "block"
-        }
+        
+        
     
 		stepAccumulator -= stepInterval;
 	}
 
 	while (catchAccumulator >= catchInterval) {
 		catchRandom();
+
+        if (totalClick % 10 === 0) {
+            let totalRarity = itemList.reduce(
+                (sum, item) => sum + item.rarity,
+                0
+            );
+        
+            let random = Math.random() * totalRarity;
+            let itemSelected;
+            let cumulativeRarity = 0;
+            for (let i = 0; i < itemList.length; i++) {
+                cumulativeRarity += itemList[i].rarity;
+                if (random < cumulativeRarity) {
+                    itemSelected = itemList[i];
+                    break;
+                }
+            }
+        
+            if (itemSelected.name === "Shiny Charm") {
+                shinyCharm.style.display = "block";
+            }
+            if (itemSelected.name === "Lentil Scop") {
+                lentilScop.style.display = "block";
+            }
+            if (itemSelected.name === "Spray Duck") {
+                sprayDuck.style.display = "block";
+            }
+            if (itemSelected.name === "Bike") {
+                bike.style.display = "block";
+            }
+            if (itemSelected.name === "Mew Finder") {
+                mewFinder.style.display = "block";
+            }
+        }
+
 		catchAccumulator -= catchInterval;
 	}
 
@@ -315,7 +379,14 @@ requestAnimationFrame(update);
 /*  --------- CLICK TRACKER + BASED ON EVENT ---------- */
 
 clickTrainer.addEventListener("click", () => {
-	totalClick += 1;
+	
+    if (isBikeOn === true) {
+    totalClick += 4;}
+
+    else {
+    totalClick += 1;
+    }
+
 	stepsBeforeRoadChange = stepsBeforeRoadChange - 1;
 	// biome-ignore lint/style/useTemplate: <explanation>
 	stepIndicator.innerHTML = stepsBeforeRoadChange + " step before next road";
@@ -327,9 +398,39 @@ clickTrainer.addEventListener("click", () => {
 	}
 	if (totalClick % 500 === 0) {
 		changeRoad();
-	}
-    if (totalClick % 10000 === 0) {
-        shinyCharm.style.display = "block"
+    }
+    if (totalClick % 10 === 0) {
+        let totalRarity = itemList.reduce(
+            (sum, item) => sum + item.rarity,
+            0
+        );
+    
+        let random = Math.random() * totalRarity;
+        let itemSelected;
+        let cumulativeRarity = 0;
+        for (let i = 0; i < itemList.length; i++) {
+            cumulativeRarity += itemList[i].rarity;
+            if (random < cumulativeRarity) {
+                itemSelected = itemList[i];
+                break;
+            }
+        }
+    
+        if (itemSelected.name === "Shiny Charm") {
+            shinyCharm.style.display = "block";
+        }
+        if (itemSelected.name === "Lentil Scop") {
+            lentilScop.style.display = "block";
+        }
+        if (itemSelected.name === "Spray Duck") {
+            sprayDuck.style.display = "block";
+        }
+        if (itemSelected.name === "Bike") {
+            bike.style.display = "block";
+        }
+        if (itemSelected.name === "Mew Finder") {
+            mewFinder.style.display = "block";
+        }
     }
 });
 
@@ -547,7 +648,6 @@ function loadFromStorage() {
 	const caughtPokemonShinySaved = JSON.parse(
 		localStorage.getItem("pokedexShinyStored"),
 	);
-	console.log(caughtPokemonSaved);
 
 	for (let i = 0; i < caughtPokemonSaved.length; i++) {
 		caughtPokemon.push(caughtPokemonSaved[i]);
@@ -630,14 +730,58 @@ function resetStorage() {
 	}
 }
 
+
+// -------------SHINY CHARM BUTTON--------------- //
+
 const shinyCharm = document.querySelector(".shinyCharm")
+const lentilScop = document.querySelector(".lentilScop")
+const sprayDuck = document.querySelector(".sprayDuck")
+const bike = document.querySelector(".bike")
+const mewFinder = document.querySelector(".mewFinder")
+
+let isShinyCharmOn = false
+let isLentilScopOn = false
+let isSprayDuckOn = false
+let isBikeOn = false
+let isMewFinderOn = false
 
 
-shinyCharm.addEventListener("click",() => {
-    isShinyCharmOn = true
+shinyCharm.addEventListener("click", () => {
+    isShinyCharmOn = true;
     setTimeout(() => {
-        isShinyCharmOn = false
-    },60000);
-    shinyCharm.style.display = "none"
-})
+        isShinyCharmOn = false;
+    }, 60000);
+    shinyCharm.style.display = "none";
+});
 
+lentilScop.addEventListener("click", () => {
+    isLentilScopOn = true;
+    setTimeout(() => {
+        isLentilScopOn = false;
+    }, 60000);
+    lentilScop.style.display = "none";
+});
+
+sprayDuck.addEventListener("click", () => {
+    isSprayDuckOn = true;
+    setTimeout(() => {
+        isSprayDuckOn = false;
+    }, 60000);
+    sprayDuck.style.display = "none";
+});
+
+bike.addEventListener("click", () => {
+    isBikeOn = true;
+    setTimeout(() => {
+        isBikeOn = false;
+    }, 60000);
+    bike.style.display = "none";
+});
+
+mewFinder.addEventListener("click", () => {
+    isMewFinderOn = true;
+    setTimeout(() => {
+        isMewFinderOn = false;
+    }, 60000);
+    mewFinder.style.display = "none";
+});

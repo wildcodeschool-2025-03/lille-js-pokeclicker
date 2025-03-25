@@ -453,17 +453,70 @@ main {
 }
 
 .shinyCharm {
-    height: 60px;
+    height: 40px;
     cursor: pointer;
     position: fixed;
-    top : 150px;
-    right : 212px;
+    top : 55px;
+    right : 170px;
     display : none;
 }
 
 .shinyCharm:active {
     transform: scale(0.9);
 }
+
+.lentilScop {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top : 55px;
+    right : 138px;
+    display : none;
+}
+
+.lentilScop:active {
+    transform: scale(0.9);
+}
+
+.sprayDuck {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top : 55px;
+    right : 105px;
+    display : none;
+}
+
+.sprayDuck:active {
+    transform: scale(0.9);
+}
+
+.bike {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top : 55px;
+    right : 70px;
+    display : none;
+}
+
+.bike:active {
+    transform: scale(0.9);
+}
+
+.mewFinder {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top : 55px;
+    right : 35px;
+    display : none;
+}
+
+.mewFinder:active {
+    transform: scale(0.9);
+}
+
 
 /* HEADER */
 
