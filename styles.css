@@ -722,6 +722,12 @@ footer {
 
     }
 
+    .musicButton{
+        height: 1.5rem;
+        width: 1.5rem;
+        cursor: pointer;
+    }
+
 
     @media screen and (max-width: 450px) {
 
