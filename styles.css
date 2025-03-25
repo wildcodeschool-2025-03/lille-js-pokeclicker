@@ -80,6 +80,7 @@ main {
     height: 60%;
     display: none;
     padding: 2rem;
+    z-index: 100;
 }
 
 .caughtPokemonContainer.show {
@@ -177,6 +178,7 @@ main {
     padding: 2rem;
     border: solid 3px rgb(99, 34, 34);
     height: 60%;
+    z-index: 100;
 }
 
 .pokedexContainer.show {
@@ -454,17 +456,74 @@ main {
 }
 
 .shinyCharm {
-    height: 60px;
+    height: 40px;
     cursor: pointer;
     position: fixed;
-    top : 150px;
-    right : 212px;
+    top : 55px;
+    right : 170px;
     display : none;
 }
 
 .shinyCharm:active {
     transform: scale(0.9);
 }
+
+.lentilScop {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top : 55px;
+    right : 138px;
+    display : none;
+}
+
+.lentilScop:active {
+    transform: scale(0.9);
+}
+
+.sprayDuck {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top : 55px;
+    right : 105px;
+    display : none;
+}
+
+.sprayDuck:active {
+    transform: scale(0.9);
+}
+
+.bike {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top : 55px;
+    right : 70px;
+    display : none;
+}
+
+.bike:active {
+    transform: scale(0.9);
+}
+
+.desactivated {
+    filter : grayscale(1)
+}
+
+.mewFinder {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top : 55px;
+    right : 35px;
+    display : none;
+}
+
+.mewFinder:active {
+    transform: scale(0.9);
+}
+
 
 /* HEADER */
 
@@ -709,7 +768,7 @@ footer {
     .pokemonRadarContainer {
         width: 165px;
         max-width: 80%;
-        top: 120px;
+        top: 150px;
         right: 20px;
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.76);
         border: solid 3px rgb(99, 34, 34);
@@ -719,6 +778,33 @@ footer {
         overflow-y: auto;
         display: none;
      }
+
+
+     .shinyCharm {
+        top : 110px;
+        right : 150px;
+    }
+    
+    .lentilScop {
+        top : 110px;
+        right : 115px;
+    }
+    
+    .sprayDuck {
+        top : 110px;
+        right : 80px;
+    }
+    
+    .bike {
+        top : 110px;
+        right : 45px;
+    }
+        
+    .mewFinder {
+        top : 110px;
+        right : 10px;
+    }
+    
 
     }
 

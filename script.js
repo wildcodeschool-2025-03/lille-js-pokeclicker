@@ -3,7 +3,7 @@ let currentRoad = pokemonOnRoad1;
 let shinySound = new Audio("sounds/shinySoundEffect.mp3")
 
 /*  --------- RANDOM CATCH + ADD TO POKEDEX ---------- */
-let isShinyCharmOn = false
+
 let isPikachuCaught = false;
 let isMewCaught = false;
 const pikachuSprite = document.querySelector(".walkingPikachu");
@@ -15,55 +15,83 @@ let caughtPokemonShiny = [];
 document.title = `P-C (${caughtPokemon.length}/151)`;
 
 function catchRandom() {
-	let totalRarity = currentRoad.reduce(
-		(sum, pokemon) => sum + pokemon.rarity,
-		0,
-	);
+    let totalRarity, random, cumulativeRarity = 0, lastCaughtPokemon;
 
-	let random = Math.random() * totalRarity;
+    if (isLentilScopOn === true) {
+        totalRarity = currentRoad.reduce((sum, pokemon) => sum + pokemon.rarity2, 0);
+        random = Math.random() * totalRarity;
 
-	let cumulativeRarity = 0;
-	let lastCaughtPokemon;
-	for (let i = 0; i < currentRoad.length; i++) {
-		cumulativeRarity += currentRoad[i].rarity;
-		if (random < cumulativeRarity) {
-			lastCaughtPokemon = currentRoad[i];
-			break;
-		}
-	}
+        for (let i = 0; i < currentRoad.length; i++) {
+            cumulativeRarity += currentRoad[i].rarity2;
+            if (random < cumulativeRarity) {
+                lastCaughtPokemon = currentRoad[i];
+                break;
+            }
+        }
+    } else if (isSprayDuckOn === true) {
+        totalRarity = currentRoad.reduce((sum, pokemon) => sum + pokemon.rarity3, 0);
+        random = Math.random() * totalRarity;
 
-	if (isShinyCharmOn === true) {
-		isShiny = Math.random() < 0.15;
-	}
+        for (let i = 0; i < currentRoad.length; i++) {
+            cumulativeRarity += currentRoad[i].rarity3;
+            if (random < cumulativeRarity) {
+                lastCaughtPokemon = currentRoad[i];
+                break;
+            }
+        }
+    } else if (isMewFinderOn === true) {
+        totalRarity = currentRoad.reduce((sum, pokemon) => sum + pokemon.rarity4, 0);
+        random = Math.random() * totalRarity;
+
+        for (let i = 0; i < currentRoad.length; i++) {
+            cumulativeRarity += currentRoad[i].rarity4;
+            if (random < cumulativeRarity) {
+                lastCaughtPokemon = currentRoad[i];
+                break;
+            }
+        }
+    } else {
+        totalRarity = currentRoad.reduce((sum, pokemon) => sum + pokemon.rarity, 0);
+        random = Math.random() * totalRarity;
+
+        for (let i = 0; i < currentRoad.length; i++) {
+            cumulativeRarity += currentRoad[i].rarity;
+            if (random < cumulativeRarity) {
+                lastCaughtPokemon = currentRoad[i];
+                break;
+            }
+        }
+    }
 
 
-	else {
-		isShiny = Math.random() < 0.01;
-	}
+if (lastCaughtPokemon) { 
+    if (isShinyCharmOn === true) {
+        isShiny = Math.random() < 0.10;
+    } else {
+        isShiny = Math.random() < 0.01;
+    }
+    lastCaughtPokemon.isShiny = isShiny; 
+    addToPokedex(lastCaughtPokemon);
 
-	lastCaughtPokemon.isShiny = isShiny;
+    /* -------- AJOUT PIKACHU & MEW -------- */
 
-	addToPokedex(lastCaughtPokemon);
+    if (lastCaughtPokemon.name === "Pikachu" && isPikachuCaught === false) {
+        pikachuSprite.style.display = "block";
+        isPikachuCaught = true;
+    }
 
-	/* -------- AJOUT PIKACHU & MEW -------- */
+    if (lastCaughtPokemon.name === "Mew" && isMewCaught === false) {
+        mewFollow2.style.display = "block";
+        isMewCaught = true;
+    }
 
-	if (lastCaughtPokemon.name === "Pikachu" && isPikachuCaught === false) {
-		pikachuSprite.style.display = "block";
-		isPikachuCaught = true;
-	}
+    /* AJOUT DES POKEMONS DANS LE RADAR ET LE POKEDEX */
 
-	if (lastCaughtPokemon.name === "Mew" && isMewCaught === false) {
-		mewFollow2.style.display = "block";
-		isMewCaught = true;
-	}
-
-	/* AJOUT DES POKEMONS DANS LE RADAR ET LE POKEDEX */
-
-	if (!caughtPokemon.some(pokemon => pokemon.name === lastCaughtPokemon.name)) {
-		const thumb = document.querySelector(
-			`.pokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
-		);
-		thumb.classList.add("caught");
+    if (!caughtPokemon.some(pokemon => pokemon.name === lastCaughtPokemon.name)) {
+        const thumb = document.querySelector(
+            `.pokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
+        );
+        thumb.classList.add("caught");
 
 		const thumb2 = document.querySelector(
 			`.pokemonRadarLittleIMG[alt=${lastCaughtPokemon.alt}]`,
@@ -86,8 +114,19 @@ function catchRandom() {
 		thumb3.classList.add("caught");
 	}
 }
+}
+
+// ...existing code...
 
 /*  --------- MAP + CHANGE ROAD FUNCTION ---------- */
+
+const itemList = [
+    {name : "Shiny Charm", rarity : 15},
+    {name : "Lentil Scop", rarity : 30},
+    {name : "Spray Duck", rarity : 30},
+    {name : "Bike", rarity : 30},
+    {name : "Mew Finder", rarity : 5},
+]
 
 const sign = document.querySelector(".stepSign");
 const mapRoads = document.createElement("img");
@@ -196,6 +235,7 @@ function changeRoad() {
 		currentRoad = pokemonOnRoad9;
 		roadName.innerHTML = "Road 9";
 		mapRoads.src = "stock-img/maps/mapRoad9.png";
+		
 
 		const uniquePokemonRoad9 = pokemonOnRoad9.filter(
 			(value, index, self) => self.indexOf(value) === index,
@@ -207,6 +247,7 @@ function changeRoad() {
 		currentRoad = pokemonOnRoad1;
 		roadName.innerHTML = "Road 1";
 		mapRoads.src = "stock-img/maps/mapRoad1.png";
+		
 
 		const uniquePokemonRoad1 = pokemonOnRoad1.filter(
 			(value, index, self) => self.indexOf(value) === index,
@@ -214,10 +255,46 @@ function changeRoad() {
 		for (let i = 0; i < uniquePokemonRoad1.length; i++) {
 			addToPokemonRadar(uniquePokemonRoad1[i]);
 		}
+
+		let totalRarity = itemList.reduce(
+            (sum, item) => sum + item.rarity,
+            0
+        );
+    
+        let random = Math.random() * totalRarity;
+        let itemSelected;
+        let cumulativeRarity = 0;
+        for (let i = 0; i < itemList.length; i++) {
+            cumulativeRarity += itemList[i].rarity;
+            if (random < cumulativeRarity) {
+                itemSelected = itemList[i];
+                break;
+            }
+        }
+    
+        if (itemSelected.name === "Shiny Charm") {
+            shinyCharm.style.display = "block";
+        }
+        if (itemSelected.name === "Lentil Scop") {
+            lentilScop.style.display = "block";
+        }
+        if (itemSelected.name === "Spray Duck") {
+            sprayDuck.style.display = "block";
+        }
+        if (itemSelected.name === "Bike") {
+            bike.style.display = "block";
+        }
+        if (itemSelected.name === "Mew Finder") {
+            mewFinder.style.display = "block";
+        }
+    
+
+
 	} else {
 		currentRoad = pokemonOnRoad1;
 		roadName.innerHTML = "Road 1";
 		mapRoads.src = "stock-img/maps/mapRoad1.png";
+		
 
 		const uniquePokemonRoad1 = pokemonOnRoad1.filter(
 			(value, index, self) => self.indexOf(value) === index,
@@ -275,7 +352,10 @@ let stepsBeforeRoadChange = 500;
 
 /*  --------- TIME TRACKER + BASED ON EVENT ---------- */
 
+
 let lastTime = performance.now();
+
+
 let stepInterval = 1000;
 let catchInterval = 10000;
 let stepAccumulator = 0;
@@ -284,6 +364,15 @@ let catchAccumulator = 0;
 function update(time) {
 	let deltaTime = time - lastTime;
 	lastTime = time;
+
+	if (isBikeOn === true) {
+		stepInterval = 100;
+	catchInterval = 1000;}
+
+	else if (isBikeOn === false) {
+		stepInterval = 1000;
+		catchInterval = 10000;
+	}
 
 	stepAccumulator += deltaTime;
 	catchAccumulator += deltaTime;
@@ -298,15 +387,15 @@ function update(time) {
 		if (totalClick % 500 === 0) {
 			changeRoad();
 		}
-		if (totalClick % 10000 === 0) {
-			shinyCharm.style.display = "block"
-		}
-
+        
+        
+    
 		stepAccumulator -= stepInterval;
 	}
 
 	while (catchAccumulator >= catchInterval) {
 		catchRandom();
+
 		catchAccumulator -= catchInterval;
 	}
 
@@ -320,7 +409,9 @@ requestAnimationFrame(update);
 /*  --------- CLICK TRACKER + BASED ON EVENT ---------- */
 
 clickTrainer.addEventListener("click", () => {
-	totalClick += 1;
+	
+    totalClick += 1;
+
 	stepsBeforeRoadChange = stepsBeforeRoadChange - 1;
 	// biome-ignore lint/style/useTemplate: <explanation>
 	stepIndicator.innerHTML = stepsBeforeRoadChange + " step before next road";
@@ -332,10 +423,9 @@ clickTrainer.addEventListener("click", () => {
 	}
 	if (totalClick % 500 === 0) {
 		changeRoad();
-	}
-	if (totalClick % 10000 === 0) {
-		shinyCharm.style.display = "block"
-	}
+    }
+    
+        
 });
 
 // biome-ignore lint/style/useTemplate: <explanation>
@@ -552,7 +642,6 @@ function loadFromStorage() {
 	const caughtPokemonShinySaved = JSON.parse(
 		localStorage.getItem("pokedexShinyStored"),
 	);
-	console.log(caughtPokemonSaved);
 
 	for (let i = 0; i < caughtPokemonSaved.length; i++) {
 		caughtPokemon.push(caughtPokemonSaved[i]);
@@ -635,16 +724,91 @@ function resetStorage() {
 	}
 }
 
+
+// -------------SHINY CHARM BUTTON--------------- //
+
 const shinyCharm = document.querySelector(".shinyCharm")
+const lentilScop = document.querySelector(".lentilScop")
+const sprayDuck = document.querySelector(".sprayDuck")
+const bike = document.querySelector(".bike")
+const mewFinder = document.querySelector(".mewFinder")
+
+let isShinyCharmOn = false
+let isLentilScopOn = false
+let isSprayDuckOn = false
+let isBikeOn = false
+let isMewFinderOn = false
 
 
 shinyCharm.addEventListener("click", () => {
-	isShinyCharmOn = true
-	setTimeout(() => {
-		isShinyCharmOn = false
-	}, 60000);
-	shinyCharm.style.display = "none"
-})
+    isShinyCharmOn = true;
+    setTimeout(() => {
+        isShinyCharmOn = false;
+    }, 60000);
+    shinyCharm.style.display = "none";
+});
+
+lentilScop.addEventListener("click", () => {
+    isLentilScopOn = true;
+	sprayDuck.style.pointerEvents = "none";
+	sprayDuck.classList.add("desactivated");
+	mewFinder.style.pointerEvents = "none";
+	mewFinder.classList.add("desactivated");
+    setTimeout(() => {
+        isLentilScopOn = false;
+		sprayDuck.style.pointerEvents = "auto";
+		sprayDuck.classList.remove("desactivated");
+		mewFinder.style.pointerEvents = "auto";
+		mewFinder.classList.remove("desactivated");
+    }, 60000);
+    lentilScop.style.display = "none";
+});
+
+sprayDuck.addEventListener("click", () => {
+    isSprayDuckOn = true;
+	lentilScop.style.pointerEvents = "none";
+	lentilScop.classList.add("desactivated");
+	mewFinder.style.pointerEvents = "none";
+	mewFinder.classList.add("desactivated");
+	
+    setTimeout(() => {
+        isSprayDuckOn = false;
+		lentilScop.style.pointerEvents = "auto";
+		lentilScop.classList.remove("desactivated");
+		mewFinder.style.pointerEvents = "auto";
+		mewFinder.classList.remove("desactivated");
+    }, 60000);
+    sprayDuck.style.display = "none";
+});
+
+bike.addEventListener("click", () => {
+    isBikeOn = true;
+    setTimeout(() => {
+        isBikeOn = false;
+    }, 60000);
+    bike.style.display = "none";
+});
+
+mewFinder.addEventListener("click", () => {
+
+        isMewFinderOn = true;
+        sprayDuck.style.pointerEvents = "none";
+        sprayDuck.classList.add("desactivated");
+        lentilScop.style.pointerEvents = "none";
+        lentilScop.classList.add("desactivated");
+
+        setTimeout(() => {
+            isMewFinderOn = false;
+            sprayDuck.style.pointerEvents = "auto";
+            sprayDuck.classList.remove("desactivated");
+            lentilScop.style.pointerEvents = "auto";
+            lentilScop.classList.remove("desactivated");
+        }, 60000);
+
+        mewFinder.style.display = "none";
+    });
+
+	// -------------MUSIC BUTTON--------------- //
 
 const musicButton = document.querySelector(".musicButton")
 const backgroundMusic = document.querySelector("audio")
