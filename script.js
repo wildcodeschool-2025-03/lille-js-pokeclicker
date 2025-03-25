@@ -1,5 +1,7 @@
 let currentRoad = pokemonOnRoad1;
 
+let shinySound = new Audio("sounds/shinySoundEffect.mp3")
+
 /*  --------- RANDOM CATCH + ADD TO POKEDEX ---------- */
 
 let isPikachuCaught = false;
@@ -91,25 +93,26 @@ if (lastCaughtPokemon) {
         );
         thumb.classList.add("caught");
 
-        const thumb2 = document.querySelector(
-            `.pokemonRadarLittleIMG[alt=${lastCaughtPokemon.alt}]`,
-        );
-        thumb2.classList.add("caught");
+		const thumb2 = document.querySelector(
+			`.pokemonRadarLittleIMG[alt=${lastCaughtPokemon.alt}]`,
+		);
+		thumb2.classList.add("caught");
 
-        caughtPokemon.push(lastCaughtPokemon);
-    }
+		caughtPokemon.push(lastCaughtPokemon);
+	}
 
-    if (
-        lastCaughtPokemon.isShiny === true &&
-        !caughtPokemonShiny.some(pokemon => pokemon.name === lastCaughtPokemon.name)
-    ) {
-        caughtPokemonShiny.push(lastCaughtPokemon);
+	if (
+		lastCaughtPokemon.isShiny === true &&
+		!caughtPokemonShiny.some(pokemon => pokemon.name === lastCaughtPokemon.name)
+	) {
+		caughtPokemonShiny.push(lastCaughtPokemon);
+		shinySound.play()
 
-        const thumb3 = document.querySelector(
-            `.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
-        );
-        thumb3.classList.add("caught");
-    }
+		const thumb3 = document.querySelector(
+			`.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
+		);
+		thumb3.classList.add("caught");
+	}
 }
 }
 
@@ -658,30 +661,30 @@ function loadFromStorage() {
 			thumb5.classList.add("caught")
 		}
 	}
-    
-    
+
+
 	for (let i = 0; i < caughtPokemonShinySaved.length; i++) {
 		caughtPokemonShiny.push(caughtPokemonShinySaved[i]);
 	}
-    
+
 	for (let i = 0; i < caughtPokemonShiny.length; i++) {
-        const thumbShiny = document.querySelector(
-            `.shinyPokemonLittleIMG[alt=${caughtPokemonShiny[i].alt}]`,
+		const thumbShiny = document.querySelector(
+			`.shinyPokemonLittleIMG[alt=${caughtPokemonShiny[i].alt}]`,
 		);
 		if (thumbShiny) {
 			thumbShiny.classList.add("caught");
 		}
 	}
-    
-	if (caughtPokemon.some(pokemon => pokemon.name === availablePokemons[150].name)) {
-        mewFollow2.style.display = "block";
-        isMewCaught = true;
-    }
 
-    if (caughtPokemon.some(pokemon => pokemon.alt === availablePokemons[24].alt)) {
-        pikachuSprite.style.display = "block";
-        isPikachuCaught = true;
-    }
+	if (caughtPokemon.some(pokemon => pokemon.name === availablePokemons[150].name)) {
+		mewFollow2.style.display = "block";
+		isMewCaught = true;
+	}
+
+	if (caughtPokemon.some(pokemon => pokemon.alt === availablePokemons[24].alt)) {
+		pikachuSprite.style.display = "block";
+		isPikachuCaught = true;
+	}
 }
 
 // ------------SAVE LOAD AND RESET BUTTONS--------------- //
@@ -806,4 +809,18 @@ mewFinder.addEventListener("click", () => {
 
         mewFinder.style.display = "none";
     });
+
+const musicButton = document.querySelector(".musicButton")
+const backgroundMusic = document.querySelector("audio")
+musicButton.addEventListener("click", () => {
+	if (musicButton.src == "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/37817d49-a5a5-4ae6-9128-16049f4d1f18/df0qv7u-933d7f26-3de9-44d4-a119-61eea658e033.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM3ODE3ZDQ5LWE1YTUtNGFlNi05MTI4LTE2MDQ5ZjRkMWYxOFwvZGYwcXY3dS05MzNkN2YyNi0zZGU5LTQ0ZDQtYTExOS02MWVlYTY1OGUwMzMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.wXXSjgtNsqwIljKwyX_Q1HYFS5jagY0FhFuNDYh36h4") {
+		musicButton.src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/37817d49-a5a5-4ae6-9128-16049f4d1f18/df0qv7t-64571c15-4b63-4e09-8dc6-54145b532ad4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM3ODE3ZDQ5LWE1YTUtNGFlNi05MTI4LTE2MDQ5ZjRkMWYxOFwvZGYwcXY3dC02NDU3MWMxNS00YjYzLTRlMDktOGRjNi01NDE0NWI1MzJhZDQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.WMhmwMen_UG38_nqeRj6eHdqYBnXv0eTtp7lheRxpKA"
+		backgroundMusic.volume = 0.2;
+    	backgroundMusic.play();
+	}else if (musicButton.src == "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/37817d49-a5a5-4ae6-9128-16049f4d1f18/df0qv7t-64571c15-4b63-4e09-8dc6-54145b532ad4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM3ODE3ZDQ5LWE1YTUtNGFlNi05MTI4LTE2MDQ5ZjRkMWYxOFwvZGYwcXY3dC02NDU3MWMxNS00YjYzLTRlMDktOGRjNi01NDE0NWI1MzJhZDQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.WMhmwMen_UG38_nqeRj6eHdqYBnXv0eTtp7lheRxpKA"){
+		musicButton.src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/37817d49-a5a5-4ae6-9128-16049f4d1f18/df0qv7u-933d7f26-3de9-44d4-a119-61eea658e033.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM3ODE3ZDQ5LWE1YTUtNGFlNi05MTI4LTE2MDQ5ZjRkMWYxOFwvZGYwcXY3dS05MzNkN2YyNi0zZGU5LTQ0ZDQtYTExOS02MWVlYTY1OGUwMzMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.wXXSjgtNsqwIljKwyX_Q1HYFS5jagY0FhFuNDYh36h4"
+		backgroundMusic.volume = 0;
+		backgroundMusic.pause();
+	}
+});
 
