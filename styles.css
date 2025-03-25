@@ -356,7 +356,7 @@ main {
     text-align: center;
     position: fixed;
     top: 100px;
-    right: 70px;
+    right: 40px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.76);
     border: solid 3px rgb(99, 34, 34);
 }
@@ -386,7 +386,7 @@ main {
     width: 165px;
     max-width: 80%;
     top: 300px;
-    right: 70px;
+    right: 40px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.76);
     border: solid 3px rgb(99, 34, 34);
     max-height: 300px;
@@ -446,10 +446,23 @@ main {
     cursor: pointer;
     position: fixed;
     top: 100px;
-    right: 20px;
+    right: 220px;
 }
 
 .compass:active {
+    transform: scale(0.9);
+}
+
+.shinyCharm {
+    height: 60px;
+    cursor: pointer;
+    position: fixed;
+    top : 150px;
+    right : 212px;
+    display : none;
+}
+
+.shinyCharm:active {
     transform: scale(0.9);
 }
 
@@ -528,8 +541,8 @@ h1 {
 }
 
 .pokeball {
-    width: 5rem;
-    margin-top: 20rem;
+    width: 3rem;
+    margin-top: 5rem;    
 }
 
 /* Fait des effets de clignotement sur les diodes */
@@ -707,4 +720,56 @@ footer {
         display: none;
      }
 
+    }
+
+
+    @media screen and (max-width: 450px) {
+
+        .copyright {
+            display : none;
+        }
+        
+        .walkingTrainer:hover {
+            transform: none;
+        }
+        
+        .walkingTrainer:active {
+            transform: scale(0.9);
+        }
+
+
+        footer {
+            justify-content:space-between;
+        }
+
+        .stepSign {
+            position: fixed;
+            top: auto;
+            
+            bottom: 7px;
+            right: 50%;
+            translate: 50%;
+            z-index: 1000;
+        }
+
+        .compass {
+            right: 30px;
+        }
+
+        .pokeball {
+            width: 2rem;
+            margin-top: 20rem;
+        }
+
+    }
+
+    @media screen and (max-height: 700px) {
+
+        .walkingPikachu {
+            top: 56%;
+        }
+
+        .walkingTrainer {
+            top: 58%;
+        }
     }
