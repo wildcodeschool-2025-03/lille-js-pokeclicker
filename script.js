@@ -18,114 +18,115 @@ let caughtPokemonShinyGen2 = [];
 document.title = `P-C (${caughtPokemon.length}/151)`;
 
 function catchRandom() {
-    let totalRarity, random, cumulativeRarity = 0, lastCaughtPokemon;
+	let totalRarity, random, cumulativeRarity = 0, lastCaughtPokemon;
 
-    if (isLentilScopOn === true) {
-        totalRarity = currentRoad.reduce((sum, pokemon) => sum + pokemon.rarity2, 0);
-        random = Math.random() * totalRarity;
+	if (isLentilScopOn === true) {
+		totalRarity = currentRoad.reduce((sum, pokemon) => sum + pokemon.rarity2, 0);
+		random = Math.random() * totalRarity;
 
-        for (let i = 0; i < currentRoad.length; i++) {
-            cumulativeRarity += currentRoad[i].rarity2;
-            if (random < cumulativeRarity) {
-                lastCaughtPokemon = currentRoad[i];
-                break;
-            }
-        }
-    } else if (isSprayDuckOn === true) {
-        totalRarity = currentRoad.reduce((sum, pokemon) => sum + pokemon.rarity3, 0);
-        random = Math.random() * totalRarity;
+		for (let i = 0; i < currentRoad.length; i++) {
+			cumulativeRarity += currentRoad[i].rarity2;
+			if (random < cumulativeRarity) {
+				lastCaughtPokemon = currentRoad[i];
+				break;
+			}
+		}
+	} else if (isSprayDuckOn === true) {
+		totalRarity = currentRoad.reduce((sum, pokemon) => sum + pokemon.rarity3, 0);
+		random = Math.random() * totalRarity;
 
-        for (let i = 0; i < currentRoad.length; i++) {
-            cumulativeRarity += currentRoad[i].rarity3;
-            if (random < cumulativeRarity) {
-                lastCaughtPokemon = currentRoad[i];
-                break;
-            }
-        }
-    } else if (isMewFinderOn === true) {
-        totalRarity = currentRoad.reduce((sum, pokemon) => sum + pokemon.rarity4, 0);
-        random = Math.random() * totalRarity;
+		for (let i = 0; i < currentRoad.length; i++) {
+			cumulativeRarity += currentRoad[i].rarity3;
+			if (random < cumulativeRarity) {
+				lastCaughtPokemon = currentRoad[i];
+				break;
+			}
+		}
+	} else if (isMewFinderOn === true) {
+		totalRarity = currentRoad.reduce((sum, pokemon) => sum + pokemon.rarity4, 0);
+		random = Math.random() * totalRarity;
 
-        for (let i = 0; i < currentRoad.length; i++) {
-            cumulativeRarity += currentRoad[i].rarity4;
-            if (random < cumulativeRarity) {
-                lastCaughtPokemon = currentRoad[i];
-                break;
-            }
-        }
-    } else {
-        totalRarity = currentRoad.reduce((sum, pokemon) => sum + pokemon.rarity, 0);
-        random = Math.random() * totalRarity;
+		for (let i = 0; i < currentRoad.length; i++) {
+			cumulativeRarity += currentRoad[i].rarity4;
+			if (random < cumulativeRarity) {
+				lastCaughtPokemon = currentRoad[i];
+				break;
+			}
+		}
+	} else {
+		totalRarity = currentRoad.reduce((sum, pokemon) => sum + pokemon.rarity, 0);
+		random = Math.random() * totalRarity;
 
-        for (let i = 0; i < currentRoad.length; i++) {
-            cumulativeRarity += currentRoad[i].rarity;
-            if (random < cumulativeRarity) {
-                lastCaughtPokemon = currentRoad[i];
-                break;
-            }
-        }
-    }
-    
-
-
-if (lastCaughtPokemon) { 
-    if (isShinyCharmOn === true) {
-        isShiny = Math.random() < 0.10;
-    } else {
-        isShiny = Math.random() < 0.01;
-    }
-    lastCaughtPokemon.isShiny = isShiny; 
-    addToPokedex(lastCaughtPokemon);
-
-    /* -------- AJOUT PIKACHU & MEW -------- */
-
-    if (lastCaughtPokemon.name === "Pikachu" && isPikachuCaught === false) {
-        pikachuSprite.style.display = "block";
-        isPikachuCaught = true;
-    }
-
-    if (lastCaughtPokemon.name === "Mew" && isMewCaught === false) {
-        mewFollow2.style.display = "block";
-        isMewCaught = true;
-    }
-
-    /* AJOUT DES POKEMONS DANS LE RADAR ET LE POKEDEX */
-
-    if (!caughtPokemon.some(pokemon => pokemon.name === lastCaughtPokemon.name)) {
-        const thumb = document.querySelector(
-            `.pokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
-        );
-        thumb.classList.add("caught");
-
-		const thumb2 = document.querySelector(
-			`.pokemonRadarLittleIMG[alt=${lastCaughtPokemon.alt}]`,
-		);
-		thumb2.classList.add("caught");
-
-        if (lastCaughtPokemon.gen === 1) {
-            caughtPokemon.push(lastCaughtPokemon);
-        } else if (lastCaughtPokemon.gen === 2) {
-            caughtPokemonGen2.push(lastCaughtPokemon);
-        }
-
-	if (
-		lastCaughtPokemon.isShiny === true &&
-		!caughtPokemonShiny.some(pokemon => pokemon.name === lastCaughtPokemon.name)
-	) {
-        if (lastCaughtPokemon.gen === 1) {
-            caughtPokemonShiny.push(lastCaughtPokemon);
-            shinySound.play();
-        } else if (lastCaughtPokemon.gen === 2) {
-            caughtPokemonShinyGen2.push(lastCaughtPokemon);
-            shinySound.play();}
-
-		const thumb3 = document.querySelector(
-			`.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
-		);
-		thumb3.classList.add("caught");
+		for (let i = 0; i < currentRoad.length; i++) {
+			cumulativeRarity += currentRoad[i].rarity;
+			if (random < cumulativeRarity) {
+				lastCaughtPokemon = currentRoad[i];
+				break;
+			}
+		}
 	}
-}
-}
+
+
+
+	if (lastCaughtPokemon) {
+		if (isShinyCharmOn === true) {
+			isShiny = Math.random() < 0.10;
+		} else {
+			isShiny = Math.random() < 0.01;
+		}
+		lastCaughtPokemon.isShiny = isShiny;
+		addToPokedex(lastCaughtPokemon);
+
+		/* -------- AJOUT PIKACHU & MEW -------- */
+
+		if (lastCaughtPokemon.name === "Pikachu" && isPikachuCaught === false) {
+			pikachuSprite.style.display = "block";
+			isPikachuCaught = true;
+		}
+
+		if (lastCaughtPokemon.name === "Mew" && isMewCaught === false) {
+			mewFollow2.style.display = "block";
+			isMewCaught = true;
+		}
+
+		/* AJOUT DES POKEMONS DANS LE RADAR ET LE POKEDEX */
+
+		if (!caughtPokemon.some(pokemon => pokemon.name === lastCaughtPokemon.name)) {
+			const thumb = document.querySelector(
+				`.pokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
+			);
+			thumb.classList.add("caught");
+
+			const thumb2 = document.querySelector(
+				`.pokemonRadarLittleIMG[alt=${lastCaughtPokemon.alt}]`,
+			);
+			thumb2.classList.add("caught");
+
+			if (lastCaughtPokemon.gen === 1) {
+				caughtPokemon.push(lastCaughtPokemon);
+			} else if (lastCaughtPokemon.gen === 2) {
+				caughtPokemonGen2.push(lastCaughtPokemon);
+			}
+
+			if (
+				lastCaughtPokemon.isShiny === true &&
+				!caughtPokemonShiny.some(pokemon => pokemon.name === lastCaughtPokemon.name)
+			) {
+				if (lastCaughtPokemon.gen === 1) {
+					caughtPokemonShiny.push(lastCaughtPokemon);
+					shinySound.play();
+				} else if (lastCaughtPokemon.gen === 2) {
+					caughtPokemonShinyGen2.push(lastCaughtPokemon);
+					shinySound.play();
+				}
+
+				const thumb3 = document.querySelector(
+					`.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
+				);
+				thumb3.classList.add("caught");
+			}
+		}
+	}
 }
 
 // ...existing code...
@@ -133,11 +134,11 @@ if (lastCaughtPokemon) {
 /*  --------- MAP + CHANGE ROAD FUNCTION ---------- */
 
 const itemList = [
-    {name : "Shiny Charm", rarity : 15},
-    {name : "Lentil Scop", rarity : 30},
-    {name : "Spray Duck", rarity : 30},
-    {name : "Bike", rarity : 30},
-    {name : "Mew Finder", rarity : 5},
+	{ name: "Shiny Charm", rarity: 15 },
+	{ name: "Lentil Scop", rarity: 30 },
+	{ name: "Spray Duck", rarity: 30 },
+	{ name: "Bike", rarity: 30 },
+	{ name: "Mew Finder", rarity: 5 },
 ]
 
 const sign = document.querySelector(".stepSign");
@@ -155,17 +156,17 @@ function addToPokemonRadar(pokemon) {
 
 	const pokemonIMG = document.createElement("img");
 	pokemonIMG.src = `https://img.pokemondb.net/sprites/brilliant-diamond-shining-pearl/normal/${pokemon.alt.toLowerCase()}.png`;
-    // https://img.pokemondb.net/sprites/brilliant-diamond-shining-pearl/normal/${pokemon.alt.toLowerCase()}.png
-    // https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png
+	// https://img.pokemondb.net/sprites/brilliant-diamond-shining-pearl/normal/${pokemon.alt.toLowerCase()}.png
+	// https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png
 	pokemonIMG.alt = `${pokemon.alt}`;
 	pokemonIMG.classList.add("pokemonRadarLittleIMG");
 
 	if (caughtPokemon.some(caught => caught.name === pokemon.name)) {
 		pokemonIMG.classList.add("caught");
 	}
-    else if (caughtPokemonGen2.some(caught => caught.name === pokemon.name)) {
-        pokemonIMG.classList.add("caught");
-    }
+	else if (caughtPokemonGen2.some(caught => caught.name === pokemon.name)) {
+		pokemonIMG.classList.add("caught");
+	}
 	addPokemon.appendChild(pokemonIMG);
 }
 
@@ -523,47 +524,47 @@ let stepAccumulator = 0;
 let catchAccumulator = 0;
 
 function update(time) {
-    try {
-        let deltaTime = time - lastTime;
-        lastTime = time;
+	try {
+		let deltaTime = time - lastTime;
+		lastTime = time;
 
-        if (isBikeOn === true) {
-            stepInterval = 100;
-            catchInterval = 1000;
-        } else {
-            stepInterval = 1000;
-            catchInterval = 10000;
-        }
+		if (isBikeOn === true) {
+			stepInterval = 100;
+			catchInterval = 1000;
+		} else {
+			stepInterval = 1000;
+			catchInterval = 10000;
+		}
 
-        stepAccumulator += deltaTime;
-        catchAccumulator += deltaTime;
+		stepAccumulator += deltaTime;
+		catchAccumulator += deltaTime;
 
-        while (stepAccumulator >= stepInterval) {
-            stepsBeforeRoadChange -= 1;
-            if (stepIndicator) {
-                stepIndicator.innerHTML = stepsBeforeRoadChange + " step before next road";
-            }
-            totalClick += 1;
-            if (stepsBeforeRoadChange === 0) {
-                stepsBeforeRoadChange = 400;
-            }
-            if (totalClick % 400 === 0) {
-                changeRoad();
-            }
-            stepAccumulator -= stepInterval;
-        }
+		while (stepAccumulator >= stepInterval) {
+			stepsBeforeRoadChange -= 1;
+			if (stepIndicator) {
+				stepIndicator.innerHTML = stepsBeforeRoadChange + " step before next road";
+			}
+			totalClick += 1;
+			if (stepsBeforeRoadChange === 0) {
+				stepsBeforeRoadChange = 400;
+			}
+			if (totalClick % 50 === 0) {
+				changeRoad();
+			}
+			stepAccumulator -= stepInterval;
+		}
 
-        while (catchAccumulator >= catchInterval) {
-            catchRandom();
-            catchAccumulator -= catchInterval;
-        }
+		while (catchAccumulator >= catchInterval) {
+			catchRandom();
+			catchAccumulator -= catchInterval;
+		}
 
-        document.title = `P-C (${caughtPokemon.length}/151)`;
+		document.title = `P-C (${caughtPokemon.length}/151)`;
 
-        requestAnimationFrame(update);
-    } catch (error) {
-        console.error("Erreur dans la fonction update :", error);
-    }
+		requestAnimationFrame(update);
+	} catch (error) {
+		console.error("Erreur dans la fonction update :", error);
+	}
 }
 
 requestAnimationFrame(update);
@@ -571,8 +572,8 @@ requestAnimationFrame(update);
 /*  --------- CLICK TRACKER + BASED ON EVENT ---------- */
 
 clickTrainer.addEventListener("click", () => {
-	
-    totalClick += 1;
+
+	totalClick += 1;
 
 	stepsBeforeRoadChange = stepsBeforeRoadChange - 1;
 	// biome-ignore lint/style/useTemplate: <explanation>
@@ -583,11 +584,11 @@ clickTrainer.addEventListener("click", () => {
 	if (totalClick % 10 === 0) {
 		catchRandom();
 	}
-	if (totalClick % 400 === 0) {
+	if (totalClick % 50 === 0) {
 		changeRoad();
-    }
-    
-        
+	}
+
+
 });
 
 // biome-ignore lint/style/useTemplate: <explanation>
@@ -601,7 +602,7 @@ const isShinyPokemonCaught = document.querySelector(".shinyCaughtPokemon");
 const isPokemonCaughtGen2 = document.querySelector(".caughtPokemonGen2");
 const isShinyPokemonCaughtGen2 = document.querySelector(".shinyCaughtPokemonGen2");
 
- /* -------------- GENERATION 1 -------------------*/
+/* -------------- GENERATION 1 -------------------*/
 
 for (let i = 0; i <= 150; i++) {
 	function addToCaughtPokemon(pokemon) {
@@ -674,10 +675,10 @@ pokedexOnOff.addEventListener("click", () => {
 	if (lastPokemonContainer.classList.contains("show")) {
 		lastPokemonContainer.classList.remove("show");
 	}
-    kantoDisplay.style.display = "block";
+	kantoDisplay.style.display = "block";
 	pokemonContainer.classList.toggle("show");
-    johtoDisplay.style.display = "none";
-    
+	johtoDisplay.style.display = "none";
+
 });
 
 pokeballOnOff.addEventListener("click", () => {
@@ -736,13 +737,13 @@ const kantoButton = document.querySelector(".kanto")
 const johtoButton = document.querySelector(".johto")
 
 kantoButton.addEventListener("click", () => {
-    kantoDisplay.style.display = "block"
-    johtoDisplay.style.display = "none"
+	kantoDisplay.style.display = "block"
+	johtoDisplay.style.display = "none"
 })
 
 johtoButton.addEventListener("click", () => {
-    johtoDisplay.style.display = "block"
-    kantoDisplay.style.display = "none"
+	johtoDisplay.style.display = "block"
+	kantoDisplay.style.display = "none"
 })
 
 /* -------------------POKEBALL POPUP--------------- */
@@ -862,19 +863,21 @@ switchTrainer.addEventListener("click", () => {
 
 let caughtPokemonSaved = [];
 let caughtPokemonShinySaved = [];
+let caughtPokemonGen2Saved = [];
+let caughtPokemonShinyGen2Saved = [];
 
 function saveStorage() {
 	localStorage.setItem("pokedexStored", JSON.stringify(caughtPokemon));
-	localStorage.setItem(
-		"pokedexShinyStored",
-		JSON.stringify(caughtPokemonShiny),
-	);
+	localStorage.setItem("pokedexShinyStored", JSON.stringify(caughtPokemonShiny),);
+	localStorage.setItem("pokedexGen2Stored", JSON.stringify(caughtPokemonGen2),);
+	localStorage.setItem("pokedexShinyGen2Stored", JSON.stringify(caughtPokemonShinyGen2),);
 }
+
 function loadFromStorage() {
 	const caughtPokemonSaved = JSON.parse(localStorage.getItem("pokedexStored"));
-	const caughtPokemonShinySaved = JSON.parse(
-		localStorage.getItem("pokedexShinyStored"),
-	);
+	const caughtPokemonShinySaved = JSON.parse(localStorage.getItem("pokedexShinyStored"),);
+	const caughtPokemonGen2Saved = JSON.parse(localStorage.getItem("pokedexGen2Stored"),);
+	const caughtPokemonShinyGen2Saved = JSON.parse(localStorage.getItem("pokedexShinyGen2Stored"),);
 
 	for (let i = 0; i < caughtPokemonSaved.length; i++) {
 		caughtPokemon.push(caughtPokemonSaved[i]);
@@ -974,74 +977,74 @@ let isMewFinderOn = false
 
 
 shinyCharm.addEventListener("click", () => {
-    isShinyCharmOn = true;
-    setTimeout(() => {
-        isShinyCharmOn = false;
-    }, 60000);
-    shinyCharm.style.display = "none";
+	isShinyCharmOn = true;
+	setTimeout(() => {
+		isShinyCharmOn = false;
+	}, 60000);
+	shinyCharm.style.display = "none";
 });
 
 lentilScop.addEventListener("click", () => {
-    isLentilScopOn = true;
+	isLentilScopOn = true;
 	sprayDuck.style.pointerEvents = "none";
 	sprayDuck.classList.add("desactivated");
 	mewFinder.style.pointerEvents = "none";
 	mewFinder.classList.add("desactivated");
-    setTimeout(() => {
-        isLentilScopOn = false;
+	setTimeout(() => {
+		isLentilScopOn = false;
 		sprayDuck.style.pointerEvents = "auto";
 		sprayDuck.classList.remove("desactivated");
 		mewFinder.style.pointerEvents = "auto";
 		mewFinder.classList.remove("desactivated");
-    }, 60000);
-    lentilScop.style.display = "none";
+	}, 60000);
+	lentilScop.style.display = "none";
 });
 
 sprayDuck.addEventListener("click", () => {
-    isSprayDuckOn = true;
+	isSprayDuckOn = true;
 	lentilScop.style.pointerEvents = "none";
 	lentilScop.classList.add("desactivated");
 	mewFinder.style.pointerEvents = "none";
 	mewFinder.classList.add("desactivated");
-	
-    setTimeout(() => {
-        isSprayDuckOn = false;
+
+	setTimeout(() => {
+		isSprayDuckOn = false;
 		lentilScop.style.pointerEvents = "auto";
 		lentilScop.classList.remove("desactivated");
 		mewFinder.style.pointerEvents = "auto";
 		mewFinder.classList.remove("desactivated");
-    }, 60000);
-    sprayDuck.style.display = "none";
+	}, 60000);
+	sprayDuck.style.display = "none";
 });
 
 bike.addEventListener("click", () => {
-    isBikeOn = true;
-    setTimeout(() => {
-        isBikeOn = false;
-    }, 60000);
-    bike.style.display = "none";
+	isBikeOn = true;
+	setTimeout(() => {
+		isBikeOn = false;
+	}, 60000);
+	bike.style.display = "none";
 });
 
 mewFinder.addEventListener("click", () => {
 
-        isMewFinderOn = true;
-        sprayDuck.style.pointerEvents = "none";
-        sprayDuck.classList.add("desactivated");
-        lentilScop.style.pointerEvents = "none";
-        lentilScop.classList.add("desactivated");
+	isMewFinderOn = true;
+	sprayDuck.style.pointerEvents = "none";
+	sprayDuck.classList.add("desactivated");
+	lentilScop.style.pointerEvents = "none";
+	lentilScop.classList.add("desactivated");
 
-        setTimeout(() => {
-            isMewFinderOn = false;
-            sprayDuck.style.pointerEvents = "auto";
-            sprayDuck.classList.remove("desactivated");
-            lentilScop.style.pointerEvents = "auto";
-            lentilScop.classList.remove("desactivated");
-        }, 60000);
+	setTimeout(() => {
+		isMewFinderOn = false;
+		sprayDuck.style.pointerEvents = "auto";
+		sprayDuck.classList.remove("desactivated");
+		lentilScop.style.pointerEvents = "auto";
+		lentilScop.classList.remove("desactivated");
+	}, 60000);
 
-        mewFinder.style.display = "none";
-    });
+	mewFinder.style.display = "none";
+});
 
-	// -------------MUSIC BUTTON--------------- //
+// -------------MUSIC BUTTON--------------- //
 
 const musicButton = document.querySelector(".musicButton")
 const backgroundMusic = document.querySelector("audio")
@@ -1049,8 +1052,8 @@ musicButton.addEventListener("click", () => {
 	if (musicButton.src == "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/37817d49-a5a5-4ae6-9128-16049f4d1f18/df0qv7u-933d7f26-3de9-44d4-a119-61eea658e033.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM3ODE3ZDQ5LWE1YTUtNGFlNi05MTI4LTE2MDQ5ZjRkMWYxOFwvZGYwcXY3dS05MzNkN2YyNi0zZGU5LTQ0ZDQtYTExOS02MWVlYTY1OGUwMzMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.wXXSjgtNsqwIljKwyX_Q1HYFS5jagY0FhFuNDYh36h4") {
 		musicButton.src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/37817d49-a5a5-4ae6-9128-16049f4d1f18/df0qv7t-64571c15-4b63-4e09-8dc6-54145b532ad4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM3ODE3ZDQ5LWE1YTUtNGFlNi05MTI4LTE2MDQ5ZjRkMWYxOFwvZGYwcXY3dC02NDU3MWMxNS00YjYzLTRlMDktOGRjNi01NDE0NWI1MzJhZDQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.WMhmwMen_UG38_nqeRj6eHdqYBnXv0eTtp7lheRxpKA"
 		backgroundMusic.volume = 0.2;
-    	backgroundMusic.play();
-	}else if (musicButton.src == "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/37817d49-a5a5-4ae6-9128-16049f4d1f18/df0qv7t-64571c15-4b63-4e09-8dc6-54145b532ad4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM3ODE3ZDQ5LWE1YTUtNGFlNi05MTI4LTE2MDQ5ZjRkMWYxOFwvZGYwcXY3dC02NDU3MWMxNS00YjYzLTRlMDktOGRjNi01NDE0NWI1MzJhZDQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.WMhmwMen_UG38_nqeRj6eHdqYBnXv0eTtp7lheRxpKA"){
+		backgroundMusic.play();
+	} else if (musicButton.src == "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/37817d49-a5a5-4ae6-9128-16049f4d1f18/df0qv7t-64571c15-4b63-4e09-8dc6-54145b532ad4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM3ODE3ZDQ5LWE1YTUtNGFlNi05MTI4LTE2MDQ5ZjRkMWYxOFwvZGYwcXY3dC02NDU3MWMxNS00YjYzLTRlMDktOGRjNi01NDE0NWI1MzJhZDQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.WMhmwMen_UG38_nqeRj6eHdqYBnXv0eTtp7lheRxpKA") {
 		musicButton.src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/37817d49-a5a5-4ae6-9128-16049f4d1f18/df0qv7u-933d7f26-3de9-44d4-a119-61eea658e033.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzM3ODE3ZDQ5LWE1YTUtNGFlNi05MTI4LTE2MDQ5ZjRkMWYxOFwvZGYwcXY3dS05MzNkN2YyNi0zZGU5LTQ0ZDQtYTExOS02MWVlYTY1OGUwMzMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.wXXSjgtNsqwIljKwyX_Q1HYFS5jagY0FhFuNDYh36h4"
 		backgroundMusic.volume = 0;
 		backgroundMusic.pause();
