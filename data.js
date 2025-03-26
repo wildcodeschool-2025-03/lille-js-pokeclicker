@@ -261,6 +261,7 @@ const pokemonOnRoad1 = [
     availablePokemons[15],
     availablePokemons[18],
     availablePokemons[132],
+    availablePokemons[250]
 ]
 
 
@@ -273,6 +274,7 @@ const pokemonOnRoad2 = [
     availablePokemons[28],
     availablePokemons[31],
     availablePokemons[55],
+    availablePokemons[250]
 ]
 
 
