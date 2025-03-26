@@ -24,12 +24,14 @@ body {
     width: 100%;
     min-height: 100%;
     background-image: url("stock-img/backgroundMoving.png");
+    /* background-image: url("https://images6.alphacoders.com/641/thumb-1920-641430.jpg"); */
     background-repeat: repeat-x;
     background-size: auto 100vh;
     background-attachment: fixed;
     animation: scroll-background 10000s linear infinite;
     padding: 0;
     margin: 0;
+    overflow:hidden ;
 
 }
 
@@ -49,6 +51,19 @@ main {
     cursor: pointer;
 }
 
+.shinyIcon {
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    left: 190px;
+    cursor: pointer;
+    
+}
+
+.shinyIcon:not(.on) {
+    filter: grayscale(1);
+}
+
 .pokedexIcon:active {
     transform: scale(0.9);
 }
@@ -65,6 +80,7 @@ main {
     height: 60%;
     display: none;
     padding: 2rem;
+    z-index: 100;
 }
 
 .caughtPokemonContainer.show {
@@ -80,6 +96,15 @@ main {
     outline: 1px solid slategrey;
 }
 
+.shinyCaughtPokemon::-webkit-scrollbar {
+    width: .1rem;
+}
+
+.shinyCaughtPokemon::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
 .caughtPokemon {
     display: flex;
     list-style: none;
@@ -91,12 +116,31 @@ main {
     width: 100%;
 }
 
+.shinyCaughtPokemon {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    padding-left: 0px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+    display : none;
+}
+
 .pokemonLittleIMG {
     height: 65px;
-    margin: -5px;
+}
+
+.shinyPokemonLittleIMG {
+    height: 65px;
 }
 
 .pokemonLittleIMG:not(.caught) {
+    filter: grayscale(1);
+}
+
+.shinyPokemonLittleIMG:not(.caught) {
     filter: grayscale(1);
 }
 
@@ -108,7 +152,7 @@ main {
     height: 50px;
     cursor: pointer;
     position: fixed;
-    top : 60px;
+    top: 60px;
 }
 
 .pokeballIcon:active {
@@ -134,6 +178,7 @@ main {
     padding: 2rem;
     border: solid 3px rgb(99, 34, 34);
     height: 60%;
+    z-index: 100;
 }
 
 .pokedexContainer.show {
@@ -147,7 +192,7 @@ main {
 }
 
 .pokedexList {
- 
+
     max-width: 400px;
     list-style: none;
     justify-content: center;
@@ -185,6 +230,18 @@ main {
 }
 
 /* TRAINER CONTAINER AND ANIMATION */
+
+.trainerSwitch {
+    height : 60px;
+    position: fixed;
+    top : 50px; 
+    left : 160px;
+    cursor: pointer;
+}
+
+.trainerSwitch:active {
+    transform: scale(0.9);
+}
 
 .walkingTrainer {
     width: calc(64px * var(--pixel-size));
@@ -233,6 +290,7 @@ main {
     right: 60%;
     translate: 20%;
     display: none;
+    z-index: -100;
 }
 
 .pikachuSprite {
@@ -243,6 +301,37 @@ main {
 }
 
 @keyframes moveSpritesheetPikachu {
+    from {
+        transform: translate3d(0px, 0, 0)
+    }
+
+    to {
+        transform: translate3d(-100%, 0, 0)
+    }
+}
+
+
+
+.walkingMew {
+    width: calc(64px * var(--pixel-size));
+    height: calc(64px * var(--pixel-size));
+    overflow: hidden;
+    position: fixed;
+    top: 40%;
+    right: 65%;
+    translate: 20%;
+    display: none;
+    z-index: -100;
+}
+
+.mewSprite {
+    animation: moveSpritesheetMew 1s steps(4) infinite;
+    width: calc(256px * var(--pixel-size));
+    position: absolute;
+    top: calc(-128px * var(--pixel-size));
+}
+
+@keyframes moveSpritesheetMew {
     from {
         transform: translate3d(0px, 0, 0)
     }
@@ -269,7 +358,7 @@ main {
     text-align: center;
     position: fixed;
     top: 100px;
-    right: 70px;
+    right: 40px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.76);
     border: solid 3px rgb(99, 34, 34);
 }
@@ -282,14 +371,159 @@ main {
     font-weight: 100;
 }
 
-.mapRoadsIMG{
+.mapRoadsIMG {
     height: 9rem;
     width: 10rem;
 }
 
-.stepIndicator{
+.stepIndicator {
     font-weight: 400;
 }
+
+
+.pokemonRadarContainer {
+    position: fixed;
+    background-color: rgb(36, 36, 36);
+    border-radius: 5px;
+    width: 165px;
+    max-width: 80%;
+    top: 300px;
+    right: 40px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.76);
+    border: solid 3px rgb(99, 34, 34);
+    max-height: 300px;
+    height: auto;
+    padding: 1rem;
+    overflow-y: auto;
+    display: none;
+}
+
+.pokemonRadarContainer.show {
+    display: block;
+}
+
+.pokemonRadarContainer::-webkit-scrollbar {
+    width: .1rem;
+}
+
+.pokemonRadarContainer::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+.pokemonRadar {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+    padding-left: 5px;
+    scroll-behavior: smooth;
+    width: 90%;
+    height: 90%
+}
+
+.pokemonLiRadar {
+    display: flex;
+    padding-left: 10px;
+}
+
+.pokemonRadarTitle {
+    color: whitesmoke;
+    text-align: center;
+    padding-right: 5px;
+}
+
+.pokemonRadarLittleIMG {
+    height: 50px;
+    margin: -5px;
+
+}
+
+.pokemonRadarLittleIMG:not(.caught) {
+    filter: grayscale(1);
+}
+
+.compass {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top: 100px;
+    right: 220px;
+}
+
+.compass:active {
+    transform: scale(0.9);
+}
+
+.shinyCharm {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top : 55px;
+    right : 170px;
+    display : none;
+}
+
+.shinyCharm:active {
+    transform: scale(0.9);
+}
+
+.lentilScop {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top : 55px;
+    right : 138px;
+    display : none;
+}
+
+.lentilScop:active {
+    transform: scale(0.9);
+}
+
+.sprayDuck {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top : 55px;
+    right : 105px;
+    display : none;
+}
+
+.sprayDuck:active {
+    transform: scale(0.9);
+}
+
+.bike {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top : 55px;
+    right : 70px;
+    display : none;
+}
+
+.bike:active {
+    transform: scale(0.9);
+}
+
+.desactivated {
+    filter : grayscale(1)
+}
+
+.mewFinder {
+    height: 40px;
+    cursor: pointer;
+    position: fixed;
+    top : 55px;
+    right : 35px;
+    display : none;
+}
+
+.mewFinder:active {
+    transform: scale(0.9);
+}
+
 
 /* HEADER */
 
@@ -320,14 +554,14 @@ header div {
     height: 140px;
     padding-top: 10px;
     z-index: 1000;
-    filter : drop-shadow(-4px 2px 4px rgba(0, 0, 0, 0.658));
+    filter: drop-shadow(-4px 2px 4px rgba(0, 0, 0, 0.658));
 }
 
 h1 {
     color: white;
     text-shadow: -4px 4px 4px rgba(0, 0, 0, 0.658);
     padding-left: 20px;
-    padding-top: 20px;
+    padding-top: 45px;
     font-weight: 500;
     font-size: 70px;
 }
@@ -366,16 +600,19 @@ h1 {
 }
 
 .pokeball {
-    width: 2rem;
-    margin: 15rem;
+    width: 3rem;
+    margin-top: 5rem;    
 }
 
 /* Fait des effets de clignotement sur les diodes */
 
 @keyframes blink {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.3;
     }
@@ -386,15 +623,15 @@ h1 {
 }
 
 .red-diode {
-    animation: blink 1.8s infinite;
+    animation: blink 2s infinite;
 }
 
 .yellow-diode {
-    animation: blink 1.6s infinite;
+    animation: blink 2s infinite;
 }
 
 .green-diode {
-    animation: blink 1.4s infinite;
+    animation: blink 2s infinite;
 }
 
 .black-diode {
@@ -402,11 +639,11 @@ h1 {
 }
 
 .red-diode2 {
-    animation: blink 1.8s infinite;
+    animation: blink 2s infinite;
 }
 
 .blue-diode2 {
-    animation: blink 1.6s infinite;
+    animation: blink 2s infinite;
 }
 
 /* FOOTER */
@@ -455,7 +692,8 @@ footer {
     bottom: 0%;
     background-color: rgb(99, 34, 34);
     color: white;
-    box-shadow:0px -2px 8px black;;
+    box-shadow: 0px -2px 8px black;
+    ;
 }
 
 .touch {
@@ -465,11 +703,11 @@ footer {
 
 @media screen and (max-width: 950px) {
 
-/* HEADER */
+    /* HEADER */
 
     .logo {
         position: fixed;
-        top : -6px;
+        top: -6px;
         right: 10px;
         height: 50px;
     }
@@ -479,11 +717,11 @@ footer {
         font-size: 25px;
         font-weight: 400;
         position: fixed;
-        top : -11px;
-        right : 55px;
+        top: -35px;
+        right: 55px;
     }
 
-/* FOOTER */
+    /* FOOTER */
 
     .diode-footer {
         display: none;
@@ -495,8 +733,8 @@ footer {
     }
 
     .stepSign {
-        position : fixed;
-        top : 65px;
+        position: fixed;
+        top: 65px;
         right: 20px;
     }
 
@@ -507,7 +745,7 @@ footer {
         top: 120px;
         height: 45%;
     }
- 
+
     .pokedexContainer {
         max-width: 80%;
         width: 300px;
@@ -517,14 +755,113 @@ footer {
         padding-left: 3.5rem;
     }
 
-    .mapRoadsIMG{
+    .mapRoadsIMG {
         display: none;
     }
 
-    .pokeball{
-    bottom: 150px; /* Ajuste selon tes préférences */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999; /* Pour s'assurer qu'elle reste au-dessus */
-}
-}
+    .compass {
+        height: 40px;
+        top: 66px;
+        right: 185px;
+    }
+
+    .pokemonRadarContainer {
+        width: 165px;
+        max-width: 80%;
+        top: 150px;
+        right: 20px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.76);
+        border: solid 3px rgb(99, 34, 34);
+        max-height: 300px;
+        height: auto;
+        padding: 1rem;
+        overflow-y: auto;
+        display: none;
+     }
+
+
+     .shinyCharm {
+        top : 110px;
+        right : 150px;
+    }
+    
+    .lentilScop {
+        top : 110px;
+        right : 115px;
+    }
+    
+    .sprayDuck {
+        top : 110px;
+        right : 80px;
+    }
+    
+    .bike {
+        top : 110px;
+        right : 45px;
+    }
+        
+    .mewFinder {
+        top : 110px;
+        right : 10px;
+    }
+    
+
+    }
+
+    .musicButton{
+        height: 1.5rem;
+        width: 1.5rem;
+        cursor: pointer;
+    }
+
+
+    @media screen and (max-width: 450px) {
+
+        .copyright {
+            display : none;
+        }
+        
+        .walkingTrainer:hover {
+            transform: none;
+        }
+        
+        .walkingTrainer:active {
+            transform: scale(0.9);
+        }
+
+
+        footer {
+            justify-content:space-between;
+        }
+
+        .stepSign {
+            position: fixed;
+            top: auto;
+            
+            bottom: 7px;
+            right: 50%;
+            translate: 50%;
+            z-index: 1000;
+        }
+
+        .compass {
+            right: 30px;
+        }
+
+        .pokeball {
+            width: 2rem;
+            margin-top: 20rem;
+        }
+
+    }
+
+    @media screen and (max-height: 700px) {
+
+        .walkingPikachu {
+            top: 56%;
+        }
+
+        .walkingTrainer {
+            top: 58%;
+        }
+    }
