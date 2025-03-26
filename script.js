@@ -476,6 +476,7 @@ for (let i = 0; i < uniquePokemonRoad1.length; i++) {
 const roadName = document.querySelector(".roadName");
 roadName.innerHTML = "Road 1";
 
+
 /*  --------- ADD TO LAST CATCH TRACKER ---------- */
 
 const pokedexList = document.querySelector(".pokedexList");
@@ -553,7 +554,7 @@ function update(time) {
             }
             totalClick += 1;
             if (stepsBeforeRoadChange === 0) {
-                stepsBeforeRoadChange = 500;
+                stepsBeforeRoadChange = 400;
             }
             if (totalClick % 400 === 0) {
                 changeRoad();
@@ -1079,4 +1080,5 @@ musicButton.addEventListener("click", () => {
 		backgroundMusic.pause();
 	}
 });
+
 
