@@ -191,7 +191,7 @@ const availablePokemons = [
     { number: 190, name: "Capumain", alt: "Aipom", rarity: 0.1, rarity2: 0.1, rarity3: 0.1, rarity4: 1 , gen: 1 },
     { number: 191, name: "Tournegrin", alt: "Sunkern", rarity: 0.15, rarity2: 0.15, rarity3: 0.15, rarity4: 1 , gen: 1 },
     { number: 192, name: "Héliatronc", alt: "Sunflora", rarity: 0.08, rarity2: 0.08, rarity3: 0.08, rarity4: 1 , gen: 1 },
-    { number: 193, name: "Yanma", alt: "Yanma", rarity: 0.1, rarity2: 0.1, rarity3: 0.1, rarity4: 1 , gen: 1 },
+    { number: 193, name: "Yanma", alt: "Yanma", rarity: 100, rarity2: 0.1, rarity3: 0.1, rarity4: 1 , gen: 1 },
     { number: 194, name: "Axoloto", alt: "Wooper", rarity: 0.12, rarity2: 0.12, rarity3: 0.12, rarity4: 1 , gen: 1 },
     { number: 195, name: "Maraiste", alt: "Quagsire", rarity: 0.06, rarity2: 0.06, rarity3: 0.06, rarity4: 1 , gen: 1 },
     { number: 196, name: "Mentali", alt: "Espeon", rarity: 0.05, rarity2: 0.05, rarity3: 0.05, rarity4: 1 , gen: 1 },
