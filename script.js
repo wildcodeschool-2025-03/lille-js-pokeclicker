@@ -134,11 +134,18 @@ function catchRandom() {
 /*  --------- MAP + CHANGE ROAD FUNCTION ---------- */
 
 const itemList = [
+<<<<<<< HEAD
+    {name : "Shiny Charm", rarity : 20},
+    {name : "Lentil Scop", rarity : 35},
+    {name : "Spray Duck", rarity : 35},
+    {name : "Mew Finder", rarity : 10},
+=======
 	{ name: "Shiny Charm", rarity: 15 },
 	{ name: "Lentil Scop", rarity: 30 },
 	{ name: "Spray Duck", rarity: 30 },
 	{ name: "Bike", rarity: 30 },
 	{ name: "Mew Finder", rarity: 5 },
+>>>>>>> 87e5504abbaa0aa2bd31c99aa60c4c20bccd0212
 ]
 
 const sign = document.querySelector(".stepSign");
@@ -300,9 +307,6 @@ function changeRoad() {
 		if (itemSelected.name === "Spray Duck") {
 			sprayDuck.style.display = "block";
 		}
-		if (itemSelected.name === "Bike") {
-			bike.style.display = "block";
-		}
 		if (itemSelected.name === "Mew Finder") {
 			mewFinder.style.display = "block";
 		}
@@ -443,9 +447,6 @@ function changeRoad() {
 		if (itemSelected.name === "Spray Duck") {
 			sprayDuck.style.display = "block";
 		}
-		if (itemSelected.name === "Bike") {
-			bike.style.display = "block";
-		}
 		if (itemSelected.name === "Mew Finder") {
 			mewFinder.style.display = "block";
 		}
@@ -539,27 +540,30 @@ function update(time) {
 		stepAccumulator += deltaTime;
 		catchAccumulator += deltaTime;
 
-		while (stepAccumulator >= stepInterval) {
-			stepsBeforeRoadChange -= 1;
-			if (stepIndicator) {
-				stepIndicator.innerHTML = stepsBeforeRoadChange + " step before next road";
-			}
-			totalClick += 1;
-			if (stepsBeforeRoadChange === 0) {
-				stepsBeforeRoadChange = 400;
-			}
-			if (totalClick % 400 === 0) {
-				changeRoad();
-			}
-			stepAccumulator -= stepInterval;
-		}
+        while (stepAccumulator >= stepInterval) {
+            stepsBeforeRoadChange -= 1;
+            if (stepIndicator) {
+                stepIndicator.innerHTML = stepsBeforeRoadChange + " step before next road";
+            }
+            totalClick += 1;
+            if (stepsBeforeRoadChange === 0) {
+                stepsBeforeRoadChange = 400;
+            }
+            if (totalClick % 400 === 0) {
+                changeRoad();
+            }
+            if (totalClick % 2400 === 0 && isBikeOn !== true) {
+                bike.style.display = "block"
+            }
+            stepAccumulator -= stepInterval;
+        }
 
 		while (catchAccumulator >= catchInterval) {
 			catchRandom();
 			catchAccumulator -= catchInterval;
 		}
 
-		document.title = `P-C (${caughtPokemon.length}/151)`;
+        document.title = `P-C (${caughtPokemon.length}/251)`;
 
 		requestAnimationFrame(update);
 	} catch (error) {
