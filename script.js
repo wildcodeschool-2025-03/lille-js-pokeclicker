@@ -253,7 +253,7 @@ function changeRoad() {
 		currentRoad = pokemonOnRoad9;
 		roadName.innerHTML = "Road 9";
 		mapRoads.src = "stock-img/maps/mapRoad9.png";
-		
+
 
 		const uniquePokemonRoad9 = pokemonOnRoad9.filter(
 			(value, index, self) => self.indexOf(value) === index,
@@ -262,10 +262,153 @@ function changeRoad() {
 			addToPokemonRadar(uniquePokemonRoad9[i]);
 		}
 	} else if (currentRoad == pokemonOnRoad9) {
+		currentRoad = pokemonOnRoadJohto1;
+		roadName.innerHTML = "Road 1 Johto";
+		mapRoads.src = "stock-img/maps/mapJohto1.png";
+
+
+		const uniquePokemonRoadJohto1 = pokemonOnRoadJohto1.filter(
+			(value, index, self) => self.indexOf(value) === index,
+		);
+		for (let i = 0; i < uniquePokemonRoadJohto1.length; i++) {
+			addToPokemonRadar(uniquePokemonRoadJohto1[i]);
+		}
+
+		let totalRarity = itemList.reduce(
+			(sum, item) => sum + item.rarity,
+			0
+		);
+
+		let random = Math.random() * totalRarity;
+		let itemSelected;
+		let cumulativeRarity = 0;
+		for (let i = 0; i < itemList.length; i++) {
+			cumulativeRarity += itemList[i].rarity;
+			if (random < cumulativeRarity) {
+				itemSelected = itemList[i];
+				break;
+			}
+		}
+
+		if (itemSelected.name === "Shiny Charm") {
+			shinyCharm.style.display = "block";
+		}
+		if (itemSelected.name === "Lentil Scop") {
+			lentilScop.style.display = "block";
+		}
+		if (itemSelected.name === "Spray Duck") {
+			sprayDuck.style.display = "block";
+		}
+		if (itemSelected.name === "Bike") {
+			bike.style.display = "block";
+		}
+		if (itemSelected.name === "Mew Finder") {
+			mewFinder.style.display = "block";
+		}
+
+
+
+	} else if (currentRoad == pokemonOnRoadJohto1) {
+		currentRoad = pokemonOnRoadJohto2;
+		roadName.innerHTML = "Road 2 Johto";
+		mapRoads.src = "stock-img/maps/mapJohto2.png";
+
+
+		const uniquePokemonRoadJohto2 = pokemonOnRoadJohto2.filter(
+			(value, index, self) => self.indexOf(value) === index,
+		);
+		for (let i = 0; i < uniquePokemonRoadJohto2.length; i++) {
+			addToPokemonRadar(uniquePokemonRoadJohto2[i]);
+		}
+	} else if (currentRoad == pokemonOnRoadJohto2) {
+		currentRoad = pokemonOnRoadJohto3;
+		roadName.innerHTML = "Road 3 Johto";
+		mapRoads.src = "stock-img/maps/mapJohto3.png";
+
+
+		const uniquePokemonRoadJohto3 = pokemonOnRoadJohto3.filter(
+			(value, index, self) => self.indexOf(value) === index,
+		);
+		for (let i = 0; i < uniquePokemonRoadJohto3.length; i++) {
+			addToPokemonRadar(uniquePokemonRoadJohto3[i]);
+		}
+	} else if (currentRoad == pokemonOnRoadJohto3) {
+		currentRoad = pokemonOnRoadJohto4;
+		roadName.innerHTML = "Road 4 Johto";
+		mapRoads.src = "stock-img/maps/mapJohto4.png";
+
+
+		const uniquePokemonRoadJohto4 = pokemonOnRoadJohto4.filter(
+			(value, index, self) => self.indexOf(value) === index,
+		);
+		for (let i = 0; i < uniquePokemonRoadJohto4.length; i++) {
+			addToPokemonRadar(uniquePokemonRoadJohto4[i]);
+		}
+	} else if (currentRoad == pokemonOnRoadJohto4) {
+		currentRoad = pokemonOnRoadJohto5;
+		roadName.innerHTML = "Road 5 Johto";
+		mapRoads.src = "stock-img/maps/mapJohto5.png";
+
+
+		const uniquePokemonRoadJohto5 = pokemonOnRoadJohto5.filter(
+			(value, index, self) => self.indexOf(value) === index,
+		);
+		for (let i = 0; i < uniquePokemonRoadJohto5.length; i++) {
+			addToPokemonRadar(uniquePokemonRoadJohto5[i]);
+		}
+	} else if (currentRoad == pokemonOnRoadJohto5) {
+		currentRoad = pokemonOnRoadJohto6;
+		roadName.innerHTML = "Road 6 Johto";
+		mapRoads.src = "stock-img/maps/mapJohto6.png";
+
+
+		const uniquePokemonRoadJohto6 = pokemonOnRoadJohto6.filter(
+			(value, index, self) => self.indexOf(value) === index,
+		);
+		for (let i = 0; i < uniquePokemonRoadJohto6.length; i++) {
+			addToPokemonRadar(uniquePokemonRoadJohto6[i]);
+		}
+	} else if (currentRoad == pokemonOnRoadJohto6) {
+		currentRoad = pokemonOnRoadJohto7;
+		roadName.innerHTML = "Road 7 Johto";
+		mapRoads.src = "stock-img/maps/mapJohto7.png";
+
+
+		const uniquePokemonRoadJohto7 = pokemonOnRoadJohto7.filter(
+			(value, index, self) => self.indexOf(value) === index,
+		);
+		for (let i = 0; i < uniquePokemonRoadJohto7.length; i++) {
+			addToPokemonRadar(uniquePokemonRoadJohto7[i]);
+		}
+	} else if (currentRoad == pokemonOnRoadJohto7) {
+		currentRoad = pokemonOnRoadJohto8;
+		roadName.innerHTML = "Road 8 Johto";
+		mapRoads.src = "stock-img/maps/mapJohto8.png";
+
+
+		const uniquePokemonRoadJohto8 = pokemonOnRoadJohto8.filter(
+			(value, index, self) => self.indexOf(value) === index,
+		);
+		for (let i = 0; i < uniquePokemonRoadJohto8.length; i++) {
+			addToPokemonRadar(uniquePokemonRoadJohto8[i]);
+		}
+	} else if (currentRoad == pokemonOnRoadJohto8) {
+		currentRoad = pokemonOnRoadJohto9;
+		roadName.innerHTML = "Road 9 Johto";
+		mapRoads.src = "stock-img/maps/mapJohto9.png";
+
+
+		const uniquePokemonRoadJohto9 = pokemonOnRoadJohto9.filter(
+			(value, index, self) => self.indexOf(value) === index,
+		);
+		for (let i = 0; i < uniquePokemonRoadJohto9.length; i++) {
+			addToPokemonRadar(uniquePokemonRoadJohto9[i]);
+		}
+	} else if (currentRoad == pokemonOnRoadJohto9) {
 		currentRoad = pokemonOnRoad1;
 		roadName.innerHTML = "Road 1";
 		mapRoads.src = "stock-img/maps/mapRoad1.png";
-		
+
 
 		const uniquePokemonRoad1 = pokemonOnRoad1.filter(
 			(value, index, self) => self.indexOf(value) === index,
@@ -275,44 +418,43 @@ function changeRoad() {
 		}
 
 		let totalRarity = itemList.reduce(
-            (sum, item) => sum + item.rarity,
-            0
-        );
-    
-        let random = Math.random() * totalRarity;
-        let itemSelected;
-        let cumulativeRarity = 0;
-        for (let i = 0; i < itemList.length; i++) {
-            cumulativeRarity += itemList[i].rarity;
-            if (random < cumulativeRarity) {
-                itemSelected = itemList[i];
-                break;
-            }
-        }
-    
-        if (itemSelected.name === "Shiny Charm") {
-            shinyCharm.style.display = "block";
-        }
-        if (itemSelected.name === "Lentil Scop") {
-            lentilScop.style.display = "block";
-        }
-        if (itemSelected.name === "Spray Duck") {
-            sprayDuck.style.display = "block";
-        }
-        if (itemSelected.name === "Bike") {
-            bike.style.display = "block";
-        }
-        if (itemSelected.name === "Mew Finder") {
-            mewFinder.style.display = "block";
-        }
-    
+			(sum, item) => sum + item.rarity,
+			0
+		);
+
+		let random = Math.random() * totalRarity;
+		let itemSelected;
+		let cumulativeRarity = 0;
+		for (let i = 0; i < itemList.length; i++) {
+			cumulativeRarity += itemList[i].rarity;
+			if (random < cumulativeRarity) {
+				itemSelected = itemList[i];
+				break;
+			}
+		}
+
+		if (itemSelected.name === "Shiny Charm") {
+			shinyCharm.style.display = "block";
+		}
+		if (itemSelected.name === "Lentil Scop") {
+			lentilScop.style.display = "block";
+		}
+		if (itemSelected.name === "Spray Duck") {
+			sprayDuck.style.display = "block";
+		}
+		if (itemSelected.name === "Bike") {
+			bike.style.display = "block";
+		}
+		if (itemSelected.name === "Mew Finder") {
+			mewFinder.style.display = "block";
+		}
 
 
 	} else {
 		currentRoad = pokemonOnRoad1;
 		roadName.innerHTML = "Road 1";
 		mapRoads.src = "stock-img/maps/mapRoad1.png";
-		
+
 
 		const uniquePokemonRoad1 = pokemonOnRoad1.filter(
 			(value, index, self) => self.indexOf(value) === index,
@@ -333,6 +475,7 @@ for (let i = 0; i < uniquePokemonRoad1.length; i++) {
 
 const roadName = document.querySelector(".roadName");
 roadName.innerHTML = "Road 1";
+
 
 /*  --------- ADD TO LAST CATCH TRACKER ---------- */
 
@@ -366,7 +509,7 @@ function addToPokedex(pokemon) {
 const clickTrainer = document.querySelector(".walkingTrainer");
 let stepIndicator = document.querySelector(".stepIndicator");
 let totalClick = 0;
-let stepsBeforeRoadChange = 500;
+let stepsBeforeRoadChange = 400;
 
 /*  --------- TIME TRACKER + BASED ON EVENT ---------- */
 
@@ -402,9 +545,9 @@ function update(time) {
             }
             totalClick += 1;
             if (stepsBeforeRoadChange === 0) {
-                stepsBeforeRoadChange = 500;
+                stepsBeforeRoadChange = 400;
             }
-            if (totalClick % 500 === 0) {
+            if (totalClick % 400 === 0) {
                 changeRoad();
             }
             stepAccumulator -= stepInterval;
@@ -435,12 +578,12 @@ clickTrainer.addEventListener("click", () => {
 	// biome-ignore lint/style/useTemplate: <explanation>
 	stepIndicator.innerHTML = stepsBeforeRoadChange + " step before next road";
 	if (stepsBeforeRoadChange === 0) {
-		stepsBeforeRoadChange = 500;
+		stepsBeforeRoadChange = 400;
 	}
 	if (totalClick % 10 === 0) {
 		catchRandom();
 	}
-	if (totalClick % 500 === 0) {
+	if (totalClick % 400 === 0) {
 		changeRoad();
     }
     
@@ -913,4 +1056,5 @@ musicButton.addEventListener("click", () => {
 		backgroundMusic.pause();
 	}
 });
+
 
