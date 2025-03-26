@@ -198,7 +198,7 @@ const availablePokemons = [
     { number: 197, name: "Noctali", alt: "Umbreon", rarity: 0.05, rarity2: 0.05, rarity3: 0.05, rarity4: 1 , gen: 1 },
     { number: 198, name: "Cornèbre", alt: "Murkrow", rarity: 0.1, rarity2: 0.1, rarity3: 0.1, rarity4: 1 , gen: 1 },
     { number: 199, name: "Roigada", alt: "Slowking", rarity: 0.04, rarity2: 0.04, rarity3: 0.04, rarity4: 1 , gen: 1 },
-    { number: 200, name: "Feuforêve", alt: "Misdreavous", rarity: 0.1, rarity2: 0.1, rarity3: 0.1, rarity4: 1 , gen: 1 },
+    { number: 200, name: "Feuforêve", alt: "Misdreavus", rarity: 0.1, rarity2: 0.1, rarity3: 0.1, rarity4: 1 , gen: 1 },
     { number: 201, name: "Zarbi", alt: "Unown", rarity: 0.02, rarity2: 0.02, rarity3: 0.02, rarity4: 1 , gen: 1 },
     { number: 202, name: "Qulbutoké", alt: "Wobbuffet", rarity: 0.08, rarity2: 0.08, rarity3: 0.08, rarity4: 1 , gen: 1 },
     { number: 203, name: "Girafarig", alt: "Girafarig", rarity: 0.1, rarity2: 0.1, rarity3: 0.1, rarity4: 1 , gen: 1 },
@@ -261,6 +261,7 @@ const pokemonOnRoad1 = [
     availablePokemons[15],
     availablePokemons[18],
     availablePokemons[132],
+    availablePokemons[250]
 ]
 
 
@@ -273,6 +274,7 @@ const pokemonOnRoad2 = [
     availablePokemons[28],
     availablePokemons[31],
     availablePokemons[55],
+    availablePokemons[250]
 ]
 
 
@@ -764,5 +766,5 @@ const pokemonOnRoadJohto9 = [
     availablePokemons[8],
     availablePokemons[24],
     availablePokemons[130],
-    availablePokemons[142]
+    availablePokemons[142],
 ]
