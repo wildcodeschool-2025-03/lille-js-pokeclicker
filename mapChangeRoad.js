@@ -141,7 +141,25 @@ function changeRoad() {
 			addToPokemonRadar(uniquePokemonRoadJohto1[i]);
 		}
 
-		let totalRarity = itemList.reduce(
+
+		let availableItems = itemList.filter(item => {
+			if (item.name === "Shiny Charm" && shinyCharm.style.display === "block") {
+				return false; 
+			}
+			if (item.name === "Lentil Scop" && lentilScop.style.display === "block") {
+				return false; 
+			}
+			if (item.name === "Spray Duck" && sprayDuck.style.display === "block") {
+				return false; 
+			}
+			if (item.name === "Mew Finder" && mewFinder.style.display === "block") {
+				return false; 
+			}
+			return true; 
+		});
+		
+
+		let totalRarity = availableItems.reduce(
 			(sum, item) => sum + item.rarity,
 			0
 		);
@@ -165,7 +183,8 @@ function changeRoad() {
 		}
 		if (itemSelected.name === "Spray Duck") {
 			sprayDuck.style.display = "block";
-		}if (itemSelected.name === "Mew Finder") {
+		}
+		if (itemSelected.name === "Mew Finder") {
 			mewFinder.style.display = "block";
 		}
 
@@ -280,7 +299,24 @@ function changeRoad() {
 			addToPokemonRadar(uniquePokemonRoad1[i]);
 		}
 
-		let totalRarity = itemList.reduce(
+		let availableItems = itemList.filter(item => {
+			if (item.name === "Shiny Charm" && shinyCharm.style.display === "block") {
+				return false; 
+			}
+			if (item.name === "Lentil Scop" && lentilScop.style.display === "block") {
+				return false; 
+			}
+			if (item.name === "Spray Duck" && sprayDuck.style.display === "block") {
+				return false; 
+			}
+			if (item.name === "Mew Finder" && mewFinder.style.display === "block") {
+				return false; 
+			}
+			return true; 
+		});
+		
+
+		let totalRarity = availableItems.reduce(
 			(sum, item) => sum + item.rarity,
 			0
 		);
@@ -295,7 +331,6 @@ function changeRoad() {
 				break;
 			}
 		}
-
 		if (itemSelected.name === "Shiny Charm") {
 			shinyCharm.style.display = "block";
 		}
