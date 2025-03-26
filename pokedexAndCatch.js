@@ -98,22 +98,15 @@ function catchRandom() {
 			);
 			thumb2.classList.add("caught");
 
-			if (lastCaughtPokemon.gen === 1) {
 				caughtPokemon.push(lastCaughtPokemon);
-			} else if (lastCaughtPokemon.gen === 2) {
-				caughtPokemonGen2.push(lastCaughtPokemon);
 			}
 
 			if (
 				lastCaughtPokemon.isShiny === true &&
 				!caughtPokemonShiny.some(pokemon => pokemon.name === lastCaughtPokemon.name)
-			) {
-				if (lastCaughtPokemon.gen === 1) {
-					caughtPokemonShiny.push(lastCaughtPokemon);
+			) {caughtPokemonShiny.push(lastCaughtPokemon);
 					shinySound.play();
-				} else if (lastCaughtPokemon.gen === 2) {
-					caughtPokemonShinyGen2.push(lastCaughtPokemon);
-					shinySound.play();
+	
 				}
 
 				const thumb3 = document.querySelector(
@@ -122,5 +115,4 @@ function catchRandom() {
 				thumb3.classList.add("caught");
 			}
 		}
-	}
-}
+	

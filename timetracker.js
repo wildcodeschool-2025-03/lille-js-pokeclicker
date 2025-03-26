@@ -41,7 +41,7 @@ function update(time) {
             if (stepsBeforeRoadChange === 0) {
                 stepsBeforeRoadChange = 400;
             }
-            if (totalClick % 400 === 0) {
+            if (totalClick % 50 === 0) {
                 changeRoad();
             }
             if (totalClick % 2400 === 0 && isBikeOn !== true) {
@@ -79,7 +79,7 @@ clickTrainer.addEventListener("click", () => {
 	if (totalClick % 10 === 0) {
 		catchRandom();
 	}
-	if (totalClick % 400 === 0) {
+	if (totalClick % 50 === 0) {
 		changeRoad();
 	}
 
