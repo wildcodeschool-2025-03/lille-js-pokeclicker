@@ -51,6 +51,18 @@ main {
     cursor: pointer;
 }
 
+.kanto {
+    position : relative;
+    top : -20px;
+    left : -20px;
+}
+
+.johto {
+    position : relative;
+    top : -20px;
+    left : -10px;
+}
+
 .shinyIcon {
     height: 20px;
     position: absolute;
@@ -64,9 +76,23 @@ main {
     filter: grayscale(1);
 }
 
+.shinyIcon2 {
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    left: 190px;
+    cursor: pointer;
+    
+}
+
+.shinyIcon2:not(.on) {
+    filter: grayscale(1);
+}
+
 .pokedexIcon:active {
     transform: scale(0.9);
 }
+
 
 .caughtPokemonContainer {
     background-color: rgb(36, 36, 36);
@@ -103,6 +129,10 @@ main {
 .shinyCaughtPokemon::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     outline: 1px solid slategrey;
+}
+
+.kantoSection {
+    height: 95%
 }
 
 .caughtPokemon {
@@ -144,6 +174,51 @@ main {
     filter: grayscale(1);
 }
 
+
+.johtoSection {
+    height: 95%
+}
+
+.caughtPokemonGen2 {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    padding-left: 0px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+}
+
+.shinyCaughtPokemonGen2 {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    padding-left: 0px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+    display : none;
+}
+
+.caughtPokemonGen2::-webkit-scrollbar {
+    width: .1rem;
+}
+
+.caughtPokemongen2::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+.shinyCaughtPokemonGen2::-webkit-scrollbar {
+    width: .1rem;
+}
+
+.shinyCaughtPokemonGen2::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
 
 
 /* ALL POKEDEX */

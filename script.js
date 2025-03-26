@@ -12,6 +12,9 @@ const mewFollow2 = document.querySelector(".walkingMew");
 let caughtPokemon = [];
 let caughtPokemonShiny = [];
 
+let caughtPokemonGen2 = [];
+let caughtPokemonShinyGen2 = [];
+
 document.title = `P-C (${caughtPokemon.length}/151)`;
 
 function catchRandom() {
@@ -62,6 +65,7 @@ function catchRandom() {
             }
         }
     }
+    
 
 
 if (lastCaughtPokemon) { 
@@ -98,21 +102,29 @@ if (lastCaughtPokemon) {
 		);
 		thumb2.classList.add("caught");
 
-		caughtPokemon.push(lastCaughtPokemon);
-	}
+        if (lastCaughtPokemon.gen === 1) {
+            caughtPokemon.push(lastCaughtPokemon);
+        } else if (lastCaughtPokemon.gen === 2) {
+            caughtPokemonGen2.push(lastCaughtPokemon);
+        }
 
 	if (
 		lastCaughtPokemon.isShiny === true &&
 		!caughtPokemonShiny.some(pokemon => pokemon.name === lastCaughtPokemon.name)
 	) {
-		caughtPokemonShiny.push(lastCaughtPokemon);
-		shinySound.play()
+        if (lastCaughtPokemon.gen === 1) {
+            caughtPokemonShiny.push(lastCaughtPokemon);
+            shinySound.play();
+        } else if (lastCaughtPokemon.gen === 2) {
+            caughtPokemonShinyGen2.push(lastCaughtPokemon);
+            shinySound.play();}
 
 		const thumb3 = document.querySelector(
 			`.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
 		);
 		thumb3.classList.add("caught");
 	}
+}
 }
 }
 
@@ -142,12 +154,18 @@ function addToPokemonRadar(pokemon) {
 	pokemonRadar.appendChild(addPokemon);
 
 	const pokemonIMG = document.createElement("img");
-	pokemonIMG.src = `https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png`;
+	pokemonIMG.src = `https://img.pokemondb.net/sprites/brilliant-diamond-shining-pearl/normal/${pokemon.alt.toLowerCase()}.png`;
+    // https://img.pokemondb.net/sprites/brilliant-diamond-shining-pearl/normal/${pokemon.alt.toLowerCase()}.png
+    // https://img.pokemondb.net/sprites/lets-go-pikachu-eevee/normal/${pokemon.alt.toLowerCase()}.png
 	pokemonIMG.alt = `${pokemon.alt}`;
 	pokemonIMG.classList.add("pokemonRadarLittleIMG");
+
 	if (caughtPokemon.some(caught => caught.name === pokemon.name)) {
 		pokemonIMG.classList.add("caught");
 	}
+    else if (caughtPokemonGen2.some(caught => caught.name === pokemon.name)) {
+        pokemonIMG.classList.add("caught");
+    }
 	addPokemon.appendChild(pokemonIMG);
 }
 
@@ -362,46 +380,47 @@ let stepAccumulator = 0;
 let catchAccumulator = 0;
 
 function update(time) {
-	let deltaTime = time - lastTime;
-	lastTime = time;
+    try {
+        let deltaTime = time - lastTime;
+        lastTime = time;
 
-	if (isBikeOn === true) {
-		stepInterval = 100;
-	catchInterval = 1000;}
+        if (isBikeOn === true) {
+            stepInterval = 100;
+            catchInterval = 1000;
+        } else {
+            stepInterval = 1000;
+            catchInterval = 10000;
+        }
 
-	else if (isBikeOn === false) {
-		stepInterval = 1000;
-		catchInterval = 10000;
-	}
+        stepAccumulator += deltaTime;
+        catchAccumulator += deltaTime;
 
-	stepAccumulator += deltaTime;
-	catchAccumulator += deltaTime;
+        while (stepAccumulator >= stepInterval) {
+            stepsBeforeRoadChange -= 1;
+            if (stepIndicator) {
+                stepIndicator.innerHTML = stepsBeforeRoadChange + " step before next road";
+            }
+            totalClick += 1;
+            if (stepsBeforeRoadChange === 0) {
+                stepsBeforeRoadChange = 500;
+            }
+            if (totalClick % 500 === 0) {
+                changeRoad();
+            }
+            stepAccumulator -= stepInterval;
+        }
 
-	while (stepAccumulator >= stepInterval) {
-		stepsBeforeRoadChange -= 1;
-		stepIndicator.innerHTML = stepsBeforeRoadChange + " step before next road";
-		totalClick += 1;
-		if (stepsBeforeRoadChange === 0) {
-			stepsBeforeRoadChange = 500;
-		}
-		if (totalClick % 500 === 0) {
-			changeRoad();
-		}
-        
-        
-    
-		stepAccumulator -= stepInterval;
-	}
+        while (catchAccumulator >= catchInterval) {
+            catchRandom();
+            catchAccumulator -= catchInterval;
+        }
 
-	while (catchAccumulator >= catchInterval) {
-		catchRandom();
+        document.title = `P-C (${caughtPokemon.length}/151)`;
 
-		catchAccumulator -= catchInterval;
-	}
-
-	document.title = `P-C (${caughtPokemon.length}/151)`;
-
-	requestAnimationFrame(update);
+        requestAnimationFrame(update);
+    } catch (error) {
+        console.error("Erreur dans la fonction update :", error);
+    }
 }
 
 requestAnimationFrame(update);
@@ -436,7 +455,12 @@ stepIndicator.innerHTML = stepsBeforeRoadChange + " step before next road";
 const isPokemonCaught = document.querySelector(".caughtPokemon");
 const isShinyPokemonCaught = document.querySelector(".shinyCaughtPokemon");
 
-for (let i = 0; i < availablePokemons.length; i++) {
+const isPokemonCaughtGen2 = document.querySelector(".caughtPokemonGen2");
+const isShinyPokemonCaughtGen2 = document.querySelector(".shinyCaughtPokemonGen2");
+
+ /* -------------- GENERATION 1 -------------------*/
+
+for (let i = 0; i <= 150; i++) {
 	function addToCaughtPokemon(pokemon) {
 		/* ----------- NORMAL POKEMON -----------*/
 		const addPokemon = document.createElement("li");
@@ -463,6 +487,35 @@ for (let i = 0; i < availablePokemons.length; i++) {
 	addToCaughtPokemon(availablePokemons[i]);
 }
 
+for (let i = 151; i < availablePokemons.length; i++) {
+	function addToCaughtPokemonGen2(pokemon) {
+		/* ----------- NORMAL POKEMON -----------*/
+		const addPokemon = document.createElement("li");
+		addPokemon.classList.add("isPokemonCaughtGen2");
+		isPokemonCaughtGen2.appendChild(addPokemon);
+
+		const pokemonIMG = document.createElement("img");
+		pokemonIMG.src = `https://img.pokemondb.net/sprites/ruby-sapphire/normal/${pokemon.alt.toLowerCase()}.png`;
+		pokemonIMG.alt = `${pokemon.alt}`;
+		pokemonIMG.classList.add("pokemonLittleIMG");
+		addPokemon.appendChild(pokemonIMG);
+
+		/* ----------- SHINY POKEMON -----------*/
+		const addPokemonShiny = document.createElement("li");
+		addPokemonShiny.classList.add("isShinyPokemonCaughtGen2");
+		isShinyPokemonCaughtGen2.appendChild(addPokemonShiny);
+
+		const pokemonShinyIMG = document.createElement("img");
+		pokemonShinyIMG.src = `https://img.pokemondb.net/sprites/ruby-sapphire/shiny/${pokemon.alt.toLowerCase()}.png`;
+		pokemonShinyIMG.alt = `${pokemon.alt}`;
+		pokemonShinyIMG.classList.add("shinyPokemonLittleIMG");
+		addPokemonShiny.appendChild(pokemonShinyIMG);
+	}
+	addToCaughtPokemonGen2(availablePokemons[i]);
+}
+
+
+
 /* --------------CLICK TO SHOW/HIDE THE GADDEM MENUUUUUUU--------------- */
 
 const pokedexOnOff = document.querySelector(".pokedexIcon");
@@ -479,6 +532,8 @@ pokedexOnOff.addEventListener("click", () => {
 		lastPokemonContainer.classList.remove("show");
 	}
 	pokemonContainer.classList.toggle("show");
+    johtoDisplay.style.display = "none";
+    
 });
 
 pokeballOnOff.addEventListener("click", () => {
@@ -494,9 +549,13 @@ radarOnOff.addEventListener("click", () => {
 });
 
 const shinyOnOff = document.querySelector(".shinyIcon");
+const shinyOnOff2 = document.querySelector(".shinyIcon2")
 const pokedexDisplay = document.querySelector(".caughtPokemon");
+const pokedexGen2Display = document.querySelector(".caughtPokemonGen2");
 const shinyDisplay = document.querySelector(".shinyCaughtPokemon");
+const shinyGen2Display = document.querySelector(".shinyCaughtPokemonGen2")
 let normalPokedexDisplaying = true;
+let normalPokedex2Displaying = true;
 
 shinyOnOff.addEventListener("click", () => {
 	if (normalPokedexDisplaying === true) {
@@ -511,6 +570,36 @@ shinyOnOff.addEventListener("click", () => {
 		normalPokedexDisplaying = true;
 	}
 });
+
+
+shinyOnOff2.addEventListener("click", () => {
+	if (normalPokedex2Displaying === true) {
+		pokedexGen2Display.style.display = "none";
+		shinyGen2Display.style.display = "flex";
+		shinyOnOff2.classList.add("on");
+		normalPokedex2Displaying = false;
+	} else if (normalPokedex2Displaying === false) {
+		pokedexGen2Display.style.display = "flex";
+		shinyGen2Display.style.display = "none";
+		shinyOnOff2.classList.remove("on");
+		normalPokedex2Displaying = true;
+	}
+});
+
+const kantoDisplay = document.querySelector(".kantoSection")
+const johtoDisplay = document.querySelector(".johtoSection")
+const kantoButton = document.querySelector(".kanto")
+const johtoButton = document.querySelector(".johto")
+
+kantoButton.addEventListener("click", () => {
+    kantoDisplay.style.display = "block"
+    johtoDisplay.style.display = "none"
+})
+
+johtoButton.addEventListener("click", () => {
+    johtoDisplay.style.display = "block"
+    kantoDisplay.style.display = "none"
+})
 
 /* -------------------POKEBALL POPUP--------------- */
 
