@@ -531,6 +531,7 @@ pokedexOnOff.addEventListener("click", () => {
 	if (lastPokemonContainer.classList.contains("show")) {
 		lastPokemonContainer.classList.remove("show");
 	}
+    kantoDisplay.style.display = "block";
 	pokemonContainer.classList.toggle("show");
     johtoDisplay.style.display = "none";
     
