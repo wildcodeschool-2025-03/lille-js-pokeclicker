@@ -15,7 +15,7 @@ let caughtPokemonShiny = [];
 let caughtPokemonGen2 = [];
 let caughtPokemonShinyGen2 = [];
 
-document.title = `P-C (${caughtPokemon.length}/151)`;
+document.title = `P-C (${caughtPokemon.length}/251)`;
 
 function catchRandom() {
     let totalRarity, random, cumulativeRarity = 0, lastCaughtPokemon;
@@ -547,7 +547,7 @@ function update(time) {
             if (stepsBeforeRoadChange === 0) {
                 stepsBeforeRoadChange = 400;
             }
-            if (totalClick % 400 === 0) {
+            if (totalClick % 20 === 0) {
                 changeRoad();
             }
             stepAccumulator -= stepInterval;
@@ -558,7 +558,7 @@ function update(time) {
             catchAccumulator -= catchInterval;
         }
 
-        document.title = `P-C (${caughtPokemon.length}/151)`;
+        document.title = `P-C (${caughtPokemon.length}/251)`;
 
         requestAnimationFrame(update);
     } catch (error) {
@@ -583,7 +583,7 @@ clickTrainer.addEventListener("click", () => {
 	if (totalClick % 10 === 0) {
 		catchRandom();
 	}
-	if (totalClick % 400 === 0) {
+	if (totalClick % 20 === 0) {
 		changeRoad();
     }
     

@@ -199,7 +199,7 @@ const availablePokemons = [
     { number: 198, name: "Cornèbre", alt: "Murkrow", rarity: 0.1, rarity2: 0.1, rarity3: 0.1, rarity4: 1 , gen: 1 },
     { number: 199, name: "Roigada", alt: "Slowking", rarity: 0.04, rarity2: 0.04, rarity3: 0.04, rarity4: 1 , gen: 1 },
     { number: 200, name: "Feuforêve", alt: "Misdreavus", rarity: 0.1, rarity2: 0.1, rarity3: 0.1, rarity4: 1 , gen: 1 },
-    { number: 201, name: "Zarbi", alt: "Unown", rarity: 0.02, rarity2: 0.02, rarity3: 0.02, rarity4: 1 , gen: 1 },
+    { number: 201, name: "Zarbi", alt: "unown-a", rarity: 0.02, rarity2: 0.02, rarity3: 0.02, rarity4: 1 , gen: 1 },
     { number: 202, name: "Qulbutoké", alt: "Wobbuffet", rarity: 0.08, rarity2: 0.08, rarity3: 0.08, rarity4: 1 , gen: 1 },
     { number: 203, name: "Girafarig", alt: "Girafarig", rarity: 0.1, rarity2: 0.1, rarity3: 0.1, rarity4: 1 , gen: 1 },
     { number: 204, name: "Pomdepik", alt: "Pineco", rarity: 0.12, rarity2: 0.12, rarity3: 0.12, rarity4: 1 , gen: 1 },
