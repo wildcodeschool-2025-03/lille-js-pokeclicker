@@ -1,11 +1,10 @@
 /*  --------- MAP + CHANGE ROAD FUNCTION ---------- */
 
 const itemList = [
-	{ name: "Shiny Charm", rarity: 15 },
-	{ name: "Lentil Scop", rarity: 30 },
-	{ name: "Spray Duck", rarity: 30 },
-	{ name: "Bike", rarity: 30 },
-	{ name: "Mew Finder", rarity: 5 },
+	{ name: "Shiny Charm", rarity: 20 },
+	{ name: "Lentil Scop", rarity: 35 },
+	{ name: "Spray Duck", rarity: 35 },
+	{ name: "Mew Finder", rarity: 10 },
 ]
 
 const sign = document.querySelector(".stepSign");
@@ -166,11 +165,7 @@ function changeRoad() {
 		}
 		if (itemSelected.name === "Spray Duck") {
 			sprayDuck.style.display = "block";
-		}
-		if (itemSelected.name === "Bike") {
-			bike.style.display = "block";
-		}
-		if (itemSelected.name === "Mew Finder") {
+		}if (itemSelected.name === "Mew Finder") {
 			mewFinder.style.display = "block";
 		}
 
@@ -309,11 +304,7 @@ function changeRoad() {
 		}
 		if (itemSelected.name === "Spray Duck") {
 			sprayDuck.style.display = "block";
-		}
-		if (itemSelected.name === "Bike") {
-			bike.style.display = "block";
-		}
-		if (itemSelected.name === "Mew Finder") {
+		}if (itemSelected.name === "Mew Finder") {
 			mewFinder.style.display = "block";
 		}
 
