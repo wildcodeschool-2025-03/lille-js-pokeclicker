@@ -1,14 +1,13 @@
-const myImg = document.querySelector("body");
-console.log(myImg)
+const myImg = document.querySelector("body"); 
 const buttonNight = document.getElementById("buttonNight");
 
-let isFirstImage = true;
+function changeLightMode(){
+	myImg.classList.toggle("dark")	
+}
 
-buttonNight.addEventListener("click", function () {
-	if (isFirstImage) {
-		myImg.url = "stock-img/thumb-1920-641430.jpg";
-	} else {
-		myImg.url = "stock-img/backgroundMoving.png";
-	}
-	isFirstImage =! isFirstImage;
-});
+buttonNight.addEventListener("click", changeLightMode )
+
+
+
+
+ 
