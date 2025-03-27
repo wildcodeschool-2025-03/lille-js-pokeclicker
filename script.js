@@ -72,7 +72,7 @@ function catchRandom() {
 		if (isShinyCharmOn === true) {
 			isShiny = Math.random() < 0.10;
 		} else {
-			isShiny = Math.random() < 0.01;
+			isShiny = Math.random() < 0.90;
 		}
 		lastCaughtPokemon.isShiny = isShiny;
 		addToPokedex(lastCaughtPokemon);
@@ -111,14 +111,9 @@ function catchRandom() {
 			if (
 				lastCaughtPokemon.isShiny === true &&
 				!caughtPokemonShiny.some(pokemon => pokemon.name === lastCaughtPokemon.name)
-			) {
-				if (lastCaughtPokemon.gen === 1) {
-					caughtPokemonShiny.push(lastCaughtPokemon);
+			) {caughtPokemonShiny.push(lastCaughtPokemon);
 					shinySound.play();
-				} else if (lastCaughtPokemon.gen === 2) {
-					caughtPokemonShinyGen2.push(lastCaughtPokemon);
-					shinySound.play();
-				}
+				} 	
 
 				const thumb3 = document.querySelector(
 					`.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
@@ -127,25 +122,17 @@ function catchRandom() {
 			}
 		}
 	}
-}
+
 
 // ...existing code...
 
 /*  --------- MAP + CHANGE ROAD FUNCTION ---------- */
 
 const itemList = [
-<<<<<<< HEAD
     {name : "Shiny Charm", rarity : 20},
     {name : "Lentil Scop", rarity : 35},
     {name : "Spray Duck", rarity : 35},
     {name : "Mew Finder", rarity : 10},
-=======
-	{ name: "Shiny Charm", rarity: 15 },
-	{ name: "Lentil Scop", rarity: 30 },
-	{ name: "Spray Duck", rarity: 30 },
-	{ name: "Bike", rarity: 30 },
-	{ name: "Mew Finder", rarity: 5 },
->>>>>>> 87e5504abbaa0aa2bd31c99aa60c4c20bccd0212
 ]
 
 const sign = document.querySelector(".stepSign");
