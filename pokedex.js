@@ -61,3 +61,23 @@ for (let i = 151; i < availablePokemons.length; i++) {
 	}
 	addToCaughtPokemonGen2(availablePokemons[i]);
 }
+
+
+const isZarbiCaught = document.querySelector(".zarbiCaught")
+
+for (let i = 0; i < zarbiList.length; i++) {
+	function addToCaughtZarbi(pokemon) {
+		
+		const addPokemon = document.createElement("li");
+		addPokemon.classList.add("isZarbiCaught");
+		isZarbiCaught.appendChild(addPokemon);
+
+		const pokemonIMG = document.createElement("img");
+		pokemonIMG.src = `https://img.pokemondb.net/sprites/black-white/normal/${pokemon.alt.toLowerCase()}.png`;
+		pokemonIMG.alt = `${pokemon.alt}`;
+		pokemonIMG.classList.add("zarbiLittleIMG");
+		addPokemon.appendChild(pokemonIMG);
+
+	}
+	addToCaughtZarbi(zarbiList[i]);
+}

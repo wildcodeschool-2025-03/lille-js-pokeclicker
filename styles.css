@@ -51,6 +51,71 @@ main {
     padding: 0 30px;
 }
 
+.zarbidexIcon {
+    position : fixed;
+    top : 45px;
+    left: 250px;
+    width: 85px;
+    display: block;
+    cursor: pointer;
+}
+
+.zarbidexIcon:active {
+    transform: scale(0.9);
+}
+
+.zarbidexContainer {
+    background-color: rgb(36, 36, 36);
+    border-radius: 5px;
+    width: 410px;
+    max-width: 80%;
+    position: fixed;
+    top: 150px;
+    box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.76);
+    border: solid 3px rgb(99, 34, 34);
+    height: auto;
+    max-height: 60%;
+    padding: 2rem;
+    z-index: 100;
+    display : none;
+}
+
+.zarbiCaught {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    padding-left: 0px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+}
+
+.zarbiLittleIMG {
+    display : block;
+    height: 65px;
+}
+
+.zarbiLittleIMG:not(.zCaught) {
+
+    display: none;
+}
+
+
+.zarbidexContainer.show {
+    display: block;
+}
+
+.zarbiCaught::-webkit-scrollbar {
+    width: 0rem;
+}
+
+.zarbiCaught::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+
 /* POKEMON CAUGHT */
 
 .pokedexIcon {

@@ -9,10 +9,19 @@ const lastPokemonContainer = document.querySelector(".pokedexContainer");
 const radarOnOff = document.querySelector(".compass");
 const radarContainer = document.querySelector(".pokemonRadarContainer");
 
+const zarbidexIcon = document.querySelector(".zarbidexIcon")
+const zarbidexContainer = document.querySelector(".zarbidexContainer")
+
 pokedexOnOff.addEventListener("click", () => {
 	if (lastPokemonContainer.classList.contains("show")) {
 		lastPokemonContainer.classList.remove("show");
+	
 	}
+
+	if (zarbidexContainer.classList.contains("show")) {
+		zarbidexContainer.classList.remove("show");
+	}
+
 	kantoDisplay.style.display = "block";
 	pokemonContainer.classList.toggle("show");
 	johtoDisplay.style.display = "none";
@@ -24,7 +33,25 @@ pokeballOnOff.addEventListener("click", () => {
 		pokemonContainer.classList.remove("show");
 	}
 
+	if (zarbidexContainer.classList.contains("show")) {
+		zarbidexContainer.classList.remove("show");
+	}
+
 	lastPokemonContainer.classList.toggle("show");
+});
+
+zarbidexIcon.addEventListener("click", () => {
+
+	if (lastPokemonContainer.classList.contains("show")) {
+		lastPokemonContainer.classList.remove("show");
+	}
+
+	if (pokemonContainer.classList.contains("show")) {
+		pokemonContainer.classList.remove("show");
+	}
+
+	zarbidexContainer.classList.toggle("show")
+
 });
 
 radarOnOff.addEventListener("click", () => {
@@ -37,6 +64,7 @@ const pokedexDisplay = document.querySelector(".caughtPokemon");
 const pokedexGen2Display = document.querySelector(".caughtPokemonGen2");
 const shinyDisplay = document.querySelector(".shinyCaughtPokemon");
 const shinyGen2Display = document.querySelector(".shinyCaughtPokemonGen2")
+
 let normalPokedexDisplaying = true;
 let normalPokedex2Displaying = true;
 
@@ -90,3 +118,6 @@ const infoBubble = document.querySelector(".infoBubbleContainer")
 infoButton.addEventListener ("click", () => {
 	infoBubble.classList.toggle("show")
 })
+
+
+
