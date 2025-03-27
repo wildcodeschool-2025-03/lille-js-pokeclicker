@@ -24,15 +24,25 @@ body {
     width: 100%;
     min-height: 100%;
     background-image: url("stock-img/backgroundMoving.png");
-    /* background-image: url("https://images6.alphacoders.com/641/thumb-1920-641430.jpg"); */
     background-repeat: repeat-x;
     background-size: auto 100vh;
     background-attachment: fixed;
     animation: scroll-background 10000s linear infinite;
     padding: 0;
     margin: 0;
-    overflow:hidden ;
+    overflow:hidden ;   
+}
 
+.dark {
+    background-image: url("stock-img/maps/bgNight.jpg");
+}
+
+#buttonNight {
+    width: 5rem;
+    height: 1.5rem;
+    background-color: yellow;
+    border-radius: 1rem;
+    font-size: 1.1rem;
 }
 
 main {
@@ -775,6 +785,77 @@ footer {
     width: 2rem;
 }
 
+#buttonSeasons {
+    width: 5rem;
+    height: 1.5rem;
+    background-color: green;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.resetButton {
+    position : fixed;
+    right : 85px;
+    bottom : 60px;
+    cursor: pointer;
+}
+
+.infoButton {
+    position : fixed;
+    right : 40px;
+    bottom : 60px;
+    cursor : pointer;
+}
+
+.infoBubbleContainer {
+    background-color: rgb(36, 36, 36);
+    border-radius: 5px;
+    width: 410px;
+    max-width: 80%;
+    position: fixed;
+    top : 50%;
+    left : 50%;
+    translate : -50% -50%;
+    box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.76);
+    border: solid 3px rgb(99, 34, 34);
+    height: 300px;
+    padding: 1rem;
+    z-index: 10000;
+    display : none;
+}
+
+.infoBubbleContainer.show {
+    display : block;
+}
+
+.infoBubble {
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+}
+
+.infoBubble::-webkit-scrollbar {
+    width: .1rem;
+}
+
+.infoBubble::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+.itemListInfo {
+    display : flex;
+    flex-direction: column;
+    list-style: none;
+    padding : 0;
+}
+
+.itemListInfo > li {
+    display : flex;
+    align-items: center;
+}
+
 
 @media screen and (max-width: 950px) {
 
@@ -884,6 +965,9 @@ footer {
     }
 
     .musicButton{
+        position : fixed;
+        right : 10px;
+        bottom : 60px;
         height: 1.5rem;
         width: 1.5rem;
         cursor: pointer;
@@ -926,6 +1010,24 @@ footer {
         .pokeball {
             width: 2rem;
             margin-top: 20rem;
+        }
+
+        .musicButton{
+            left : 10px;
+            bottom : 60px;
+            right : inherit;
+        }
+    
+        .resetButton {
+            left : 55px;
+            bottom : 15px;
+            right : inherit;
+        }
+        
+        .infoButton {
+            left : 10px;
+            bottom : 15px;
+            right : inherit
         }
 
     }
