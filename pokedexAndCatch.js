@@ -11,6 +11,8 @@ let caughtPokemonShiny = [];
 let caughtPokemonGen2 = [];
 let caughtPokemonShinyGen2 = [];
 
+let zarbiDex = [];
+
 document.title = `P-C (${caughtPokemon.length}/151)`;
 
 function catchRandom() {
@@ -98,21 +100,43 @@ function catchRandom() {
 			);
 			thumb2.classList.add("caught");
 
-				caughtPokemon.push(lastCaughtPokemon);
-			}
-
-			if (
-				lastCaughtPokemon.isShiny === true &&
-				!caughtPokemonShiny.some(pokemon => pokemon.name === lastCaughtPokemon.name)
-			) {caughtPokemonShiny.push(lastCaughtPokemon);
-					shinySound.play();
-	
-				}
-
-				const thumb3 = document.querySelector(
-					`.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
-				);
-				thumb3.classList.add("caught");
-			}
+			caughtPokemon.push(lastCaughtPokemon);
 		}
-	
+
+		if (
+			lastCaughtPokemon.isShiny === true &&
+			!caughtPokemonShiny.some(pokemon => pokemon.name === lastCaughtPokemon.name)
+		) {
+			caughtPokemonShiny.push(lastCaughtPokemon);
+			shinySound.play();
+
+
+
+			const thumb3 = document.querySelector(
+				`.shinyPokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
+			);
+			thumb3.classList.add("caught");
+		}
+
+		if (lastCaughtPokemon.name === availablePokemons[200].name) {
+            const randomIndex = Math.floor(Math.random() * zarbiList.length);
+            const zarbiCaught = zarbiList[randomIndex];
+
+            if (!zarbiDex.some(pokemon => pokemon.alt === zarbiCaught.alt)) {
+                zarbiDex.push(zarbiCaught);
+
+                const zarbiElement = document.querySelector(`.zarbiLittleIMG[alt=${zarbiCaught.alt}]`);
+                if (zarbiElement) {
+                    zarbiElement.classList.add("zCaught");
+                }
+            }
+			if (lastCaughtPokemon.isShiny === true){
+				const zarbiElement = document.querySelector(`.zarbiLittleIMG[alt=${shinyZarbiCaught.alt}]`);
+                if (zarbiElement) {
+                    zarbiElement.classList.add("zCaught");
+			}
+        }
+
+	}
+}
+}
