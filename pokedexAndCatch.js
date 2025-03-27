@@ -71,7 +71,7 @@ function catchRandom() {
 		if (isShinyCharmOn === true) {
 			isShiny = Math.random() < 0.10;
 		} else {
-			isShiny = Math.random() < 0.50;
+			isShiny = Math.random() < 0.01;
 		}
 		lastCaughtPokemon.isShiny = isShiny;
 		addToPokedex(lastCaughtPokemon);
