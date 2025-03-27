@@ -91,13 +91,32 @@ main {
     width: 100%;
 }
 
+.shinyZarbiCaught {
+    display: none;
+    list-style: none;
+    flex-wrap: wrap;
+    padding-left: 0px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+}
+
 .zarbiLittleIMG {
     display : block;
     height: 65px;
 }
 
 .zarbiLittleIMG:not(.zCaught) {
+    display: none;
+}
 
+.shinyZarbiLittleIMG {
+    display : block;
+    height: 65px;
+}
+
+.shinyZarbiLittleIMG:not(.zCaught) {
     display: none;
 }
 
@@ -161,6 +180,19 @@ main {
 }
 
 .shinyIcon2:not(.on) {
+    filter: grayscale(1);
+}
+
+.shinyIcon3 {
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    left: 190px;
+    cursor: pointer;
+    
+}
+
+.shinyIcon3:not(.on) {
     filter: grayscale(1);
 }
 
