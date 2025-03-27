@@ -89,6 +89,21 @@ function catchRandom() {
 
 		/* AJOUT DES POKEMONS DANS LE RADAR ET LE POKEDEX */
 
+
+		if (lastCaughtPokemon.name === availablePokemons[200].name) {
+			const randomIndex = Math.floor(Math.random() * zarbiList.length);
+			const zarbiCaught = zarbiList[randomIndex];
+		
+			if (!zarbiDex.some(pokemon => pokemon.alt === zarbiCaught.alt)) {
+				zarbiDex.push(zarbiCaught);
+		
+				const zarbiElement = document.querySelector(`.zarbiLittleIMG[alt=${zarbiCaught.alt}]`);
+				if (zarbiElement) {
+					zarbiElement.classList.add("zCaught");
+				}
+			}
+		}
+
 		if (!caughtPokemon.some(pokemon => pokemon.name === lastCaughtPokemon.name)) {
 			const thumb = document.querySelector(
 				`.pokemonLittleIMG[alt=${lastCaughtPokemon.alt}]`,
