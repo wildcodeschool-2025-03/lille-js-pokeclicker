@@ -60,13 +60,20 @@ radarOnOff.addEventListener("click", () => {
 
 const shinyOnOff = document.querySelector(".shinyIcon");
 const shinyOnOff2 = document.querySelector(".shinyIcon2")
+const shinyOnOffZarbi = document.querySelector(".shinyIcon3")
+
 const pokedexDisplay = document.querySelector(".caughtPokemon");
 const pokedexGen2Display = document.querySelector(".caughtPokemonGen2");
+const zarbidexDisplay = document.querySelector(".zarbiCaught")
+
 const shinyDisplay = document.querySelector(".shinyCaughtPokemon");
 const shinyGen2Display = document.querySelector(".shinyCaughtPokemonGen2")
+const zarbiShinyCaught = document.querySelector(".shinyZarbiCaught")
 
 let normalPokedexDisplaying = true;
 let normalPokedex2Displaying = true;
+let normalZarbidexDisplaying = true;
+
 
 shinyOnOff.addEventListener("click", () => {
 	if (normalPokedexDisplaying === true) {
@@ -96,6 +103,22 @@ shinyOnOff2.addEventListener("click", () => {
 		normalPokedex2Displaying = true;
 	}
 });
+
+shinyOnOffZarbi.addEventListener("click", () => {
+	if (normalZarbidexDisplaying === true) {
+		zarbidexDisplay.style.display = "none";
+		zarbiShinyCaught.style.display = "flex";
+		shinyOnOffZarbi.classList.add("on")
+		normalZarbidexDisplaying = false;
+	}
+	else if (normalZarbidexDisplaying === false) {
+		zarbidexDisplay.style.display = "flex";
+		zarbiShinyCaught.style.display = "none";
+		shinyOnOffZarbi.classList.remove("on");
+		normalZarbidexDisplaying = true;
+	}
+	
+})
 
 const kantoDisplay = document.querySelector(".kantoSection")
 const johtoDisplay = document.querySelector(".johtoSection")
