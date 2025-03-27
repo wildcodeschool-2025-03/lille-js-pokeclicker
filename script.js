@@ -1060,4 +1060,3 @@ musicButton.addEventListener("click", () => {
 	}
 });
 
-
