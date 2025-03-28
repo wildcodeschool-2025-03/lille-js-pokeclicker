@@ -44,7 +44,17 @@ body {
     background-color: #ff9e2a;
     position: fixed;
     top: 70px;
-    left: 225px;
+    left: 218px;
+}
+
+#buttonOST {
+    width: 2rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    position: fixed;
+    top: 65px;
+    left: 320px;
 }
 
 main {
@@ -52,6 +62,90 @@ main {
     justify-content: space-between;
     padding: 0 30px;
 }
+
+.zarbidexIcon {
+    position : fixed;
+    top : 45px;
+    left: 250px;
+    width: 85px;
+    display: block;
+    cursor: pointer;
+}
+
+.zarbidexIcon:active {
+    transform: scale(0.9);
+}
+
+.zarbidexContainer {
+    background-color: rgb(36, 36, 36);
+    border-radius: 5px;
+    width: 410px;
+    max-width: 80%;
+    position: fixed;
+    top: 150px;
+    box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.76);
+    border: solid 3px rgb(99, 34, 34);
+    height: auto;
+    max-height: 60%;
+    padding: 2rem;
+    z-index: 100;
+    display : none;
+}
+
+.zarbiCaught {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    padding-left: 0px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+}
+
+.shinyZarbiCaught {
+    display: none;
+    list-style: none;
+    flex-wrap: wrap;
+    padding-left: 0px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+}
+
+.zarbiLittleIMG {
+    display : block;
+    height: 65px;
+}
+
+.zarbiLittleIMG:not(.zCaught) {
+    display: none;
+}
+
+.shinyZarbiLittleIMG {
+    display : block;
+    height: 65px;
+}
+
+.shinyZarbiLittleIMG:not(.zCaught) {
+    display: none;
+}
+
+
+.zarbidexContainer.show {
+    display: block;
+}
+
+.zarbiCaught::-webkit-scrollbar {
+    width: 0rem;
+}
+
+.zarbiCaught::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
 
 /* POKEMON CAUGHT */
 
@@ -98,6 +192,19 @@ main {
 }
 
 .shinyIcon2:not(.on) {
+    filter: grayscale(1);
+}
+
+.shinyIcon3 {
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    left: 190px;
+    cursor: pointer;
+    
+}
+
+.shinyIcon3:not(.on) {
     filter: grayscale(1);
 }
 
@@ -795,6 +902,68 @@ footer {
     color: white;
 }
 
+.resetButton {
+    position : fixed;
+    right : 85px;
+    bottom : 60px;
+    cursor: pointer;
+}
+
+.infoButton {
+    position : fixed;
+    right : 40px;
+    bottom : 60px;
+    cursor : pointer;
+}
+
+.infoBubbleContainer {
+    background-color: rgb(36, 36, 36);
+    border-radius: 5px;
+    width: 410px;
+    max-width: 80%;
+    position: fixed;
+    top : 50%;
+    left : 50%;
+    translate : -50% -50%;
+    box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.76);
+    border: solid 3px rgb(99, 34, 34);
+    height: 300px;
+    padding: 1rem;
+    z-index: 10000;
+    display : none;
+}
+
+.infoBubbleContainer.show {
+    display : block;
+}
+
+.infoBubble {
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+}
+
+.infoBubble::-webkit-scrollbar {
+    width: .1rem;
+}
+
+.infoBubble::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+}
+
+.itemListInfo {
+    display : flex;
+    flex-direction: column;
+    list-style: none;
+    padding : 0;
+}
+
+.itemListInfo > li {
+    display : flex;
+    align-items: center;
+}
+
 
 @media screen and (max-width: 950px) {
 
@@ -904,6 +1073,9 @@ footer {
     }
 
     .musicButton{
+        position : fixed;
+        right : 10px;
+        bottom : 60px;
         height: 1.5rem;
         width: 1.5rem;
         cursor: pointer;
@@ -946,6 +1118,24 @@ footer {
         .pokeball {
             width: 2rem;
             margin-top: 20rem;
+        }
+
+        .musicButton{
+            left : 10px;
+            bottom : 60px;
+            right : inherit;
+        }
+    
+        .resetButton {
+            left : 55px;
+            bottom : 15px;
+            right : inherit;
+        }
+        
+        .infoButton {
+            left : 10px;
+            bottom : 15px;
+            right : inherit
         }
 
     }
