@@ -91,8 +91,7 @@ function loadFromStorage() {
 
 	for (let i = 0; i < caughtPokemonShiny.length; i++) {
 		const thumbShinyZarbi = document.querySelector(
-			`.shinyZarbiLittleIMG[alt=${shinyZarbiDex[i].alt}]`,
-		);
+			`.shinyZarbiLittleIMG[alt=${shinyZarbiDex[i].alt}]`);
 		if (thumbShinyZarbi) {
 			thumbShinyZarbi.classList.add("zCaught");
 		}
