@@ -12,6 +12,7 @@ let caughtPokemonGen2 = [];
 let caughtPokemonShinyGen2 = [];
 
 let zarbiDex = [];
+let shinyZarbiCaught = [];
 
 document.title = `P-C (${caughtPokemon.length}/151)`;
 
@@ -134,8 +135,8 @@ function catchRandom() {
 		}
 
 		if (lastCaughtPokemon.name === availablePokemons[200].name) {
-            const randomIndex = Math.floor(Math.random() * zarbiList.length);
-            const zarbiCaught = zarbiList[randomIndex];
+            zarbiCaught = Math.random() * zarbiList.length;
+            
 
             if (!zarbiDex.some(pokemon => pokemon.alt === zarbiCaught.alt)) {
                 zarbiDex.push(zarbiCaught);
@@ -145,13 +146,12 @@ function catchRandom() {
                     zarbiElement.classList.add("zCaught");
                 }
             }
-			if (lastCaughtPokemon.isShiny === true){
-				const zarbiElement = document.querySelector(`.zarbiLittleIMG[alt=${shinyZarbiCaught.alt}]`);
-                if (zarbiElement) {
-                    zarbiElement.classList.add("zCaught");
-			}
+			// if (lastCaughtPokemon.isShiny === true){
+			// 	const zarbiElement = document.querySelector(`.zarbiLittleIMG[alt=${shinyZarbiCaught.alt}]`);
+            //     if (zarbiElement) {
+            //         zarbiElement.classList.add("zCaught");
+			// }
         }
 
 	}
-}
 }
