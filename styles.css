@@ -457,6 +457,7 @@ main {
     right: 50%;
     translate: 50%;
     transition: 0.05s;
+    outline: none;
 }
 
 .walkingElement:hover {
@@ -495,6 +496,7 @@ main {
     right: 60%;
     translate: 20%;
     display: none;
+    outline: none;
 }
 
 .pikachuSprite {
