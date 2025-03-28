@@ -25,7 +25,7 @@ body {
     min-height: 100%;
     background-image: url("stock-img/backgroundMoving.png");
     background-repeat: repeat-x;
-    background-size: auto 100vh;
+    background-size: auto 100dvh;
     background-attachment: fixed;
     animation: scroll-background 10000s linear infinite;
     padding: 0;
