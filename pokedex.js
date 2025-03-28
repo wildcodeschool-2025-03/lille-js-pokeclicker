@@ -61,3 +61,37 @@ for (let i = 151; i < availablePokemons.length; i++) {
 	}
 	addToCaughtPokemonGen2(availablePokemons[i]);
 }
+
+
+const isZarbiCaught = document.querySelector(".zarbiCaught")
+const isShinyZarbiCaught = document.querySelector(".shinyZarbiCaught")
+
+for (let i = 0; i < zarbiList.length; i++) {
+	function addToCaughtZarbi(pokemon) {
+
+		const addPokemon = document.createElement("li");
+		addPokemon.classList.add("isZarbiCaught");
+		isZarbiCaught.appendChild(addPokemon);
+
+		const pokemonIMG = document.createElement("img");
+		pokemonIMG.src = `https://img.pokemondb.net/sprites/black-white/normal/${pokemon.alt.toLowerCase()}.png`;
+		pokemonIMG.alt = `${pokemon.alt}`;
+		pokemonIMG.classList.add("zarbiLittleIMG");
+		addPokemon.appendChild(pokemonIMG);
+
+
+		const addPokemonShiny = document.createElement("li");
+		addPokemonShiny.classList.add("isShinyZarbiCaught");
+		isShinyZarbiCaught.appendChild(addPokemonShiny);
+
+		const pokemonShinyIMG = document.createElement("img");
+		pokemonShinyIMG.src = `https://img.pokemondb.net/sprites/black-white/shiny/${pokemon.alt.toLowerCase()}.png`;
+		pokemonShinyIMG.alt = `${pokemon.alt}`;
+		pokemonShinyIMG.classList.add("shinyZarbiLittleIMG");
+		addPokemonShiny.appendChild(pokemonShinyIMG);
+
+
+	}
+
+	addToCaughtZarbi(zarbiList[i]);
+}

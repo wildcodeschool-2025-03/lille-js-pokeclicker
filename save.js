@@ -4,12 +4,16 @@ let caughtPokemonSaved = [];
 let caughtPokemonShinySaved = [];
 let caughtPokemonGen2Saved = [];
 let caughtPokemonShinyGen2Saved = [];
+let caughtZarbiSaved = [];
+let caughtShinyZarbiSaved = [];
 
 function saveStorage() {
 	localStorage.setItem("pokedexStored", JSON.stringify(caughtPokemon));
 	localStorage.setItem("pokedexShinyStored", JSON.stringify(caughtPokemonShiny),);
 	localStorage.setItem("pokedexGen2Stored", JSON.stringify(caughtPokemonGen2),);
 	localStorage.setItem("pokedexShinyGen2Stored", JSON.stringify(caughtPokemonShinyGen2),);
+	localStorage.setItem("pokedexZarbiStored", JSON.stringify(zarbiDex),);
+	localStorage.setItem("pokedexShinyZarbiStored", JSON.stringify(shinyZarbiDex),);
 }
 
 function loadFromStorage() {
@@ -17,6 +21,8 @@ function loadFromStorage() {
 	const caughtPokemonShinySaved = JSON.parse(localStorage.getItem("pokedexShinyStored"),);
 	const caughtPokemonGen2Saved = JSON.parse(localStorage.getItem("pokedexGen2Stored"),);
 	const caughtPokemonShinyGen2Saved = JSON.parse(localStorage.getItem("pokedexShinyGen2Stored"),);
+	const caughtZarbiSaved = JSON.parse(localStorage.getItem("pokedexZarbiStored"));
+	const caughtShinyZarbiSaved = JSON.parse(localStorage.getItem("pokedexShinyZarbiStored"));
 
 	for (let i = 0; i < caughtPokemonSaved.length; i++) {
 		caughtPokemon.push(caughtPokemonSaved[i]);
@@ -60,6 +66,38 @@ function loadFromStorage() {
 		pikachuSprite.style.display = "block";
 		isPikachuCaught = true;
 	}
+
+
+
+	for (let i = 0; i < caughtZarbiSaved.length; i++){
+		zarbiDex.push(caughtZarbiSaved[i])
+	}
+
+	for (let i = 0; i < zarbiDex.length; i++) {
+		const thumb6 = document.querySelector(
+			`.zarbiLittleIMG[alt=${zarbiDex[i].alt}]`,
+		);
+
+		if (thumb6) {
+			thumb6.classList.add("zCaught");
+		}
+	}
+
+
+
+	for (let i = 0; i < caughtShinyZarbiSaved.length; i++){
+		shinyZarbiDex.push(caughtShinyZarbiSaved[i])
+	}
+
+	for (let i = 0; i < caughtPokemonShiny.length; i++) {
+		const thumbShinyZarbi = document.querySelector(
+			`.shinyZarbiLittleIMG[alt=${shinyZarbiDex[i].alt}]`,
+		);
+		if (thumbShinyZarbi) {
+			thumbShinyZarbi.classList.add("zCaught");
+		}
+	}
+
 }
 
 // ------------SAVE LOAD AND RESET BUTTONS--------------- //
