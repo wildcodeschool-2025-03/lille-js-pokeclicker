@@ -32,30 +32,30 @@ function update(time) {
 		stepAccumulator += deltaTime;
 		catchAccumulator += deltaTime;
 
-        while (stepAccumulator >= stepInterval) {
-            stepsBeforeRoadChange -= 1;
-            if (stepIndicator) {
-                stepIndicator.innerHTML = stepsBeforeRoadChange + " step before next road";
-            }
-            totalClick += 1;
-            if (stepsBeforeRoadChange === 0) {
-                stepsBeforeRoadChange = 400;
-            }
-            if (totalClick % 400 === 0) {
-                changeRoad();
-            }
-            if (totalClick % 2400 === 0 && isBikeOn !== true) {
-                bike.style.display = "block"
-            }
-            stepAccumulator -= stepInterval;
-        }
+		while (stepAccumulator >= stepInterval) {
+			stepsBeforeRoadChange -= 1;
+			if (stepIndicator) {
+				stepIndicator.innerHTML = stepsBeforeRoadChange + " step before next road";
+			}
+			totalClick += 1;
+			if (stepsBeforeRoadChange === 0) {
+				stepsBeforeRoadChange = 400;
+			}
+			if (totalClick % 50 === 0) {
+				changeRoad();
+			}
+			if (totalClick % 2400 === 0 && isBikeOn !== true) {
+				bike.style.display = "block"
+			}
+			stepAccumulator -= stepInterval;
+		}
 
 		while (catchAccumulator >= catchInterval) {
 			catchRandom();
 			catchAccumulator -= catchInterval;
 		}
 
-        document.title = `P-C (${caughtPokemon.length}/251)`;
+		document.title = `P-C (${caughtPokemon.length}/251)`;
 
 		requestAnimationFrame(update);
 	} catch (error) {
@@ -79,8 +79,11 @@ clickTrainer.addEventListener("click", () => {
 	if (totalClick % 10 === 0) {
 		catchRandom();
 	}
-	if (totalClick % 400 === 0) {
+	if (totalClick % 50 === 0) {
 		changeRoad();
+	}
+	if (totalClick % 2400 === 0 && isBikeOn !== true) {
+		bike.style.display = "block"
 	}
 
 
