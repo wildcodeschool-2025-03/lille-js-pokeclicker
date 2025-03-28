@@ -82,6 +82,9 @@ clickTrainer.addEventListener("click", () => {
 	if (totalClick % 50 === 0) {
 		changeRoad();
 	}
+	if (totalClick % 2400 === 0 && isBikeOn !== true) {
+		bike.style.display = "block"
+	}
 
 
 });
