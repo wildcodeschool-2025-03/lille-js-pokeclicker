@@ -12,7 +12,7 @@ let caughtPokemonGen2 = [];
 let caughtPokemonShinyGen2 = [];
 
 let zarbiDex = [];
-let shinyZarbiCaught = [];
+let shinyZarbiDex = [];
 
 document.title = `P-C (${caughtPokemon.length}/151)`;
 
@@ -71,7 +71,7 @@ function catchRandom() {
 		if (isShinyCharmOn === true) {
 			isShiny = Math.random() < 0.10;
 		} else {
-			isShiny = Math.random() < 0.01;
+			isShiny = Math.random() < 0.99;
 		}
 		lastCaughtPokemon.isShiny = isShiny;
 		addToPokedex(lastCaughtPokemon);
@@ -94,15 +94,29 @@ function catchRandom() {
 		if (lastCaughtPokemon.name === availablePokemons[200].name) {
 			const randomIndex = Math.floor(Math.random() * zarbiList.length);
 			const zarbiCaught = zarbiList[randomIndex];
-		
+
 			if (!zarbiDex.some(pokemon => pokemon.alt === zarbiCaught.alt)) {
 				zarbiDex.push(zarbiCaught);
-		
+
 				const zarbiElement = document.querySelector(`.zarbiLittleIMG[alt=${zarbiCaught.alt}]`);
 				if (zarbiElement) {
 					zarbiElement.classList.add("zCaught");
 				}
+
 			}
+
+			if (!shinyZarbiDex.some(pokemon => pokemon.alt === zarbiCaught.alt) && lastCaughtPokemon.isShiny === true) {
+				shinyZarbiDex.push(zarbiCaught);
+
+				const zarbiElement2 = document.querySelector(`.shinyZarbiLittleIMG[alt=${zarbiCaught.alt}]`);
+				if (zarbiElement2) {
+					zarbiElement2.classList.add("zCaught");
+				}
+			}
+
+
+
+
 		}
 
 		if (!caughtPokemon.some(pokemon => pokemon.name === lastCaughtPokemon.name)) {
@@ -135,23 +149,23 @@ function catchRandom() {
 		}
 
 		if (lastCaughtPokemon.name === availablePokemons[200].name) {
-            zarbiCaught = Math.random() * zarbiList.length;
-            
+			zarbiCaught = Math.random() * zarbiList.length;
 
-            if (!zarbiDex.some(pokemon => pokemon.alt === zarbiCaught.alt)) {
-                zarbiDex.push(zarbiCaught);
 
-                const zarbiElement = document.querySelector(`.zarbiLittleIMG[alt=${zarbiCaught.alt}]`);
-                if (zarbiElement) {
-                    zarbiElement.classList.add("zCaught");
-                }
-            }
-			// if (lastCaughtPokemon.isShiny === true){
-			// 	const zarbiElement = document.querySelector(`.zarbiLittleIMG[alt=${shinyZarbiCaught.alt}]`);
-            //     if (zarbiElement) {
-            //         zarbiElement.classList.add("zCaught");
-			// }
-        }
+			if (!zarbiDex.some(pokemon => pokemon.alt === zarbiCaught.alt)) {
+				zarbiDex.push(zarbiCaught);
 
+				const zarbiElement = document.querySelector(`.zarbiLittleIMG[alt=${zarbiCaught.alt}]`);
+				if (zarbiElement) {
+					zarbiElement.classList.add("zCaught");
+				}
+
+
+
+
+
+
+			}
+		}
 	}
 }
