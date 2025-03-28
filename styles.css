@@ -1140,3 +1140,14 @@ footer {
             top: 58%;
         }
     }
+
+    @media screen and (max-height: 700px) {
+
+        .walkingPikachu {
+            top: 60%;
+        }
+
+        .walkingTrainer {
+            top: 62%;
+        }
+    }
