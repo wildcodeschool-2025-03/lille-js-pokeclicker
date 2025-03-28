@@ -199,7 +199,7 @@ const availablePokemons = [
     { number: 198, name: "Cornèbre", alt: "Murkrow", rarity: 40, rarity2: 40, rarity3: 40, rarity4: 40, gen: 1 },
     { number: 199, name: "Roigada", alt: "Slowking", rarity: 10, rarity2: 20, rarity3: 10, rarity4: 10, gen: 1 },
     { number: 200, name: "Feuforêve", alt: "Misdreavus", rarity: 50, rarity2: 50, rarity3: 50, rarity4: 50, gen: 1 },
-    { number: 201, name: "Zarbi", alt: "Unown-a", rarity: 10000, rarity2: 30, rarity3: 20, rarity4: 20, gen: 1 },
+    { number: 201, name: "Zarbi", alt: "Unown-a", rarity: 20, rarity2: 30, rarity3: 20, rarity4: 20, gen: 1 },
     { number: 202, name: "Qulbutoké", alt: "Wobbuffet", rarity: 15, rarity2: 25, rarity3: 15, rarity4: 15, gen: 1 },
     { number: 203, name: "Girafarig", alt: "Girafarig", rarity: 45, rarity2: 45, rarity3: 45, rarity4: 45, gen: 1 },
     { number: 204, name: "Pomdepik", alt: "Pineco", rarity: 50, rarity2: 50, rarity3: 50, rarity4: 50, gen: 1 },
@@ -290,7 +290,6 @@ const pokemonOnRoad1 = [
     availablePokemons[15],
     availablePokemons[18],
     availablePokemons[132],
-    availablePokemons[200]
 ]
 
 
