@@ -14,7 +14,7 @@ let caughtPokemonShinyGen2 = [];
 let zarbiDex = [];
 let shinyZarbiDex = [];
 
-document.title = `P-C (${caughtPokemon.length}/151)`;
+document.title = `P-C (${[...new Set(caughtPokemon.map(pokemon => pokemon.name))].length}/251)`;
 
 function catchRandom() {
 	let totalRarity, random, cumulativeRarity = 0, lastCaughtPokemon;
