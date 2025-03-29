@@ -42,25 +42,17 @@
                 <div class="kantoSection">
                 <h2 class="pokedexTitle">POKEDEX KANTO</h2><img src="stock-img/shiny.png" alt="shiny" class="shinyIcon" />
                 <ul class="caughtPokemon">
-
                 </ul>
-
                 <ul class="shinyCaughtPokemon">
-
                 </ul>
             </div>
                 <div class="johtoSection">
                 <h2 class="pokedexTitle">POKEDEX JOHTO</h2><img src="stock-img/shiny.png" alt="shiny" class="shinyIcon2" />
-
                 <ul class="caughtPokemonGen2">
-
                 </ul>
-
                 <ul class="shinyCaughtPokemonGen2">
-
                 </ul>
             </div>
-
             </div>
 
 
@@ -94,13 +86,13 @@
             <div class="trainerSelection">
                 <img class="trainerSwitch pixelArt" src="stock-img/trainer/trainergirlface_01.png" alt="trainer" />
             </div>
-            <div class="walkingMew">
+            <div class="walkingElement walkingMew">
                 <img class="mewSprite pixelArt" src="stock-img/trainer/mewfollowing.png" alt="mew" />
             </div>
-            <div class="walkingPikachu">
+            <div class="walkingElement walkingPikachu">
                 <img class="pikachuSprite pixelArt" src="stock-img/trainer/pikachufollowing.png" alt="pikachu" />
             </div>
-            <div class="walkingTrainer">
+            <div class="walkingElement walkingTrainer">
                 <img class="walkingSprite pixelArt" src="stock-img/trainer/trainerallsprite.png" alt="character" />
             </div>
             <div>
@@ -133,7 +125,10 @@
         </section>
     </main>
     </div>
-    <button id = "buttonNight">Jour/Nuit</button>
+    
+    <img src = "stock-img/moon-removebg-preview-imageonline.co-merged.png" id= "buttonNightSun"></img>
+    <img src = "stock-img/gbc-palette-reelle-removebg-preview.png" id= "buttonOST"></img>
+    
     <!-- FOOTER -->
     <footer>
         <div class="diode-footer">
@@ -154,18 +149,19 @@
             Clicking on the character will take you one step further<br></p><br>
             <h3>Items ( 1 minute ) : </h3>
             <ul class="itemListInfo">
-             <li><img src="/stock-img/acro-bike.png" />: Makes you move faster.</p></li>
-             <li><img src="/stock-img/scope-lens.png" /> : Increases the chance of catching rare pokemon.</li>
-             <li><img src="/stock-img/sprayduck.png" /> : Increases the chance of catching legendary pokemon.</li>
-             <li><img src="/stock-img/shiny-charm.png" /> : Increases the chance of catching shiny pokemon.</li>
-             <li><img src="/stock-img/poke-doll.png" /> : Increases the chance of catching Mew or Celebi.</li>
+             <li><img src="stock-img/acro-bike.png" />: Makes you move faster.</p></li>
+             <li><img src="stock-img/scope-lens.png" /> : Increases the chance of catching rare pokemon.</li>
+             <li><img src="stock-img/sprayduck.png" /> : Increases the chance of catching legendary pokemon.</li>
+             <li><img src="stock-img/shiny-charm.png" /> : Increases the chance of catching shiny pokemon.</li>
+             <li><img src="stock-img/poke-doll.png" /> : Increases the chance of catching Mew or Celebi.</li>
             </ul>
         </div>
         </div>
 
     </footer>
     <!-- END -->
-    <audio src="sounds/backgroundMusic.mp3" loop></audio>
+    
+    <audio src="sounds/backgroundMusic.mp3" loop preload="auto"></audio>
     <script src="data.js" defer></script>
     <script src="script.js" defer></script>
     <script src="pokedexAndCatch.js" defer></script>
@@ -176,7 +172,6 @@
     <script src="pokedex.js" defer></script>
     <script src="menu.js" defer></script>
     <script src="pokeball+girl+code.js" defer></script>
-    <script src="pokedexAndCatch.js" defer></script>
     <script src="save.js" defer></script>
 </body>
 
