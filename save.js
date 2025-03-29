@@ -7,6 +7,10 @@ let caughtPokemonShinyGen2Saved = [];
 let caughtZarbiSaved = [];
 let caughtShinyZarbiSaved = [];
 
+window.addEventListener("beforeunload", () => {
+    localStorage.setItem("lastExitTime", Date.now());
+});
+
 function saveStorage() {
 	localStorage.setItem("pokedexStored", JSON.stringify(caughtPokemon));
 	localStorage.setItem("pokedexShinyStored", JSON.stringify(caughtPokemonShiny),);
@@ -98,6 +102,40 @@ function loadFromStorage() {
 		}
 	}
 
+	const lastExitTime = localStorage.getItem("lastExitTime");
+    if (lastExitTime) {
+        const elapsedTime = Date.now() - parseInt(lastExitTime, 10);
+
+       
+        stepAccumulator += elapsedTime;
+        catchAccumulator += elapsedTime;
+
+        
+        while (stepAccumulator >= stepInterval) {
+            stepsBeforeRoadChange -= 1;
+            if (stepsBeforeRoadChange === 0) {
+                stepsBeforeRoadChange = 400;
+            }
+            totalClick += 1;
+			
+    if (totalClick % 400 === 0) {
+        changeRoad();
+    }
+            stepAccumulator -= stepInterval;
+        }
+
+        while (catchAccumulator >= catchInterval) {
+            catchRandom();
+            catchAccumulator -= catchInterval;
+        }
+
+        
+        if (stepIndicator) {
+            stepIndicator.innerHTML = stepsBeforeRoadChange + " step before next road";
+        }
+    }
+
+
 }
 
 // ------------SAVE LOAD AND RESET BUTTONS--------------- //
@@ -136,3 +174,8 @@ function resetStorage() {
 		console.log("Storage reset and caughtPokemon lists cleared.");
 	}
 }
+
+
+
+
+
