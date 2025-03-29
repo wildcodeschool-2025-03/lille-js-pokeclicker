@@ -55,7 +55,7 @@ function update(time) {
 			catchAccumulator -= catchInterval;
 		}
 
-		document.title = `P-C (${caughtPokemon.length}/251)`;
+		document.title = `P-C (${[...new Set(caughtPokemon.map(pokemon => pokemon.name))].length}/251)`;
 
 		requestAnimationFrame(update);
 	} catch (error) {
