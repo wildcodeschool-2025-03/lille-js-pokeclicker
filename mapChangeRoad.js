@@ -167,10 +167,10 @@ function changeRoad() {
 		let random = Math.random() * totalRarity;
 		let itemSelected;
 		let cumulativeRarity = 0;
-		for (let i = 0; i < itemList.length; i++) {
-			cumulativeRarity += itemList[i].rarity;
+		for (let i = 0; i < availableItems.length; i++) {
+			cumulativeRarity += availableItems[i].rarity;
 			if (random < cumulativeRarity) {
-				itemSelected = itemList[i];
+				itemSelected = availableItems[i];
 				break;
 			}
 		}
@@ -324,10 +324,10 @@ function changeRoad() {
 		let random = Math.random() * totalRarity;
 		let itemSelected;
 		let cumulativeRarity = 0;
-		for (let i = 0; i < itemList.length; i++) {
-			cumulativeRarity += itemList[i].rarity;
+		for (let i = 0; i < availableItems.length; i++) {
+			cumulativeRarity += availableItems[i].rarity;
 			if (random < cumulativeRarity) {
-				itemSelected = itemList[i];
+				itemSelected = availableItems[i];
 				break;
 			}
 		}
